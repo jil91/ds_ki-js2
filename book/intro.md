@@ -2,14 +2,15 @@
 
 *Skript für die Jahrgangsstufe 2 des Profilfachs Informationstechnik am Technischen Gymnasium (BW)*  
 
-Michael Brenner, Schuljahr 2025 / 2026
-Überarbeitet von Manuel Jilg
+### Michael Brenner<br>
+### Schuljahr 2025 / 2026<br>
+### Überarbeitet von Manuel Jilg
 
 ```{figure} figures/mindmap-abitur-it-mermaid.svg
 ---
 name: fig:mindmap_abistoff_it
 ---
-Ganz schön viel Stoff in Klasse 12 und 13...
+Übersicht der Inhalte in Klasse 12 und 13...
 
 ```
 

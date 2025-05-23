@@ -1,5 +1,5 @@
 name: Deploy Book
-
+# This workflow builds and deploys the Jupyter Book to GitHub Pages
 on:
   push:
     branches:

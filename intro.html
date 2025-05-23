@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/intro.19067dc8-9040-4b4d-94bf-6faeb74e1b6a.js"></script>
+    <script defer="defer" src="_static/tippy/intro.c612dc64-2a2f-4b24-a345-5c5bd319678f.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
@@ -375,7 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -391,6 +393,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worum-geht-es-in-diesem-buch">Worum geht es in diesem Buch?</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -403,28 +413,27 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="datenstrukturen-und-kunstliche-intelligenz">
 <h1>Datenstrukturen und Künstliche Intelligenz<a class="headerlink" href="#datenstrukturen-und-kunstliche-intelligenz" title="Link to this heading">#</a></h1>
 <p><em>Skript für die Jahrgangsstufe 2 des Profilfachs Informationstechnik am Technischen Gymnasium (BW)</em></p>
-<p>
-Michael Brenner<br>
-Schuljahr 2025 / 2026<br>
-Überarbeitet von Manuel Jilg
-</p>
-```{figure} figures/mindmap-abitur-it-mermaid.svg
----
-name: fig:mindmap_abistoff_it
----
-Übersicht der Inhalte in Klasse 12 und 13...
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-## Worum geht es in diesem Buch?
-
-```{margin}
-Die [BPE 12 des Bildungsplans](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#Objektorientierter%20Entwurf%20II) enthält mehrere sehr unterschiedliche Themen. Davon wird aber bis auf weiteres nur das Thema *Datenstrukturen* relevant fürs Abitur sein... und deshalb konzentrieren wir uns hier darauf 😉.
-</pre></div>
-</div>
+<p><strong>Michael Brenner</strong><br>
+<strong>Schuljahr 2025/2026</strong><br>
+<em><strong>Überarbeitet von Manuel Jilg</strong></em></p>
+<figure class="align-default" id="fig-mindmap-abistoff-it">
+<img alt="_images/mindmap-abitur-it-mermaid.svg" src="_images/mindmap-abitur-it-mermaid.svg" />
+<figcaption>
+<p><span class="caption-number">Abb. 1 </span><span class="caption-text">Übersicht der Inhalte in Klasse 12 und 13…</span><a class="headerlink" href="#fig-mindmap-abistoff-it" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="worum-geht-es-in-diesem-buch">
+<h2>Worum geht es in diesem Buch?<a class="headerlink" href="#worum-geht-es-in-diesem-buch" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Die <a class="reference external" href="https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#Objektorientierter%20Entwurf%20II">BPE 12 des Bildungsplans</a> enthält mehrere sehr unterschiedliche Themen. Davon wird aber bis auf weiteres nur das Thema <em>Datenstrukturen</em> relevant fürs Abitur sein… und deshalb konzentrieren wir uns hier darauf 😉.</p>
+</aside>
 <p>In diesem Skript geht es umd die beiden abitur-relevanten Software-Themen aus dem <a class="reference external" href="https://www.bildungsplaene-bw.de/,Lde/InfTech_OS">Bildungsplan der Jahrgangsstufe 13</a>:</p>
 <ul class="simple">
 <li><p><strong>Datenstrukturen</strong> (aus der <a class="reference external" href="https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#Objektorientierter%20Entwurf%20II">Bildungsplaneinheit 12</a>) und</p></li>
 <li><p><strong>Künstliche Intelligenz</strong> (aus der <a class="reference external" href="https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#K%C3%BCnstliche%20Intelligenz">Bildungsplaneinheit 13</a>)</p></li>
 </ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -477,6 +486,21 @@ Die [BPE 12 des Bildungsplans](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worum-geht-es-in-diesem-buch">Worum geht es in diesem Buch?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

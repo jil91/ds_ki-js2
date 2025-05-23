@@ -1,11 +1,11 @@
 # Datenstrukturen und Künstliche Intelligenz
 
 *Skript für die Jahrgangsstufe 2 des Profilfachs Informationstechnik am Technischen Gymnasium (BW)*  
-<p>
-Michael Brenner<br>
-Schuljahr 2025 / 2026<br>
-Überarbeitet von Manuel Jilg
-</p>
+
+**Michael Brenner**<br>
+**Schuljahr 2025/2026**<br>
+***Überarbeitet von Manuel Jilg***
+
 ```{figure} figures/mindmap-abitur-it-mermaid.svg
 ---
 name: fig:mindmap_abistoff_it

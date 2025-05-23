@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9' # Deine bestätigte Version ist 3.9.1, also passt '3.9' hier
+          python-version: '3.10' # Deine bestätigte Version ist 3.9.1, also passt '3.9' hier
 
       - name: Install dependencies
         run: |

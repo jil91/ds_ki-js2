@@ -1,5 +1,6 @@
 name: Deploy Book
 # This workflow builds and deploys the Jupyter Book to GitHub Pages
+# (Neu erstellt und sauber eingefügt am 23. Mai 2025)
 on:
   push:
     branches:
@@ -21,13 +22,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9' # Oder die Version, die du lokal verwendest
+          python-version: '3.9' # Deine bestätigte Version ist 3.9.1, also passt '3.9' hier
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install jupyter-book==1.0.4 # Oder deine genaue Version
-          pip install myst-parser # Falls du myst-nb verwendest, installiere dies auch
+          pip install jupyter-book==1.0.4
+          pip install myst-parser
           # Optional: pip install myst-nb # Falls du Jupyter Notebooks hast
 
       - name: Build the Book
@@ -40,4 +41,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book/_build/html # Hier sind die fertigen HTML-Dateien nach dem Build
-          publish_branch: main # Hierher wird der Branch erstellt/aktualisiert
+          publish_branch: gh-pages # Hierher wird der Branch erstellt/aktualisiert

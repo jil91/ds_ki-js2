@@ -59,7 +59,7 @@ sphinx:
     tippy_add_class: "has-tippy"
   extra_extensions:
     - sphinx.ext.imgconverter
-    - jupyterbook_patches
+    #- jupyterbook_patches
     - teachbooks_sphinx_tippy # https://github.com/TeachBooks/teachbooks-sphinx-tippy
 
 bibtex_bibfiles: 

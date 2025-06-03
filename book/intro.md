@@ -6,7 +6,7 @@
 **Schuljahr 2025/2026**<br>
 ***Überarbeitet von Manuel Jilg***
 
-```{figure} figures/mindmap-abitur-it-mermaid.svg
+```{figure} datenstrukturen/mindmap_JS1_JS2
 ---
 name: fig:mindmap_abistoff_it
 ---

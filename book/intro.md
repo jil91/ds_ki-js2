@@ -6,7 +6,7 @@
 **Schuljahr 2025/2026**<br>
 ***Überarbeitet von Manuel Jilg***
 
-```{figure} figures/mindmap.png
+```{figure} figures/mindmapNeu.png
 ---
 name: fig:mindmap_abistoff_it
 ---

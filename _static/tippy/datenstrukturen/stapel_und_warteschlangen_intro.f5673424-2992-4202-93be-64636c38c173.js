@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#binare-suchbaume\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">7.5. </span>Bin\u00e4re Suchb\u00e4ume<a class=\"headerlink\" href=\"#binare-suchbaume\" title=\"Link to this heading\">#</a></h1><p>Da dieses Thema f\u00fcrs Abitur nicht relevant ist, sparen wir es uns f\u00fcr die Zeit nach der schriftlichen Pr\u00fcfung auf!</p>"}
+selector_to_html = {"a[href=\"#stapel-und-warteschlangen\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">4. </span>Stapel und Warteschlangen<a class=\"headerlink\" href=\"#stapel-und-warteschlangen\" title=\"Link to this heading\">#</a></h1><p>In diesem Kapitel lernst du zwei h\u00e4ufig genutzte und eng miteinander verwandte Datenstrukturen kennen, den <strong>Stapel</strong> (engl. <em>Stack</em>) und die <strong>Warteschlange</strong> (engl. <em>Queue</em>).</p>"}
 skip_classes = ["headerlink", "sd-stretched-link"]
 
 window.onload = function () {

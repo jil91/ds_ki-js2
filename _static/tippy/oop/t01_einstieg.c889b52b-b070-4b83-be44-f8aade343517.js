@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#binare-suchbaume\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">6.5. </span>Bin\u00e4re Suchb\u00e4ume<a class=\"headerlink\" href=\"#binare-suchbaume\" title=\"Link to this heading\">#</a></h1><p>Da dieses Thema f\u00fcrs Abitur nicht relevant ist, sparen wir es uns f\u00fcr die Zeit nach der schriftlichen Pr\u00fcfung auf!</p>"}
+selector_to_html = {"a[href=\"#einstieg-in-die-oop\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">2. </span>Einstieg in die OOP<a class=\"headerlink\" href=\"#einstieg-in-die-oop\" title=\"Link to this heading\">#</a></h1>"}
 skip_classes = ["headerlink", "sd-stretched-link"]
 
 window.onload = function () {

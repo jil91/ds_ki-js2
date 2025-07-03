@@ -14,7 +14,7 @@ parts:
   - caption: Objektorienterte Programmierung (OOP)
     numbered: 3
     chapters:
-    - file: oop/t01_einstieg.md #Test mmit PDF
+    - file: /_static/pdfs/t01_einstieg.md #Test mmit PDF
 
   - caption: Datenstrukturen  # Das wird Part 2
     numbered: 4

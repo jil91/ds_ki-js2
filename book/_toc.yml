@@ -10,9 +10,14 @@ parts:
       - file: live_code.ipynb
       - file: parsons_problems_einfuehrung.ipynb
       # - file: features.ipynb
+  
+  - caption: Objektorienterte Programmierung (OOP)
+    numbered: 3
+    chapters:
+    - file: oop/t01_einstieg.md #Test mmit PDF
 
   - caption: Datenstrukturen  # Das wird Part 2
-    numbered: 3
+    numbered: 4
     chapters:
     - file: datenstrukturen/datenstrukturen_allgemein.ipynb
     - file: datenstrukturen/listen_einfuehrung.ipynb
@@ -37,7 +42,7 @@ parts:
     - file: datenstrukturen/klausurvorbereitung_mit_loesungen.ipynb
 
   - caption: Künstliche Intelligenz
-    numbered: 3
+    numbered: 5
     chapters:
     - file: ki/ki_allgemein.ipynb
     - file: ki/knearestneighbor.ipynb

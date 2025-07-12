@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5.1. Stapel (Stack) &#8212; Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy\datenstrukturen\stack.2b071c3c-e2a8-4172-b47b-023c1bf4e9ba.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/stack';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/datenstrukturen/stack.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="5.2. Übungen zu Stapeln" href="stack-aufgaben.html" />
+    <link rel="prev" title="5. Stapel und Warteschlangen" href="stapel_und_warteschlangen_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einstieg in die OOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="datenstrukturen_allgemein.html">3. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="listen_einfuehrung.html">4. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_listen.html">4.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen1.html">4.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen2.html">4.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen_loesungen.html">4.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="stapel_und_warteschlangen_intro.html">5. Stapel und Warteschlangen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack-aufgaben.html">5.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warteschlangen.html">5.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assoziative_arrays.html">6. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="baeume.html">7. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="binaerbaeume.html">7.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suchbaeume.html">7.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="klausurvorbereitung_mit_loesungen.html">8. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ki/ki_allgemein.html">9. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/knearestneighbor.html">10. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/knearestneighbor2.html">10.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/kmeansclustering.html">11. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_aufgabe.html">11.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_loesung.html">11.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/entscheidungsbaumlernen.html">12. Entscheidungsbäume lernen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/minimax.html">13. Der Minimax-Algorithmus</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/datenstrukturen/stack.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stapel (Stack)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-undo-funktion">5.1.1. Motivation: Undo-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungen-stacks-sinnvoll-einsetzen">5.1.2. Übungen: Stacks sinnvoll einsetzen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-1-grundlegende-stack-operationen">5.1.2.1. Aufgabe 1: Grundlegende Stack-Operationen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-2-zeichenkette-umdrehen">5.1.2.2. Aufgabe 2: Zeichenkette umdrehen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-3-bucher-stapeln">5.1.2.3. Aufgabe 3: Bücher stapeln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-4-ist-der-term-korrekt-geklammert">5.1.2.4. Aufgabe 4: Ist der Term korrekt geklammert?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#korrekte-klammerung-in-python-parsons-problem">5.1.2.5. Korrekte Klammerung in Python (Parsons Problem)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stapel-als-uml-klassendiagramm-modellieren">5.1.3. Stapel als UML-Klassendiagramm modellieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stapel-implementieren">5.1.4. Stapel implementieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diskussion-moglichkeiten-einen-stack-zu-implementieren">5.1.4.1. Diskussion: Möglichkeiten einen Stack zu implementieren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-1-stapel-neu-implementieren">5.1.4.2. Variante 1: Stapel neu implementieren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-2-vererbung-schlechte-idee">5.1.4.3. Variante 2: Vererbung (schlechte Idee!)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-3-stapel-nutzt-intern-eine-verkettete-liste-komposition">5.1.4.4. Variante 3: Stapel nutzt intern eine verkettete Liste (Komposition)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stapel-stack">
+<h1><span class="section-number">5.1. </span>Stapel (Stack)<a class="headerlink" href="#stapel-stack" title="Link to this heading">#</a></h1>
+<section id="motivation-undo-funktion">
+<h2><span class="section-number">5.1.1. </span>Motivation: Undo-Funktion<a class="headerlink" href="#motivation-undo-funktion" title="Link to this heading">#</a></h2>
+<p>Du willst eine App programmieren, die eine <strong>“Rückgängig”-Funktion</strong> bietet, wie du sie von Textverarbeitungsprogrammen oder Zeichen-Apps kennst. Diese Funktion soll alle letzten Aktionen in umgekehrter Reihenfolge rückgängig machen können.</p>
+<p>Ein <strong>Stack</strong> (Stapel) ist eine perfekte Datenstruktur für diese Aufgabe, da er nach dem Prinzip <strong>“Last In, First Out” (LIFO)</strong> funktioniert – die letzte Aktion, die du gemacht hast, ist die erste, die rückgängig gemacht wird.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Wie man das <em>Verschwinden</em> von vorher gezeichneten Elementen in der Mal-App umsetzt, ist hier nicht so wichtig, aber eine interessante Frage. Wie würdest du es machen?</p>
+</aside>
+<div class="tip admonition">
+<p class="admonition-title">Beispiel: “Rückgängig” in einer Mal-App</p>
+<p>Angenommen, du programmierst eine Zeichen-App. Jedes neue Element der Zeichnung, das der Nutzer einfügt, wird auf den <strong>Stack</strong> gelegt.</p>
+<ol class="arabic simple">
+<li><p>Der Nutzer zeichnet zuerst eine Linie – die Aktion wird auf den Stapel gelegt.</p></li>
+<li><p>Dann fügt er einen Kreis hinzu – auch diese Aktion wird auf den Stapel gelegt.</p></li>
+<li><p>Schließlich zeichnet er ein Quadrat – auch diese Aktion wird oben auf den Stapel gelegt.</p></li>
+</ol>
+<p>Der Stack sieht jetzt so aus:</p>
+<ul class="simple">
+<li><p>Quadrat (oben)</p></li>
+<li><p>Kreis</p></li>
+<li><p>Linie (unten)</p></li>
+</ul>
+<p>Jetzt will der Nutzer eine Aktion rückgängig machen. Wenn er auf “Rückgängig” klickt, nimmst du das oberste Element (das Quadrat) vom Stapel. Das Quadrat verschwindet als erstes.<br />
+Der Nutzer klickt ein weiteres Mal auf “Rückgängig”. Jetzt wird der Kreis vom Stapel genommen und verschwindet.</p>
+</div>
+</section>
+<section id="ubungen-stacks-sinnvoll-einsetzen">
+<h2><span class="section-number">5.1.2. </span>Übungen: Stacks sinnvoll einsetzen<a class="headerlink" href="#ubungen-stacks-sinnvoll-einsetzen" title="Link to this heading">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Wichtig</p>
+<p>Die wichtigste Operationen für Stacks sind:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">push</span></code>: Ein Element auf den Stapel legen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pop</span></code>: Das oberste Element vom Stapel entfernen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">top</span></code>: Das oberste Element ansehen, ohne es zu entfernen.</p></li>
+</ul>
+</div>
+<section id="aufgabe-1-grundlegende-stack-operationen">
+<h3><span class="section-number">5.1.2.1. </span>Aufgabe 1: Grundlegende Stack-Operationen<a class="headerlink" href="#aufgabe-1-grundlegende-stack-operationen" title="Link to this heading">#</a></h3>
+<p>Gegeben sei ein leerer Stack <code class="docutils literal notranslate"><span class="pre">st</span></code>. Führe die folgenden Operationen durch und gib den Zustand des Stacks nach jeder Operation an.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(5)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(10)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.pop()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(20)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(15)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.pop()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(25)</span></code></p></li>
+</ol>
+<p><em>Notiere den Zustand von <code class="docutils literal notranslate"><span class="pre">st</span></code> nach jedem Schritt.</em></p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(5)</span></code>: (5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(10)</span></code>: (5, 10) (von unten nach oben, d.h. 5 liegt unten, 10 oben)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.pop()</span></code>: (5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(20)</span></code>: (5, 20)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(15)</span></code>: (5, 20, 15)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.pop()</span></code>: (5, 20)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.push(25)</span></code>: (5, 20, 25)</p></li>
+</ol>
+<p>Im Endzustand liegt also die 25 ganz oben, die 5 unten.</p>
+</div>
+</section>
+<section id="aufgabe-2-zeichenkette-umdrehen">
+<h3><span class="section-number">5.1.2.2. </span>Aufgabe 2: Zeichenkette umdrehen<a class="headerlink" href="#aufgabe-2-zeichenkette-umdrehen" title="Link to this heading">#</a></h3>
+<p>Du hast die Zeichenkette bzw. den String “KITAMROFNI”. Beschreibe, wie du mit einem Stack <code class="docutils literal notranslate"><span class="pre">st</span></code> die Zeichenkette in ihre korrekte Form umkehren kannst. Schreibe die Schritte auf, die du ausführen würdest.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung</p>
+<ol class="arabic simple">
+<li><p>Lege nacheinander alle Buchstaben von “KITAMROFNI” auf den Stack (beginnend beim ersten Buchstaben „K
+„).</p></li>
+<li><p>Nimm nun nacheinander alle Buchstaben vom Stack und füge sie zu einer neuen Zeichenkette zusammen.</p></li>
+</ol>
+</div>
+</section>
+<section id="aufgabe-3-bucher-stapeln">
+<h3><span class="section-number">5.1.2.3. </span>Aufgabe 3: Bücher stapeln<a class="headerlink" href="#aufgabe-3-bucher-stapeln" title="Link to this heading">#</a></h3>
+<p>Angenommen, du hast einen Stapel Bücher. Jedes Buch kann auf ein anderes gelegt oder von oben abgenommen werden. Wie kannst du vorgehen, um einen bestimmten Buchtitel aus der Mitte des Stapels zu entfernen? Beschreibe die Vorgehensweise und welche Einschränkungen es dabei gibt.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung</p>
+<p>Um ein bestimmtes Buch aus der Mitte des Stapels zu entfernen, wäre es hilfreich, einen zweiten Stapel zu verwenden:</p>
+<ol class="arabic simple">
+<li><p>Nimm nacheinander die Bücher vom ursprünglichen Stapel <code class="docutils literal notranslate"><span class="pre">st1</span></code> und lege sie auf einen zweiten Stapel <code class="docutils literal notranslate"><span class="pre">st2</span></code>. Das machst du so lange, bis du das gesuchte Buch erreicht hast.</p></li>
+<li><p>Entferne das gesuchte Buch aus <code class="docutils literal notranslate"><span class="pre">st1</span></code>.</p></li>
+<li><p>Danach nimmst du die Bücher vom zweiten Stapel <code class="docutils literal notranslate"><span class="pre">st2</span></code> wieder herunter und legst sie zurück auf den ursprünglichen Stapel <code class="docutils literal notranslate"><span class="pre">st1</span></code>. So stellst du den Stapel fast wieder in seinen ursprünglichen Zustand her – nur das gewünschte Buch fehlt jetzt.</p></li>
+</ol>
+</div>
+</section>
+<section id="aufgabe-4-ist-der-term-korrekt-geklammert">
+<h3><span class="section-number">5.1.2.4. </span>Aufgabe 4: Ist der Term korrekt geklammert?<a class="headerlink" href="#aufgabe-4-ist-der-term-korrekt-geklammert" title="Link to this heading">#</a></h3>
+<p>Gegeben sei der Ausdruck <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">(3</span> <span class="pre">*</span> <span class="pre">(2</span> <span class="pre">+</span> <span class="pre">1)))</span> <span class="pre">-</span> <span class="pre">(4</span> <span class="pre">/</span> <span class="pre">(6</span> <span class="pre">+</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">7</span></code>. Bestimme, ob die Klammern korrekt geöffnet und geschlossen wurden. Beschreibe, wie ein Stack <code class="docutils literal notranslate"><span class="pre">st</span></code> verwendet werden kann, um dies zu überprüfen.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung</p>
+<p>Der Ausdruck im Beispiel ist <em>nicht</em> korrekt geklammert. Nach dem Teil “2 + 1” werden drei Klammern geschlossen, obwohl bis dahin erst zwei geöffnet wurden.</p>
+<p>Grundidee für die allgemeine Lösung:</p>
+<ul class="simple">
+<li><p>Gehe den Ausdruck von links nach rechts durch. Ignoriere dabei alle Zahlen und betrachte nur die Klammern.</p></li>
+<li><p>Öffnende Klammern werden auf den Stack gelegt.</p></li>
+<li><p>Wenn du auf eine schließende Klammer triffst, nimmst du die oberste (öffnende) Klammer vom Stack.</p></li>
+<li><p>Wenn am Schluss der Stack wieder leer ist, ist der Ausdruck korrekt geklammert.</p></li>
+</ul>
+<p>Wenn der Ausdruck <em>nicht</em> korrekt geklammert ist, kann dabei an verschiedenen Stellen etwas schiefgehen. Überlege wo!</p>
+<p>Wenn du das Verfahren noch genauer verstehen willst, klappe die detaillierte Lösung auf:</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung 2</p>
+<p>Allgemein kann man eine solche Überprüfung wie folgt durchführen:</p>
+<ol class="arabic simple">
+<li><p>Gehe den Ausdruck von links nach rechts durch.</p></li>
+<li><p>Jedes Mal, wenn eine öffnende Klammer <code class="docutils literal notranslate"><span class="pre">(</span></code> gefunden wird, lege sie auf den Stack <code class="docutils literal notranslate"><span class="pre">st</span></code>. So wird jeder Klammer eine passende schließende Klammer zugeordnet.</p></li>
+<li><p>Wenn eine schließende Klammer <code class="docutils literal notranslate"><span class="pre">)</span></code> gefunden wird, prüfe zuerst, ob der Stack leer ist:</p>
+<ul class="simple">
+<li><p><strong>Falls der Stack leer ist</strong>, bedeutet dies, dass eine schließende Klammer ohne passende öffnende Klammer vorhanden ist. An dieser Stelle wird erkannt, dass der Ausdruck <strong>nicht korrekt geklammert</strong> ist.</p></li>
+</ul>
+</li>
+<li><p>Ist der Stack nicht leer, nimm die oberste Klammer vom Stack herunter (<code class="docutils literal notranslate"><span class="pre">pop()</span></code>). Das entspricht dem Schließen einer der offenen Klammern.</p></li>
+<li><p>Setze diesen Vorgang fort, bis du alle Zeichen des Ausdrucks durchgegangen bist.</p></li>
+<li><p><strong>Am Ende</strong>: Prüfe, ob der Stack leer ist:</p>
+<ul class="simple">
+<li><p><strong>Falls der Stack nicht leer ist</strong>, gibt es mehr öffnende Klammern als schließende, und der Ausdruck ist <strong>nicht korrekt geklammert</strong>.</p></li>
+<li><p><strong>Ist der Stack leer</strong>, sind alle Klammern korrekt geöffnet und geschlossen. Der Ausdruck ist somit korrekt geklammert.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<p>Wenn dir das Prinzip klar ist, kannst du jetzt bestimmt auch das Parsons-Problem in der folgenden Aufgabe lösen!</p>
+</div>
+</section>
+<section id="korrekte-klammerung-in-python-parsons-problem">
+<h3><span class="section-number">5.1.2.5. </span>Korrekte Klammerung in Python (Parsons Problem)<a class="headerlink" href="#korrekte-klammerung-in-python-parsons-problem" title="Link to this heading">#</a></h3>
+<p>Betrachte noch einmal die vorige Aufgabe. Wie könnte man in einem Programm prüfen, ob ein mathematischer Ausdruck <code class="docutils literal notranslate"><span class="pre">term</span></code> korrekt geklammert ist?</p>
+<p>Bringe im folgenden Parsons-Problem den Code für die Methode <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">ist_korrekt_geklammert(term:</span> <span class="pre">str)</span></code> in die richtige Reihenfolge:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="1000"
+            height="490"
+            src="parsonsproblems/parsons2allgemein.html?problem=c3RhY2sgPSBTdGFwZWwoKQpmb3IgeiBpbiB0ZXJtOgogICAgaWYgeiA9PSAiKCI6CiAgICAgICAgc3RhY2sucHVzaCh6KQogICAgZWxpZiB6ID09ICIpIjoKICAgICAgICBpZiBsZW4oc3RhY2spID09IDA6IHJldHVybiBGYWxzZQogICAgICAgIHN0YWNrLnBvcCgpCmlmIGxlbihzdGFjaykgPT0gMDogcmV0dXJuIFRydWU"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+<section id="stapel-als-uml-klassendiagramm-modellieren">
+<h2><span class="section-number">5.1.3. </span>Stapel als UML-Klassendiagramm modellieren<a class="headerlink" href="#stapel-als-uml-klassendiagramm-modellieren" title="Link to this heading">#</a></h2>
+<p>Das Klassendiagramm  <a class="reference internal" href="#fig-kd-stack-fosa"><span class="std std-numref">Abb. 5.1</span></a> zeigt die Modellierung des Datentyps <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> aus der Formelsammlung. Wie beim <a class="reference internal" href="verkettete_listen.html#sec-verkettete-listen-uml"><span class="std std-ref">UML-Diagram der verketteten Liste</span></a> nutzt man die Hilfsklasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> um die Elemente auf dem Stack in der richtige <em>Reihenfolge</em> zu speichern.</p>
+<figure class="align-center" id="fig-kd-stack-fosa">
+<a class="reference internal image-reference" href="../_images/kd_stack_fosa.svg"><img alt="../_images/kd_stack_fosa.svg" src="../_images/kd_stack_fosa.svg" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 5.1 </span><span class="caption-text">Klassendiagramm für den Datentyp <em>Stapel/Stack</em> (FoSa 5.2)</span><a class="headerlink" href="#fig-kd-stack-fosa" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In gewissem Sinn ist diese Umsetzung des Stacks einfach eine “abgespeckte” Liste, denn die beiden Operationen <code class="docutils literal notranslate"><span class="pre">push</span></code> und <code class="docutils literal notranslate"><span class="pre">pop</span></code> entsprechen <a class="reference internal" href="verkettete_listen.html#sec-verkettete-listen-uml"><span class="std std-ref">bei der Liste</span></a> genau den folgenden Operationen:</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Was entspricht den Stack-Operationen <em>push</em> und <em>pop</em> bei Listen?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">einfuegenVorne</span></code> entspricht <code class="docutils literal notranslate"><span class="pre">push</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">entfernenVorne</span></code> entspricht <code class="docutils literal notranslate"><span class="pre">pop</span></code></p></li>
+</ul>
+<p>Warum? Stell dir die Liste einfach um 90 Grad gedreht vor, mit dem Listenkopf ganz oben. Schon hast du einen Stapel! Und da “pusht” und “popt” man eben immer am Listenkopf…</p>
+</div>
+</section>
+<section id="stapel-implementieren">
+<h2><span class="section-number">5.1.4. </span>Stapel implementieren<a class="headerlink" href="#stapel-implementieren" title="Link to this heading">#</a></h2>
+<section id="diskussion-moglichkeiten-einen-stack-zu-implementieren">
+<span id="sec-stack-implementierungsvarianten"></span><h3><span class="section-number">5.1.4.1. </span>Diskussion: Möglichkeiten einen Stack zu implementieren<a class="headerlink" href="#diskussion-moglichkeiten-einen-stack-zu-implementieren" title="Link to this heading">#</a></h3>
+<p>Im vorigen Absatz hast du gesehen, dass Stapel verketteten Listen recht ähnlich sind. Für die Implementierung haben wir darum nun auch mehrere Möglichkeiten:</p>
+<ol class="arabic simple">
+<li><p>Wir implementieren die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> ganz neu, orientieren uns dabei aber natürlich an <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>.</p></li>
+<li><p>Wir nutzen <strong>Vererbung</strong>: Entweder</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Stapel</span></code> wird eine <em>Unterklasse</em> von <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> oder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> wird eine <em>Unterklasse</em> von <code class="docutils literal notranslate"><span class="pre">Stapel</span></code>.</p></li>
+</ol>
+</li>
+<li><p>Wir nutzen <strong>Assoziation</strong> (hier genauer gesagt sogar <strong>Komposition</strong>), indem wir  <em>intern</em> in der Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code>ein Attribut vom Typ <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> nutzen und manche Aufgabe an dieses “abtreten”.</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Diskutiert: Welche Vor- und Nachteile haben diese Möglichkeiten?</p>
+<p>Hier einige Punkte, die das Ergebnis eurer Diskussion sein könnten.</p>
+<ol class="arabic simple">
+<li><p><strong>Neue Implementierung (keine Vererbung, keine Komposition)</strong></p>
+<ul class="simple">
+<li><p><strong>Vorteile</strong>:</p>
+<ul>
+<li><p>Sehr flexibel, da die Implementierung des <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> unabhängig ist und an die spezifischen
+Anforderungen von Stapeln angepasst werden kann.</p></li>
+<li><p>Kein direkter Zusammenhang zur <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>, wodurch eine zu enge Kopplung der beiden
+Klassen vermieden wird, die ja eigentlich doch sehr unterschiedliche Bedeutungen haben.</p></li>
+</ul>
+</li>
+<li><p><strong>Nachteile</strong>:</p>
+<ul>
+<li><p>Doppelte Arbeit, da Funktionen der <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> (wie etwa das Hinzufügen oder Entfernen
+von Elementen) erneut implementiert werden müssen.</p></li>
+<li><p>Mehr Fehlerpotenzial und weniger Wartbarkeit, da die gleiche Logik an zwei Stellen existiert.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Vererbung</strong></p>
+<ul class="simple">
+<li><p><strong>2.1 <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> als Unterklasse von <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code></strong>:</p>
+<ul>
+<li><p><strong>Vorteile</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stapel</span></code> erbt alle Methoden der <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>, wodurch keine doppelte Implementierung
+notwendig ist.</p></li>
+<li><p>Einfach zu erweitern, wenn <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> bereits gut getestet und robust ist.</p></li>
+</ul>
+</li>
+<li><p><strong>Nachteile</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stapel</span></code> erbt auch die Methoden von <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>, die er gar nicht braucht. Man müsste dann
+irgendwie verhindern, dass diese benutzt werden können.</p></li>
+<li><p>Ein <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> ist nicht “eine Art von” <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>, sondern ein abstrakter
+Datentyp (ADT), den man auch durchaus anders implemtieren könnte als durch eine <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>.
+Durch die Verwendung von Vererbung wird fälschlicherweise suggeriert als gäbe es hier eine
+“ist ein”-Beziehung.</p></li>
+<li><p>Erzeugt eine enge Kopplung zwischen den beiden Klassen, was zukünftige Änderungen erschweren könnte.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>2.2 <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> als Unterklasse von <code class="docutils literal notranslate"><span class="pre">Stapel</span></code></strong>:</p>
+<ul>
+<li><p><strong>Vorteile</strong>:</p>
+<ul>
+<li><p>Der <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> bringt quasi schon zwei Methoden mit, die die <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> auch braucht.
+Sie könnte diese also einfach erben und wir hätten uns damit Arbeit gespart.</p></li>
+</ul>
+</li>
+<li><p><strong>Nachteile</strong>:</p>
+<ul>
+<li><p>Verletzung des “Ist-eine”-Prinzips der Vererbung, da eine <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> kein <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> ist.</p></li>
+<li><p>Noch unlogischer als Variante 2.1 und führt zu einem sehr verwirrenden Klassendesign.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Komposition (Assoziation)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Vorteile</strong>:</p>
+<ul>
+<li><p>Trennung der Verantwortlichkeiten: Die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> nutzt die <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> intern, wodurch die Datenstruktur leicht durch eine andere (z. B. ein Array) ausgetauscht werden kann.</p></li>
+<li><p>Flexibilität: Änderungen an der <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>-Implementierung müssen nicht zwingend die <code class="docutils literal notranslate"><span class="pre">Stapel</span></code>-Klasse beeinflussen.</p></li>
+<li><p>Entspricht dem Prinzip “Komposition über Vererbung”, da ein <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> eine spezielle Datenstruktur ist, die auf einer verketteten Liste basiert.</p></li>
+</ul>
+</li>
+<li><p><strong>Nachteile</strong>:</p>
+<ul>
+<li><p>Erfordert ein gutes Verständnis von Assoziation und Komposition - das üben wir aber!</p></li>
+<li><p>Wahrscheinlich könnten wir mit einer komplett neuen Implementation (minimal!) Speicherplatz und
+Rechenzeit sparen, weil wir kein zusätzliches Listenobjekt benötigen würden.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Fazit:
+Die Nutzung von <strong>Komposition</strong> (also die interne Verwendung der <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> in der <code class="docutils literal notranslate"><span class="pre">Stapel</span></code>-Klasse)
+ist in diesem Fall am sinnvollsten. Sie ermöglicht die klarste Trennung der Verantwortlichkeiten und
+bietet die größte Flexibilität.</p>
+<p>Die Vererbung mag auf den ersten Blick praktisch sein,
+passt aber nicht wirklich zur Idee der Vererbung. Denn ein <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> ist keine Art von <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code>,
+sondern ein Datentyp, den man unter anderem mit verketteten Listen umsetzen kann, aber nicht zwingend.
+Auf keinen Fall herrscht zwischen den beiden Klassen eine “ist ein”-Beziehung.</p>
+<p>Eine komplett neue Implementierung mag dir zwar maximale Freiheit bieten, hat aber den Nachteil,
+dass sie zusätzlichen Entwicklungsaufwand erfordert und fehleranfällig sein kann, weil du viele Funktionen der <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> doppelt programmieren müsstest.</p>
+</div>
+</section>
+<section id="variante-1-stapel-neu-implementieren">
+<h3><span class="section-number">5.1.4.2. </span>Variante 1: Stapel neu implementieren<a class="headerlink" href="#variante-1-stapel-neu-implementieren" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">,</span> <span class="n">naechster</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># Wenn für naechster kein Wert angegeben wird, ist er None (Standardwert)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">inhalt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">naechster</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Stapel</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daten</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;legt ein neues Element auf den Stapel&quot;&quot;&quot;</span>
+        <span class="n">neuer_knoten</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">daten</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="p">)</span>  <span class="c1"># Der neue Knoten zeigt auf den bisherigen Anfang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="o">=</span> <span class="n">neuer_knoten</span>  <span class="c1"># Der neue Knoten ist jetzt der Anfang</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt das oberste Element vom Stapel und gibt es zurück&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Pop-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="n">inhalt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>  <span class="c1"># Inhalt des ersten Knotens merken</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">naechster</span>  <span class="c1"># Anfang auf den nächsten Knoten setzen</span>
+        <span class="k">return</span> <span class="n">inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt das oberste Element zurück, ohne es zu entfernen&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Kurzform für if self.anfang is None: return True else: return False</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
+        <span class="c1"># ACHTUNG: Diese Methode ist ineffizient, da sie die gesamte interne Liste durchlaufen muss!</span>
+        <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">knoten</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span>
+        <span class="k">while</span> <span class="n">knoten</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">anzahl</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="n">anzahl</span>
+
+
+<span class="c1"># Beispielverwendung</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">Stapel</span><span class="p">()</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1"># Ausgabe: 10</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1"># Ausgabe: 15</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">top</span><span class="p">())</span>  <span class="c1"># Ausgabe: 25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">())</span>  <span class="c1"># Ausgabe: False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+15
+25
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variante-2-vererbung-schlechte-idee">
+<h3><span class="section-number">5.1.4.3. </span>Variante 2: Vererbung (schlechte Idee!)<a class="headerlink" href="#variante-2-vererbung-schlechte-idee" title="Link to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warnung</p>
+<p>Die Variante, dass <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> von <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> erbt (oder gar umgekehrt), ist eine <em>schlechte</em> Idee(s. <a class="reference internal" href="#sec-stack-implementierungsvarianten"><span class="std std-ref">Diskussion: Möglichkeiten einen Stack zu implementieren</span></a>). Deswegen zeigen wir sie hier auch erst gar nicht!</p>
+</div>
+</section>
+<section id="variante-3-stapel-nutzt-intern-eine-verkettete-liste-komposition">
+<h3><span class="section-number">5.1.4.4. </span>Variante 3: Stapel nutzt intern eine verkettete Liste (Komposition)<a class="headerlink" href="#variante-3-stapel-nutzt-intern-eine-verkettete-liste-komposition" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Diese Zelle kannst du ausblenden, sie enthält nur unseren alten Code für Verkettete Listen</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Konstruktor für die Klasse Knoten: speichert den Inhalt und legt</span>
+<span class="sd">        eine Referenz auf den nächsten Knoten an. &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">inhalt</span>   <span class="c1"># Any = inhalt kann beliebiger Datentyp sein</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">naechster</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Typ-Annotation: naechster ist ein Knoten oder None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="p">)</span>
+    
+<span class="k">class</span><span class="w"> </span><span class="nc">VerketteteListe</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">erster</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># Der erste Knoten in der Liste (Listenkopf)    </span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Gibt die Liste als Zeichenkette, getrennt durch Pfeile, zurück. &quot;&quot;&quot;</span>
+        <span class="n">inhalte</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">knoten</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
+        <span class="k">while</span> <span class="n">knoten</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">inhalte</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">inhalt</span><span class="p">)</span>
+            <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="s2">&quot; -&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inhalte</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fügt einen neuen Knoten mit pInhalt am Anfang der Liste ein.&quot;&quot;&quot;</span>
+        <span class="n">neu</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">pInhalt</span><span class="p">)</span>   <span class="c1"># &quot;Verpacke&quot; den Inhalt in einen Knoten</span>
+        <span class="n">neu</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>  <span class="c1"># Nachfolger des neuen Knotens ist der bisherige Listenkopf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="o">=</span> <span class="n">neu</span>  <span class="c1"># Der neue Knoten ist ab jetzt der Listenkopf</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn die Liste leer ist, sonst False&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente in der Liste zurück&quot;&quot;&quot;</span>
+        <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">aktuell</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
+        <span class="k">while</span> <span class="n">aktuell</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">anzahl</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="n">anzahl</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">gib_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt den Inhalt des Knotens an der Stelle index zurück&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">aktuell</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">inhalt</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">ersetzen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">neuer_inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;ersetzt den Inhalt des Knotens an der Stelle index durch neuer_inhalt&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">aktuell</span><span class="p">:</span> <span class="n">Knoten</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="n">aktuell</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">neuer_inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enthaelt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn inhalt in der Liste enthalten ist, sonst False&quot;&quot;&quot;</span>
+        <span class="n">aktuell</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
+        <span class="k">while</span> <span class="n">aktuell</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">==</span> <span class="n">inhalt</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">anhaengen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;hängt einen neuen Knoten mit dem Inhalt inhalt ans Ende der Liste an&quot;&quot;&quot;</span>
+        <span class="n">neu</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>
+        <span class="n">aktuell</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
+        <span class="k">if</span> <span class="n">aktuell</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="o">=</span> <span class="n">neu</span>
+            <span class="k">return</span>
+        <span class="k">while</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">neu</span>
+           
+    <span class="k">def</span><span class="w"> </span><span class="nf">entfernen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt den ersten Knoten und gibt dessen Inhalt zurück&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">inhalt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span><span class="o">.</span><span class="n">inhalt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="n">inhalt</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Stapel</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Wir verwenden eine VerketteteListe als interne Datenstruktur und</span>
+        <span class="c1"># lassen diese die eigentliche Arbeit machen.</span>
+        <span class="c1"># Komposition: Die Klasse Stapel besteht aus einer VerkettetenListe bzw.</span>
+        <span class="c1"># steht mit VerketteteListe in einer &quot;Has-A&quot;-Beziehung.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span> <span class="o">=</span> <span class="n">VerketteteListe</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;legt ein neues Element inhalt auf den Stapel&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt das oberste Element vom Stapel und gibt es zurück&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Pop-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">entfernen_vorne</span><span class="p">()</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt das oberste Element des Stapels zurück, ohne es zu entfernen&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">()</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
+        <span class="c1"># ACHTUNG: Diese Methode ist ineffizient, da sie die gesamte interne Liste durchlaufen muss!</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">()</span>
+
+
+<span class="c1"># Beispielverwendung</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">Stapel</span><span class="p">()</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1"># Ausgabe: 10</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1"># Ausgabe: 15</span>
+<span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">top</span><span class="p">())</span>  <span class="c1"># Ausgabe: 25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">())</span>  <span class="c1"># Ausgabe: False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+15
+25
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jil91/ds_ki-js2",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./datenstrukturen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="stapel_und_warteschlangen_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Stapel und Warteschlangen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="stack-aufgaben.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Übungen zu Stapeln</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-undo-funktion">5.1.1. Motivation: Undo-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungen-stacks-sinnvoll-einsetzen">5.1.2. Übungen: Stacks sinnvoll einsetzen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-1-grundlegende-stack-operationen">5.1.2.1. Aufgabe 1: Grundlegende Stack-Operationen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-2-zeichenkette-umdrehen">5.1.2.2. Aufgabe 2: Zeichenkette umdrehen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-3-bucher-stapeln">5.1.2.3. Aufgabe 3: Bücher stapeln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-4-ist-der-term-korrekt-geklammert">5.1.2.4. Aufgabe 4: Ist der Term korrekt geklammert?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#korrekte-klammerung-in-python-parsons-problem">5.1.2.5. Korrekte Klammerung in Python (Parsons Problem)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stapel-als-uml-klassendiagramm-modellieren">5.1.3. Stapel als UML-Klassendiagramm modellieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stapel-implementieren">5.1.4. Stapel implementieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diskussion-moglichkeiten-einen-stack-zu-implementieren">5.1.4.1. Diskussion: Möglichkeiten einen Stack zu implementieren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-1-stapel-neu-implementieren">5.1.4.2. Variante 1: Stapel neu implementieren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-2-vererbung-schlechte-idee">5.1.4.3. Variante 2: Vererbung (schlechte Idee!)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-3-stapel-nutzt-intern-eine-verkettete-liste-komposition">5.1.4.4. Variante 3: Stapel nutzt intern eine verkettete Liste (Komposition)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.2. Verkettete Listen &#8212; Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy\datenstrukturen\verkettete_listen.47478837-58c6-40f4-8e3a-5638b56467b3.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/verkettete_listen';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/datenstrukturen/verkettete_listen.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="4.4. Operationen für verkettete Listen implementieren (Teil 1)" href="verkettete_liste_operationen1.html" />
+    <link rel="prev" title="4. Listen" href="listen_einfuehrung.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einstieg in die OOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="datenstrukturen_allgemein.html">3. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="listen_einfuehrung.html">4. Listen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen1.html">4.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen2.html">4.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen_loesungen.html">4.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="stapel_und_warteschlangen_intro.html">5. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">5.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack-aufgaben.html">5.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warteschlangen.html">5.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assoziative_arrays.html">6. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="baeume.html">7. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="binaerbaeume.html">7.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suchbaeume.html">7.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="klausurvorbereitung_mit_loesungen.html">8. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ki/ki_allgemein.html">9. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/knearestneighbor.html">10. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/knearestneighbor2.html">10.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/kmeansclustering.html">11. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_aufgabe.html">11.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_loesung.html">11.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/entscheidungsbaumlernen.html">12. Entscheidungsbäume lernen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/minimax.html">13. Der Minimax-Algorithmus</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/datenstrukturen/verkettete_listen.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Verkettete Listen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4.2. Verkettete Listen</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-sehen-verkettete-listen-aus">4.2.1. Wie sehen verkettete Listen aus?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-einen-neuen-knoten-in-eine-liste-einfugen">4.2.2. Übung: Einen neuen Knoten in eine Liste einfügen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verkettete-listen-in-uml">4.2.3. Verkettete Listen in UML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klassendiagramm">4.2.3.1. Klassendiagramm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objektdiagramm">4.2.3.2. Objektdiagramm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#verkettete-listen-in-python-programmieren">4.3. Verkettete Listen in Python programmieren</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="verkettete-listen">
+<h1><span class="section-number">4.2. </span>Verkettete Listen<a class="headerlink" href="#verkettete-listen" title="Link to this heading">#</a></h1>
+<p>Es gibt zwei gebräuchliche <em>Datenstrukturen</em>, mit denen man den ADT Liste implementieren kann:</p>
+<ol class="arabic simple">
+<li><p>Verkettete Liste</p></li>
+<li><p>Array (hierbei muss berücksichtigt werden, dass die Größe des Arrays begrenzt ist und
+evtl. intern zwischendurch neue Arrays erstellt werden müssen, wenn die Größe überschritten wird)</p></li>
+</ol>
+<p>Wir beschäftigen uns hier nur mit der Implemetierung als Verkettete Liste, weil wir dadurch
+die Grundlagen von <em>rekursiven Datenstrukturen</em> kennenlernen, die wir später auch bei Bäumen
+benötigen.</p>
+<section id="wie-sehen-verkettete-listen-aus">
+<h2><span class="section-number">4.2.1. </span>Wie sehen verkettete Listen aus?<a class="headerlink" href="#wie-sehen-verkettete-listen-aus" title="Link to this heading">#</a></h2>
+<figure class="align-center" id="fig-verkettete-liste-dcba">
+<a class="reference internal image-reference" href="../_images/verkettete_Liste_DCBA.svg"><img alt="../_images/verkettete_Liste_DCBA.svg" src="../_images/verkettete_Liste_DCBA.svg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 4.2 </span><span class="caption-text">Verkettete Liste oder Polonaise?</span><a class="headerlink" href="#fig-verkettete-liste-dcba" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Eine verkettete Liste besteht aus <strong>Knoten</strong>. Jeder Knoten enthält einen <strong>Inhalt</strong> (z.B. eine Zahl oder
+einen String) und eine <strong>Referenz</strong> auf den <em>nächsten</em> Knoten.</p>
+<p>Beispiel:
+Liste = [“Dina”, “Coco”, “Bibi”, “Anna”]</p>
+<p>Die Liste besteht aus 4 Knoten:</p>
+<ul class="simple">
+<li><p>Knoten1: Inhalt=“Dina”, naechster=Knoten2</p></li>
+<li><p>Knoten2: Inhalt=“Coco”, naechster=Knoten3</p></li>
+<li><p>Knoten3: Inhalt=“Bibi”, naechster=Knoten4</p></li>
+<li><p>Knoten4: Inhalt=“Anna”, naechster=None</p></li>
+</ul>
+<p>Die Referenz <code class="docutils literal notranslate"><span class="pre">naechster</span></code> des letzten Knotens ist <code class="docutils literal notranslate"><span class="pre">None</span></code>, da es keinen weiteren Knoten gibt.</p>
+</section>
+<section id="ubung-einen-neuen-knoten-in-eine-liste-einfugen">
+<h2><span class="section-number">4.2.2. </span>Übung: Einen neuen Knoten in eine Liste einfügen<a class="headerlink" href="#ubung-einen-neuen-knoten-in-eine-liste-einfugen" title="Link to this heading">#</a></h2>
+<p>Zwischen <code class="docutils literal notranslate"><span class="pre">Coco</span></code> und <code class="docutils literal notranslate"><span class="pre">Bibi</span></code> soll ein weiterer Knoten eingefügt werden, z.B. <code class="docutils literal notranslate"><span class="pre">Horst</span></code>. Dazu muss folgendes passieren:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Das klingt einfach… aber der 😈 steckt im Detail, wie du unten gleich sehen wirst!</p>
+</aside>
+<ol class="arabic simple">
+<li><p>Ein neuer Knoten, der als Inhalt den String “Horst” enthält wird angelegt.</p></li>
+<li><p>Der Nachfolger von <code class="docutils literal notranslate"><span class="pre">Coco</span></code> wird auf <code class="docutils literal notranslate"><span class="pre">Horst</span></code> gesetzt.</p></li>
+<li><p>Der Nachfolger von <code class="docutils literal notranslate"><span class="pre">Horst</span></code> wird auf <code class="docutils literal notranslate"><span class="pre">Bibi</span></code> gesetzt.</p></li>
+</ol>
+<p><strong>Aufgabe:</strong> Zeichne <a class="reference internal" href="#fig-verkettete-liste-dcba"><span class="std std-numref">Abb. 4.2</span></a> ab. Ändere deine Zeichnung dann Schritt für Schritt anhand der oben genannten Schritte ab. <em>Überlege dabei genau, welche Reihenfolge dabei sinnvoll ist.</em></p>
+</section>
+<section id="verkettete-listen-in-uml">
+<span id="sec-verkettete-listen-uml"></span><h2><span class="section-number">4.2.3. </span>Verkettete Listen in UML<a class="headerlink" href="#verkettete-listen-in-uml" title="Link to this heading">#</a></h2>
+<section id="klassendiagramm">
+<h3><span class="section-number">4.2.3.1. </span>Klassendiagramm<a class="headerlink" href="#klassendiagramm" title="Link to this heading">#</a></h3>
+<p>Das Klassendiagramm  <a class="reference internal" href="#fig-kd-verkettete-liste"><span class="std std-numref">Abb. 4.3</span></a> zeigt, wie man die verkettete Liste in UML modelliert. Du siehst, dass zwei Klassen verwendet werden, <em>VerketteteListe</em> und <em>Knoten</em>. Die Klasse <em>VerketteteListe</em> speichert eine Referenz auf den <em>ersten</em> Knoten (den <strong>Listenkopf</strong>) und enthält all die Methoden aus dem ADT Liste, wie Hinzufügen, Entfernen und Suchen von Elementen.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Die Angabe <code class="docutils literal notranslate"><span class="pre">&lt;Typ&gt;</span></code> bezeichnet einen <strong>generischen</strong> Datentyp. Das bedeutet: Jede Liste speichert Daten eines konkreten Datentyps, z.B. <code class="docutils literal notranslate"><span class="pre">GZ</span></code>, <code class="docutils literal notranslate"><span class="pre">Text</span></code> oder <code class="docutils literal notranslate"><span class="pre">Mitarbeiter</span></code>. Überall wo im Diagramm <code class="docutils literal notranslate"><span class="pre">&lt;Typ&gt;</span></code> steht, wird das durch diese konkrete Klasse ersetzt. Eine <code class="docutils literal notranslate"><span class="pre">VerketteteListe&lt;Text&gt;</span></code> speichert also <code class="docutils literal notranslate"><span class="pre">Text</span></code>-Objekte und verwaltet diese mithilfe von <code class="docutils literal notranslate"><span class="pre">Knoten&lt;Text&gt;</span></code>-Objekten, usw.</p>
+</aside>
+<figure class="align-center" id="fig-kd-verkettete-liste">
+<a class="reference internal image-reference" href="../_images/kd_verkettete_liste_fosa.svg"><img alt="../_images/kd_verkettete_liste_fosa.svg" src="../_images/kd_verkettete_liste_fosa.svg" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 4.3 </span><span class="caption-text">Klassendiagramm für die Datenstruktur <em>Verkettete Liste</em> (FoSa 5.1)</span><a class="headerlink" href="#fig-kd-verkettete-liste" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Die eigentliche Arbeit der Datenstruktur erfolgt in der Klasse <em>Knoten</em>, die ein einzelnes Listenelement darstellt. Jeder Knoten enthält sowohl einen Inhalt als auch eine Referenz auf den nächsten Knoten. Es handelt sich hier also um eine Assoziation der Klasse Knoten <em>mit sich selbst</em>  (von Knoten zu Knoten). Man spricht hierbei von einer <em>reflexiven</em> Assoziation.</p>
+<p><strong>Beispiel:</strong> In einer betriebswirtschaftlichen Software wird die Klasse <code class="docutils literal notranslate"><span class="pre">Mitarbeiter</span></code> verwendet. Jedes <code class="docutils literal notranslate"><span class="pre">Mitarbeiter</span></code>-Objekt speichert die Daten <em>eines</em> Angestellten. Um z.B. alle Mitarbeiter einer Abteilung zu verwalten, benötigt man eine <em>Liste</em> von <code class="docutils literal notranslate"><span class="pre">Mitarbeiter</span></code>-Objekten. Das konkrete Klassendiagramm sieht dann so aus:</p>
+<figure class="align-center" id="fig-kd-mitarbeiter-verketteteliste">
+<a class="reference internal image-reference" href="../_images/KD_Mitarbeiter_VerketteteListe.svg"><img alt="../_images/KD_Mitarbeiter_VerketteteListe.svg" src="../_images/KD_Mitarbeiter_VerketteteListe.svg" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 4.4 </span><span class="caption-text">Klassendiagramm: Verkettete Liste von Mitarbeitern</span><a class="headerlink" href="#fig-kd-mitarbeiter-verketteteliste" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="objektdiagramm">
+<h3><span class="section-number">4.2.3.2. </span>Objektdiagramm<a class="headerlink" href="#objektdiagramm" title="Link to this heading">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Wichtig</p>
+<p>Achtung: Dass die <em>Klasse</em> Knoten eine Assoziation mit sich selbst hat, bedeutet nicht, dass auch die einzelnen <em>Objekte</em> mit sich selbst assoziiert sind. Stattdessen ergibt sich im Objektdiagramm eine
+<em>Kette</em> von Objekten.</p>
+</div>
+<p><strong>Beispiel:</strong> Frau Maier, Herr Müller und Herr Schmidt arbeiten in der (streng geheimen) Abteilung 42. Alle Mitarbeiter der Abteilung sind in einer (ebenfalls streng geheimen) Liste gespeichert. Es ergibt sich folgendes Objektdiagramm:</p>
+<figure class="align-center" id="fig-od-mitarbeiter-verketteteliste">
+<a class="reference internal image-reference" href="../_images/OD_Mitarbeiter_VerketteteListe.svg"><img alt="../_images/OD_Mitarbeiter_VerketteteListe.svg" src="../_images/OD_Mitarbeiter_VerketteteListe.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 4.5 </span><span class="caption-text">Objektdiagramm: Liste von Mitarbeitern der geheimnisvollen Abteilung 42</span><a class="headerlink" href="#fig-od-mitarbeiter-verketteteliste" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="verkettete-listen-in-python-programmieren">
+<h1><span class="section-number">4.3. </span>Verkettete Listen in Python programmieren<a class="headerlink" href="#verkettete-listen-in-python-programmieren" title="Link to this heading">#</a></h1>
+<p>Wir entwickeln zuerst die Klasse <em>Knoten</em> und eine aufs Wesentliche reduzierte Klasse <em>VerketteteListe</em>. In den späteren Übungen erweitern wir <em>VerketteteListe</em> um immer mehr Methoden.</p>
+<p><strong>Achtung: Der untenstehende Code führt zu einer Endlosschleife, denn er enthält einen (fiesen) Fehler in der Methode <code class="docutils literal notranslate"><span class="pre">einfuegen_vorne</span></code>. Findest du ihn?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Konstruktor für die Klasse Knoten: speichert den Inhalt und legt</span>
+<span class="sd">        eine Referenz auf den nächsten Knoten an. &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">inhalt</span>   <span class="c1"># keine Typ-Angabe: inhalt kann beliebig sein</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">naechster</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Typ-Annotation: naechster ist ein Knoten oder None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="p">)</span>
+    
+    
+<span class="k">class</span><span class="w"> </span><span class="nc">VerketteteListe</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">erster</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># Der erste Knoten in der Liste (Listenkopf)    </span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Gibt die Liste als Zeichenkette, getrennt durch Pfeile, zurück. &quot;&quot;&quot;</span>
+        <span class="n">inhalte</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">knoten</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
+        <span class="k">while</span> <span class="n">knoten</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">inhalte</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">inhalt</span><span class="p">)</span>
+            <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="s2">&quot; -&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inhalte</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fügt einen neuen Knoten mit pInhalt am Anfang der Liste ein.&quot;&quot;&quot;</span>
+        <span class="n">neu</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">pInhalt</span><span class="p">)</span>   <span class="c1"># &quot;Verpacke&quot; den Inhalt in einen Knoten</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="o">=</span> <span class="n">neu</span>  <span class="c1"># Der neue Knoten ist ab jetzt der Listenkopf</span>
+        <span class="n">neu</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>  <span class="c1"># Nachfolger des neuen Knotens ist der bisherige Listenkopf</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Achtung: Dieser Code enthält einen Fehler in der Methode einfuegen_vorne. Findest du ihn?&quot;</span><span class="p">)</span>
+<span class="n">liste_bsp1</span> <span class="o">=</span> <span class="n">VerketteteListe</span><span class="p">()</span>
+<span class="n">liste_bsp1</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>
+<span class="n">liste_bsp1</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Bibi&quot;</span><span class="p">)</span>
+<span class="n">liste_bsp1</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Coco&quot;</span><span class="p">)</span>
+<span class="n">liste_bsp1</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Dina&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste_bsp1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die korrekte Lösung erhältst du, wenn du dieses Parsons-Problem löst:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="1000"
+            height="400"
+            src="parsonsproblems/parsons2allgemein.html?problem=CmRlZiBlaW5mdWVnZW5fdm9ybmUoc2VsZiwgcEluaGFsdCk6CiAgICBuZXUgPSBLbm90ZW4ocEluaGFsdCkgICAjICJWZXJwYWNrZSIgZGVuIEluaGFsdCBpbiBlaW5lbiBLbm90ZW4KICAgIG5ldS5uYWVjaHN0ZXIgPSBzZWxmLmVyc3RlciAgIyBOYWNoZm9sZ2VyIGRlcyBuZXVlbiBLbm90ZW5zIGlzdCBkZXIgYmlzaGVyaWdlIExpc3RlbmtvcGYKICAgIHNlbGYuZXJzdGVyID0gbmV1ICAjIERlciBuZXVlIEtub3RlbiBpc3QgYWIgamV0enQgZGVyIExpc3RlbmtvcGYK"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>Wenn du verstanden hast, warum die Lösung so - und nur so! - funktioniert, bist du bereit, die weiteren Operationen von Listen zu implementieren!</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jil91/ds_ki-js2",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./datenstrukturen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="listen_einfuehrung.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Listen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="verkettete_liste_operationen1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Operationen für verkettete Listen implementieren (Teil 1)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4.2. Verkettete Listen</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-sehen-verkettete-listen-aus">4.2.1. Wie sehen verkettete Listen aus?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-einen-neuen-knoten-in-eine-liste-einfugen">4.2.2. Übung: Einen neuen Knoten in eine Liste einfügen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verkettete-listen-in-uml">4.2.3. Verkettete Listen in UML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klassendiagramm">4.2.3.1. Klassendiagramm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objektdiagramm">4.2.3.2. Objektdiagramm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#verkettete-listen-in-python-programmieren">4.3. Verkettete Listen in Python programmieren</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

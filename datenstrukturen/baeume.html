@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Bäume &#8212; Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy\datenstrukturen\baeume.c802d601-3bbb-4fe3-be9b-718f44c9533d.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/baeume';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/datenstrukturen/baeume.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="7.4. Binärbäume" href="binaerbaeume.html" />
+    <link rel="prev" title="6. Assoziative Arrays" href="assoziative_arrays.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einstieg in die OOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="datenstrukturen_allgemein.html">3. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="listen_einfuehrung.html">4. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_listen.html">4.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen1.html">4.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen2.html">4.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen_loesungen.html">4.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="stapel_und_warteschlangen_intro.html">5. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">5.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack-aufgaben.html">5.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warteschlangen.html">5.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assoziative_arrays.html">6. Assoziative Arrays</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">7. Bäume</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="binaerbaeume.html">7.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suchbaeume.html">7.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="klausurvorbereitung_mit_loesungen.html">8. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ki/ki_allgemein.html">9. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/knearestneighbor.html">10. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/knearestneighbor2.html">10.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/kmeansclustering.html">11. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_aufgabe.html">11.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_loesung.html">11.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/entscheidungsbaumlernen.html">12. Entscheidungsbäume lernen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/minimax.html">13. Der Minimax-Algorithmus</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/datenstrukturen/baeume.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bäume</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baume-sind-in-der-informatik-uberall">7.1. Bäume sind in der Informatik überall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-begriffe-im-zusammenhang-mit-baumen">7.2. Wichtige Begriffe im Zusammenhang mit Bäumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben">7.3. Aufgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#begrifflichkeiten-richtig-anwenden">7.3.1. Begrifflichkeiten richtig anwenden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baum-oder-kein-baum">7.3.2. Baum oder kein Baum?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="baume">
+<h1><span class="section-number">7. </span>Bäume<a class="headerlink" href="#baume" title="Link to this heading">#</a></h1>
+<p>Bäume sind eine der wichtigsten Datenstrukturen, die es in der Informatik gibt. In diesem Kapitel erfährst du</p>
+<ul class="simple">
+<li><p><em>wozu</em> man Bäume verwendet</p></li>
+<li><p><em>wie</em> man mit Bäumen arbeitet, also wie man mit Bäumen Informationen speichern, verarbeiten und abrufen kann</p></li>
+<li><p>wie man sie <em>modelliert</em> und <em>implementiert</em>.</p></li>
+</ul>
+<section id="baume-sind-in-der-informatik-uberall">
+<h2><span class="section-number">7.1. </span>Bäume sind in der Informatik überall<a class="headerlink" href="#baume-sind-in-der-informatik-uberall" title="Link to this heading">#</a></h2>
+<p>Sieh dir die folgenden Abbildungen an. Welche Zusammenhänge werden hier dargestellt? Was drücken die <strong>Knoten</strong> und <strong>Kanten</strong> der Bäume jeweils aus?</p>
+<figure class="align-center" id="fig-baum-saeugetiere">
+<a class="reference internal image-reference" href="../_images/baum_saeugetiere.svg"><img alt="../_images/baum_saeugetiere.svg" src="../_images/baum_saeugetiere.svg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.1 </span><span class="caption-text">Klassifikation von Säugetieren (sehr unvollständig 😉)</span><a class="headerlink" href="#fig-baum-saeugetiere" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-suchbaum15">
+<a class="reference internal image-reference" href="../_images/Binaerer_Suchbaum_15_Knoten.svg"><img alt="../_images/Binaerer_Suchbaum_15_Knoten.svg" src="../_images/Binaerer_Suchbaum_15_Knoten.svg" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.2 </span><span class="caption-text">Ein binärer <em>Such</em>baum. Enthält er den Wert 12?</span><a class="headerlink" href="#fig-suchbaum15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-baum-schiebepuzzle">
+<a class="reference internal image-reference" href="../_images/breitensuche_suchbaum01.png"><img alt="../_images/breitensuche_suchbaum01.png" src="../_images/breitensuche_suchbaum01.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.3 </span><span class="caption-text">Spielbaum für ein Schiebepuzzle (nur ein winziger Ausschnitt)</span><a class="headerlink" href="#fig-baum-schiebepuzzle" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-baum-term">
+<a class="reference internal image-reference" href="../_images/term.svg"><img alt="../_images/term.svg" src="../_images/term.svg" style="width: 25%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.4 </span><span class="caption-text">Dieser Baum stellt einen Rechenausdruck (Term) dar. Welche Zahl ergibt sich, wenn man ihn berechnet?</span><a class="headerlink" href="#fig-baum-term" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Auch das folgende HTML-Dokument hat eine Baumstruktur. Erkläre, wieso!</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>ChatGPT<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>ChatGPT - Die Zukunft der Kommunikation<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Willkommen zur ChatGPT-Revolution<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            ChatGPT ist eine bahnbrechende KI-Technologie, die natuerliche menschliche Kommunikation ermoeglicht. Egal, ob Sie Fragen beantworten moechten, Texte generieren oder Unterhaltungen fuehren - ChatGPT steht Ihnen zur Verfuegung.
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            Diese HTML-Seite dient nur zur Veranschaulichung des Themas ChatGPT. Sie koennen ChatGPT in verschiedenen Anwendungen wie Chatbots, Kundenbetreuung und mehr verwenden.
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            Die Zukunft der Kommunikation ist hier, und ChatGPT ist ein wichtiger Teil davon!
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Aufgabe:</strong> Stelle die HTML-Struktur als Baum dar. Dein Ergebnis sollte der Tier-Taxonomie in <a class="reference internal" href="#fig-baum-saeugetiere"><span class="std std-numref">Abb. 7.1</span></a> ähneln.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung</p>
+<figure class="align-center" id="fig-html-baum">
+<a class="reference internal image-reference" href="../_images/html_baum.svg"><img alt="../_images/html_baum.svg" src="../_images/html_baum.svg" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.5 </span><span class="caption-text">Baumstruktur für ein HTML-Dokument</span><a class="headerlink" href="#fig-html-baum" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="wichtige-begriffe-im-zusammenhang-mit-baumen">
+<h2><span class="section-number">7.2. </span>Wichtige Begriffe im Zusammenhang mit Bäumen<a class="headerlink" href="#wichtige-begriffe-im-zusammenhang-mit-baumen" title="Link to this heading">#</a></h2>
+<p>Die folgende <a class="reference internal" href="#fig-baum-begriffe"><span class="std std-numref">Abb. 7.6</span></a> und der nachstehende Text für einige wichtige Begriffe ein, die du kennen musst, um über Bäume sprechen zu können.</p>
+<figure class="align-center" id="fig-baum-begriffe">
+<a class="reference internal image-reference" href="../_images/Baum.svg"><img alt="../_images/Baum.svg" src="../_images/Baum.svg" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.6 </span><span class="caption-text">Wichtige Begriffe zur Beschreibung von Baumstrukturen</span><a class="headerlink" href="#fig-baum-begriffe" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Wichtig</p>
+<p>Ein <strong>Baum</strong> besteht aus einer Menge von <strong>Knoten</strong>, die untereinander durch <strong>Kanten</strong> verbunden sind. Ein bestimmter Knoten bildet die <strong>Wurzel</strong> des Baums; der Wurzelknoten hat keine eingehende Kante, d.h.h. keinen Vorgänger.  Die Knoten, von denen keine Kanten mehr ausgehen, werden <strong>Blätter</strong> oder <strong>äußere Knoten</strong> des Baums genannt. Die anderen Knoten, von denen Kanten ausgehen, heißen <strong>innere Knoten</strong>. Der Vorgänger eines Knoten kann als <strong>Elternknoten</strong> und die Nachfolger eines Knoten als <strong>Kindknoten</strong> bezeichnet werden. Aus diesem Grund hat jeder Knoten im Baum, außer dem Wurzelknoten, genau einen Elternknoten.</p>
+<p>Für einen Baum gelten folgende zwei Regeln:</p>
+<ol class="arabic simple">
+<li><p>Es gibt genau einen Knoten ohne Vorgänger und das ist die Wurzel.</p></li>
+<li><p>Jeder andere Knoten hat <em>genau einen</em> Vorgänger.</p></li>
+</ol>
+<p>Als <strong>Pfad</strong> in einem Baum wird der Weg über Kanten des Baums bezeichnet, die man gehen muss, um von einem Knoten zu einem anderen Knoten zu gelangen. Die <strong>Länge</strong> eines Pfads ist die Anzahl der Kanten auf dem Pfad.<br />
+Bemerkung: In einem Baum ist es unmöglich im Kreis zu laufen oder den Ausgangsknoten wieder zu erreichen.</p>
+<p>Ausgehend von der Wurzel kann man die Knoten eines Baums in <strong>Ebenen</strong> einteilen. Alle Knoten mit
+dem gleichen Abstand (d.h. Pfadlänge) zur Wurzel liegen in derselben Ebene.</p>
+<p>Die <strong>Tiefe</strong> eines Baums entspricht der Anzahl der Knoten im <em>längsten</em> Pfad des Baums.</p>
+<p>Ein <strong>Binärbaum</strong> ist ein Baum, bei dem jeder Knoten <strong>maximal zwei</strong> Nachfolger hat.</p>
+<p>Ein <strong>Suchbaum</strong> ist ein Baum, in dem die Knoten auf eine bestimmte Weise so angeordnet sind, dass man bestimmte Werte im Baum sehr finden kann (s. späteres Kapitel). Ein <strong>binärer Suchbaum</strong> ist ein Suchbaum, bei dem jeder Knoten maximal zwei Nachfolger hat.</p>
+</div>
+</section>
+<section id="aufgaben">
+<h2><span class="section-number">7.3. </span>Aufgaben<a class="headerlink" href="#aufgaben" title="Link to this heading">#</a></h2>
+<section id="begrifflichkeiten-richtig-anwenden">
+<h3><span class="section-number">7.3.1. </span>Begrifflichkeiten richtig anwenden<a class="headerlink" href="#begrifflichkeiten-richtig-anwenden" title="Link to this heading">#</a></h3>
+<p>Betrachte den Baum in <a class="reference internal" href="#zahlen-aufgabe-begriffe"><span class="std std-numref">Abb. 7.7</span></a> und beantworte dann die folgenden Fragen:</p>
+<figure class="align-center" id="zahlen-aufgabe-begriffe">
+<a class="reference internal image-reference" href="../_images/zahlen_aufgabe_begriffe.svg"><img alt="../_images/zahlen_aufgabe_begriffe.svg" src="../_images/zahlen_aufgabe_begriffe.svg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.7 </span><span class="caption-text">Ein Baum voller Zahlen</span><a class="headerlink" href="#zahlen-aufgabe-begriffe" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Zähle alle Blätter des Baums auf.</p>
+<p>4, 5, 8, 13, 10, 11, 12</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Welcher Knoten ist der Elternknoten von Knoten 5?</p>
+<p>2</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Zähle die Kindknoten von Knoten 3 auf.</p>
+<p>6 und 7</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Beschreibe den Pfad von Knoten 3 zu Knoten 13. Gib dazu die Knoten auf dem Pfad an.</p>
+<p>3, 7, 9, 13</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Welche Tiefe hat der Baum?</p>
+<p>4</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Auf welcher Ebene liegt der Knoten 6? Auf welcher der Knoten 1?</p>
+<p>Knoten 6 liegt auf Ebene 2.<br />
+Knoten 1 liegt auf Ebene 0.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Welche Knoten liegen auf Ebene 3?</p>
+<p>8, 9, 10, 11, 12</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Zusatzfrage: Wie kann man am einfachsten prüfen, ob es einen Pfad vom Knoten 2 zum Knoten 13 gibt?</p>
+<p>Am einfachsten ist es, wenn man vom <em>Ende</em> des gesuchten Pfads (hier: Knoten 13) aus sucht: Man geht <em>rückwärts</em> zum Vorgänger (hier: Knoten 9), dann zu dessen Vorgänger (hier: Knoten 7) usw., bis man entweder den gesuchten Anfang des möglichen Pfads gefunden hat oder bei der Wurzel gelandet ist (das ist in diesem Beispiel der Fall).</p>
+</div>
+</section>
+<section id="baum-oder-kein-baum">
+<h3><span class="section-number">7.3.2. </span>Baum oder kein Baum?<a class="headerlink" href="#baum-oder-kein-baum" title="Link to this heading">#</a></h3>
+<p>Begründe, welche der untenstehenden Strukturen einen Baum darstellen und welche nicht.</p>
+<figure class="align-center" id="baum-nichtbaum">
+<a class="reference internal image-reference" href="../_images/baum_nichtbaum.svg"><img alt="../_images/baum_nichtbaum.svg" src="../_images/baum_nichtbaum.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.8 </span><span class="caption-text">Baum oder nicht Baum - das ist hier die Frage!</span><a class="headerlink" href="#baum-nichtbaum" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösungen:</p>
+<p>a. kein Baum<br />
+b. kein Baum<br />
+c. Baum<br />
+d. Baum<br />
+e. kein Baum<br />
+f. Baum<br />
+g. Baum<br />
+h. kein Baum</p>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jil91/ds_ki-js2",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./datenstrukturen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="assoziative_arrays.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Assoziative Arrays</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="binaerbaeume.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>Binärbäume</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baume-sind-in-der-informatik-uberall">7.1. Bäume sind in der Informatik überall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-begriffe-im-zusammenhang-mit-baumen">7.2. Wichtige Begriffe im Zusammenhang mit Bäumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben">7.3. Aufgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#begrifflichkeiten-richtig-anwenden">7.3.1. Begrifflichkeiten richtig anwenden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baum-oder-kein-baum">7.3.2. Baum oder kein Baum?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

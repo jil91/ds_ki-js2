@@ -1,0 +1,1531 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7.4. Binärbäume &#8212; Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy\datenstrukturen\binaerbaeume.c8e2848a-6974-41e0-929f-ea4f2ec132a2.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/binaerbaeume';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/datenstrukturen/binaerbaeume.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="7.5. Binäre Suchbäume" href="suchbaeume.html" />
+    <link rel="prev" title="7. Bäume" href="baeume.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einstieg in die OOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="datenstrukturen_allgemein.html">3. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="listen_einfuehrung.html">4. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_listen.html">4.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen1.html">4.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen2.html">4.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen_loesungen.html">4.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="stapel_und_warteschlangen_intro.html">5. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">5.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack-aufgaben.html">5.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warteschlangen.html">5.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assoziative_arrays.html">6. Assoziative Arrays</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="baeume.html">7. Bäume</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suchbaeume.html">7.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="klausurvorbereitung_mit_loesungen.html">8. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ki/ki_allgemein.html">9. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/knearestneighbor.html">10. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/knearestneighbor2.html">10.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/kmeansclustering.html">11. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_aufgabe.html">11.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_loesung.html">11.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/entscheidungsbaumlernen.html">12. Entscheidungsbäume lernen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/minimax.html">13. Der Minimax-Algorithmus</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/datenstrukturen/binaerbaeume.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Binärbäume</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung">7.4.1. Einführung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben">7.4.2. Aufgaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-python">7.4.3. Umsetzung in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knoten">7.4.3.1. Knoten</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-baumen-sachen-machen">7.4.4. Mit Bäumen Sachen machen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alle-inhalte-eines-baums-ausgeben">7.4.4.1. Alle Inhalte eines Baums ausgeben</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.4.5. Aufgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben-zur-preorder-inorder-und-postorder-traversierung">7.4.5.1. Aufgaben zur Preorder-, Inorder- und Postorder-Traversierung</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-pseudo-code-rekursion">7.4.6. Umsetzung in (Pseudo-)Code. Rekursion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.4.7. Aufgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-1">7.4.7.1. Aufgabe 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-2">7.4.7.2. Aufgabe 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-3">7.4.7.3. Aufgabe 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-4">7.4.7.4. Aufgabe 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-5">7.4.7.5. Aufgabe 5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-klasse-binaerbaum">7.4.8. Die Klasse <em>Binaerbaum</em></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="binarbaume">
+<h1><span class="section-number">7.4. </span>Binärbäume<a class="headerlink" href="#binarbaume" title="Link to this heading">#</a></h1>
+<section id="einfuhrung">
+<h2><span class="section-number">7.4.1. </span>Einführung<a class="headerlink" href="#einfuhrung" title="Link to this heading">#</a></h2>
+<p>Im vorigen Kapitel haben wir allgemeine Bäume mit beliebig vielen Kindern betrachtet. In diesem Kapitel schauen wir uns den Spezialfall <strong>Binärbaum</strong> genauer an. Zur Erinnerung:</p>
+<div class="hint admonition">
+<p class="admonition-title">Definition</p>
+<p>Ein <strong>Binärbaum</strong> ist ein Baum, bei dem jeder Knoten <strong>maximal zwei</strong> Nachfolger hat.</p>
+</div>
+<p>Wie du schon in <a class="reference internal" href="baeume.html#fig-baum-begriffe"><span class="std std-numref">Abb. 7.6</span></a> gesehen hast:</p>
+<div class="admonition important">
+<p class="admonition-title">Wichtig</p>
+<p>Die Teile eines Baums sind selbst wieder Bäume (<strong>Teilbäume</strong>).</p>
+</div>
+<p>Z.B. ist in der folgenden <a class="reference internal" href="#fig-saeugetiere15"><span class="std std-numref">Abb. 7.9</span></a></p>
+<ul class="simple">
+<li><p>der Knoten “Tier” die Wurzel des gesamten Baums, aber auch</p></li>
+<li><p>der Knoten “Säugetier” die Wurzel des <strong>linken Teilbaums</strong> und</p></li>
+<li><p>der Knoten “Fisch” die Wurzel des <strong>rechten Teilbaums</strong>.</p></li>
+</ul>
+<figure class="align-center" id="fig-saeugetiere15">
+<a class="reference internal image-reference" href="../_images/säugetiere_15knoten.svg"><img alt="../_images/s%C3%A4ugetiere_15knoten.svg" src="../_images/s%C3%A4ugetiere_15knoten.svg" style="width: 95%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.9 </span><span class="caption-text">Binärbaum mit verschiedenen Säugetier-Kategorien</span><a class="headerlink" href="#fig-saeugetiere15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="aufgaben">
+<h2><span class="section-number">7.4.2. </span>Aufgaben<a class="headerlink" href="#aufgaben" title="Link to this heading">#</a></h2>
+<p>Betrachte den Baum in <a class="reference internal" href="#fig-aufgabe-binbaum-zahlen"><span class="std std-numref">Abb. 7.10</span></a> und beantworte dann die folgenden Fragen:</p>
+<figure class="align-center" id="fig-aufgabe-binbaum-zahlen">
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_zahlen.svg"><img alt="../_images/aufgabe_binbaum_zahlen.svg" src="../_images/aufgabe_binbaum_zahlen.svg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.10 </span><span class="caption-text">Ein Binärbaum voller Zahlen</span><a class="headerlink" href="#fig-aufgabe-binbaum-zahlen" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Handelt es sich bei hier um einen binären Suchbaum?</p>
+<p>Nein, es ist zwar ein binärer Baum, aber kein binärer <em>Such</em>baum.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Welche Knoten (inkl. Blätter) enthält der rechte Teilbaum des Knotens 1?</p>
+<p>6, 9, 10, 11</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Welche Knoten haben keinen rechten Teilbaum?</p>
+<p>Die inneren Knoten 2 und 9 (und natürlich alle Blätter, d.h. 5, 7, 8, 10, 11)</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hat Knoten 9 einen linken oder einen rechten Teilbaum?</p>
+<p>Knoten 9 hat einen linken Teilbaum.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Welche Knoten (inkl. Blätter) hat der linke Teilbaum des Knotens 2?</p>
+<p>4, 7, 8</p>
+</div>
+</section>
+<section id="umsetzung-in-python">
+<h2><span class="section-number">7.4.3. </span>Umsetzung in Python<a class="headerlink" href="#umsetzung-in-python" title="Link to this heading">#</a></h2>
+<p>Aber wie programmiert man einen Binärbaum? Die Abbildungen in den vorigen Abschnitten sehen ja schon ziemlich furchteinflößend aus, nicht wahr?</p>
+<p>Keine Sorge, so schlimm ist es nicht, denn tatsächlich besteht jeder noch so riesige Baum aus den immergleichen “Bausteinen”, den <em>Knoten</em>. Und die kennen wir ja eigentlich schon von den verketteten Listen.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Ähnlich wie bei verketteten Listen werden wir später eine Klasse <code class="docutils literal notranslate"><span class="pre">Binärbaum</span></code> einführen, so dass Nutzer nicht mehr direkt mit <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> arbeiten müssen. Der <code class="docutils literal notranslate"><span class="pre">Binärbaum</span></code> ist dann der <em>abstrakte Datentyp (ADT)</em>, hinter dem sich die interne Umsetzung “verstecken” kann. Zu Anfang (insb. auch fürs Abi und evtl. ein Studium!) ist es aber wichtig, dass du verstehst, was bei Bäumen hinter den Kulissen passiert - und dafür ist die Klasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> sozusagen die atomare Einheit!</p>
+</aside>
+<section id="knoten">
+<h3><span class="section-number">7.4.3.1. </span>Knoten<a class="headerlink" href="#knoten" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="fig-knoten9">
+<a class="reference internal image-reference" href="../_images/knoten9.svg"><img alt="../_images/knoten9.svg" src="../_images/knoten9.svg" style="width: 25%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.11 </span><span class="caption-text">Knoten mit zwei ausgehenden Kanten</span><a class="headerlink" href="#fig-knoten9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Der <strong>Knoten</strong> ist der zentrale Baustein für Bäume (und ähnliche Strukturen, insb. <a class="reference external" href="https://de.wikipedia.org/wiki/Graph_(Graphentheorie)"><em>Graphen</em></a>).  Ein Knoten speichert</p>
+<ul class="simple">
+<li><p>einerseits einen beliebigen <strong>Inhalt</strong>, z.B. eine Zahl, einen Text, einen Ort, den Zustand eines Spielbretts, eine Verzweigungsbedingung (in einem Entscheidungsbaum) usw.</p></li>
+<li><p>und anderseits <strong>Kanten</strong> zu weiteren Knoten. Diese stehen z.B. für Straßen zwischen Orten, Spielzüge (die von einem Spielzustand in einen anderen führen) oder irgendeine andere <em>Beziehung</em> zwischen dem jeweiligen Knoten und seinen <em>Kindknoten</em>.</p></li>
+</ul>
+<p>Spezialfall Binärbaum: Da ein Binärbaum (maximal) zwei Kindknoten hat, einen linken und einen rechten, können wir eine einfache Knoten-Klasse so definieren:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">inhalt</span>  <span class="c1"># Ein beliebiger Inhalt (d.h. eine Zahl, ein String, ein anderes Objekt, ...)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Verweis auf den Knoten, der als Wurzel des linken Teilbaums dient</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># Verweis auf den Knoten, der als Wurzel des rechten Teilbaums dient</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Knoten in Textform ausgeben&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Knoten(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="si">}</span><span class="s2">, L:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="si">}</span><span class="s2">, R:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="si">}</span><span class="s2">)&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das sieht doch wirklich recht ähnlich aus wie bei einer verketteten Liste… nur dass wir statt eines einzigen Verweis <code class="docutils literal notranslate"><span class="pre">naechster</span></code> auf den Nachfolgeknoten in der Liste jetzt Verweise auf <em>zwei</em> Nachfolgerknoten haben, <code class="docutils literal notranslate"><span class="pre">linker_teilbaum</span></code> und <code class="docutils literal notranslate"><span class="pre">rechter_teilbaum</span></code>.</p>
+<p>Um zu verstehen, wie aus einer so einfachen Datenstruktur ein komplexes Gebilde wie der Baum aus
+<a class="reference internal" href="#fig-saeugetiere-7tiere"><span class="std std-numref">Abb. 7.12</span></a> entstehen kann, bauen wir dieses Beispiel einfach in Python nach:</p>
+<figure class="align-center" id="fig-saeugetiere-7tiere">
+<a class="reference internal image-reference" href="../_images/säugetiere_7tiere.svg"><img alt="../_images/s%C3%A4ugetiere_7tiere.svg" src="../_images/s%C3%A4ugetiere_7tiere.svg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.12 </span><span class="caption-text">Dieser Baum enthält zahlreiche Knoten (naja, sieben)</span><a class="headerlink" href="#fig-saeugetiere-7tiere" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir legen den ersten Knoten an und speichern ihn in der Variablen wurzel</span>
+<span class="n">wurzel</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Säugetier&quot;</span><span class="p">)</span>
+<span class="c1"># Wir legen weitere Knoten an</span>
+<span class="n">k2</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Hund&quot;</span><span class="p">)</span>
+<span class="n">k3</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Collie&quot;</span><span class="p">)</span>
+<span class="n">k4</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Dackel&quot;</span><span class="p">)</span>
+<span class="n">k5</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Affe&quot;</span><span class="p">)</span>
+<span class="n">k6</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Schimpanse&quot;</span><span class="p">)</span>
+<span class="n">k7</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Orang-Utan&quot;</span><span class="p">)</span>
+<span class="c1"># Das ist die entscheidende Stelle: Wir verknüpfen die Knoten miteinander</span>
+<span class="n">wurzel</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">=</span> <span class="n">k2</span>  <span class="c1"># k2 (Hund) wird als linker Teilbaum an wurzel (Säugetier) angehängt </span>
+<span class="n">k2</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">=</span> <span class="n">k3</span>  <span class="c1"># k3 (Collie) wird als linker Teilbaum an k2 (Hund) angehängt</span>
+<span class="n">k2</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">=</span> <span class="n">k4</span>  <span class="c1"># usw.</span>
+<span class="n">wurzel</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">=</span> <span class="n">k5</span>
+<span class="n">k5</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">=</span> <span class="n">k6</span>
+<span class="n">k5</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">=</span> <span class="n">k7</span>
+
+<span class="c1"># Ausgabe der Struktur (Achtung: Das wird eine lange, unübersichtliche Textzeile)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Knoten(Säugetier, L:Knoten(Hund, L:Knoten(Collie, L:None, R:None), R:Knoten(Dackel, L:None, R:None)), R:Knoten(Affe, L:Knoten(Schimpanse, L:None, R:None), R:Knoten(Orang-Utan, L:None, R:None)))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mit-baumen-sachen-machen">
+<h2><span class="section-number">7.4.4. </span>Mit Bäumen Sachen machen<a class="headerlink" href="#mit-baumen-sachen-machen" title="Link to this heading">#</a></h2>
+<p>Natürlich wollen wir Bäume nicht nur erstellen, sondern mit ihnen arbeiten. Zum Beispiel wollen wir</p>
+<ul class="simple">
+<li><p>alle Inhalte des Baums ausgeben</p></li>
+<li><p>die Knoten (oder Kanten oder Blätter) eines Baums zählen</p></li>
+<li><p>etwas (schnell) in einem Baum finden</p></li>
+<li><p>alle Inhalte eines Baums miteinander verrechnen (wenn es sich um Zahlen handeln)</p></li>
+<li><p>oder die Inhalte eines Baums auf eine andere Art zu etwas Neuem kombinieren (z.B. so wie bei dem “Rechenbaum” aus <a class="reference internal" href="baeume.html#fig-baum-term"><span class="std std-numref">Abb. 7.4</span></a>)</p></li>
+</ul>
+<p>Für alle diese Aufgaben benötigen wir <strong>Rekursion</strong>. Was das ist, erfährst du jetzt. Wir beginnen mit der Frage, was es eigentlich bedeutet, die in einem Baum gespeicherten Inhalte <em>auszugeben</em>.</p>
+<section id="alle-inhalte-eines-baums-ausgeben">
+<h3><span class="section-number">7.4.4.1. </span>Alle Inhalte eines Baums ausgeben<a class="headerlink" href="#alle-inhalte-eines-baums-ausgeben" title="Link to this heading">#</a></h3>
+<p>Bei einer verketteten Liste ist die <em>Reihenfolge</em> der Elemente klar. Man gibt alle gespeicherten Werte aus, indem man beim ersten Knoten (dem Listenkopf) startet und sich dann von Nachfolger zu Nachfolger bewegt. Dabei gibt man jeweils den Wert im aktuellen Knoten aus.</p>
+<p>Aber wie ist das bei Bäumen? Gibt es auch da eine “natürliche” Reihenfolge? Nein! Um das zu verstehen, betrachten wir das folgende Beispiel.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Warum enthält der Baum lauter Symbole aus einem <a class="reference external" href="https://en.wikipedia.org/wiki/Slot_machine#/media/File:Jackpot_6000.jpg">einarmigen Banditen</a>?<br />
+Der Grund dafür ist… ach, eigentlich gibt es keinen, außer dass das doch ganz hübsch aussieht, oder nicht? Und vielleicht, weil diese Symbole im Automaten immer wieder in anderen Reihenfolgen erscheinen - genau wie bei uns auch gleich.</p>
+</aside>
+<figure class="align-center" id="fig-baum3einarmiger-bandit">
+<a class="reference internal image-reference" href="../_images/baum3einarmiger_bandit.svg"><img alt="../_images/baum3einarmiger_bandit.svg" src="../_images/baum3einarmiger_bandit.svg" style="width: 25%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.13 </span><span class="caption-text">Ein Baum mit drei Knoten. In welcher Reihenfolge würdest du sie ausgeben?</span><a class="headerlink" href="#fig-baum3einarmiger-bandit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Dieser Baum hat drei Knoten. Will man die drei darin gespeicherten Werte ausgeben, gibt es mehrere mögliche Reihenfolgen:</p>
+<ul class="simple">
+<li><p>🍒 🍋 🔔 : Hier wurde die Wurzel <strong>vor</strong> den Kindern ausgegeben (<strong>Preorder</strong>-Reihenfolge).</p></li>
+<li><p>🍋 🔔 🍒 : Hier wurde die Wurzel <strong>nach</strong> den Kindern ausgegeben (<strong>Postorder</strong>-Reihenfolge).</p></li>
+<li><p>🍋 🍒 🔔 : Hier wurde die Wurzel <strong>zwischen</strong> den Kindern ausgegeben (<strong>Inorder</strong>-Reihenfolge).</p></li>
+<li><p>(Theoretisch ergeben sich weitere drei Möglichkeiten, wenn man die Kinderknoten von rechts nach links statt von links nach rechts durchläuft. In der Praxis kommt das aber nur selten vor und wir ignorieren es hier deshalb einfach.)</p></li>
+</ul>
+<p>Jede dieser Reihenfolgen kann bei bestimmten Anwendungen sinnvoll sein. Es wird allerdings leider etwas komplizierter, wenn der Baum größer ist…</p>
+<figure class="align-center" id="fig-baum7buchstaben">
+<a class="reference internal image-reference" href="../_images/baum7buchstaben.svg"><img alt="../_images/baum7buchstaben.svg" src="../_images/baum7buchstaben.svg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.14 </span><span class="caption-text">Ein Baum mit sieben Knoten.</span><a class="headerlink" href="#fig-baum7buchstaben" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Was bedeuten <em>Preorder</em>, <em>Postorder</em> und <em>Inorder</em> in diesem Fall?</p>
+<ul class="simple">
+<li><p><strong>Preorder:</strong> Die Wurzel wird <strong>vor</strong> den beiden <strong>Teilbäumen</strong> ausgegeben, d.h. zuerst wird die Wurzel, dann der linke Teilbaum und zum Schluss der rechte Teilbaum ausgegeben - und zwar beide <strong>Teilbäume ebenfalls in Preorder-Reihenfolge!</strong></p></li>
+<li><p><strong>Postorder:</strong> Die Wurzel wird <strong>nach</strong> den beiden <strong>Teilbäumen</strong> ausgegeben. Auch hier werden die <strong>Teilbäume ebenfalls in Postorder-Reihenfolge</strong> ausgegeben.</p></li>
+<li><p><strong>Inorder:</strong> Die Wurzel wird <strong>zwischen</strong> den beiden <strong>Teilbäumen</strong> ausgegeben, d.h. nachdem der linke und bevor der rechte Teilbaum ausgegeben wurde. Natürlich werden auch hier die beiden <strong>Teilbäume - wie der Gesamtbaum - in Inorder-Reihenfolge durchlaufen</strong> und ausgegeben.</p></li>
+</ul>
+<figure class="align-center" id="fig-teilbaume">
+<a class="reference internal image-reference" href="../_images/teilbäume.png"><img alt="../_images/teilb%C3%A4ume.png" src="../_images/teilb%C3%A4ume.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.15 </span><span class="caption-text">Der Gesamtbaum hat 7 Knoten. Er besteht aus einer Wurzel und zwei Teilbäumen mit je 3 Knoten.</span><a class="headerlink" href="#fig-teilbaume" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Für unseren Beispiel-Baum bedeutet das konkret:</p>
+<ul>
+<li><p>Preorder: Zuerst wird die Wurzel des Gesamtbaums (A) ausgegeben, dann “steigt” man in den linken Teilbaum
+und wiederholt für diesen das Verfahren:</p>
+<ul class="simple">
+<li><p>Zuerst gibt man die Wurzel aus (B), dann “steigt” man in den linken Teilbaum und wiederholt für diesen das Verfahren:</p>
+<ul>
+<li><p>Zuerst gibt man die Wurzel aus (D) - aber dann gibt es keinen linken Teilbaum mehr und auch keinen rechten. Also kehrt man auf die nächsthöhere Ebene zurück (zu B) und kann nun dessen rechten Teilbaum ausgeben:</p></li>
+<li><p>Zuerst die Wurzel (E)… und dann gibt es (zum Glück) auch hier keine Kinder mehr. Damit ist der gesamte Teilbaum mit der Wurzel B ausgegeben.</p></li>
+</ul>
+</li>
+<li><p>Man kehrt zurück zu A und kann endlich dessen rechten Teilbaum ausgeben…</p></li>
+</ul>
+<p>Insgesamt ergibt sich als <strong>Preorder-Reihenfolge: A, B, D, E, C, F, G</strong></p>
+</li>
+<li><p>Postorder: Hier werden die Wurzel erst <em>nach</em> den Teilbäumen ausgegeben. D.h. bevor A ausgegeben werden kann,
+muss man zuerst in den linken Teilbaum steigen.</p>
+<ul class="simple">
+<li><p>Dessen Wurzel (B) darf aber auch erst ausgegeben werden, wenn man mit Bs Teilbäumen fertig ist.</p>
+<ul>
+<li><p>Da diese (D und E) aber keine Kinder haben, werden sie tatsächlich ausgegeben.</p></li>
+<li><p>Danach die aktuelle Wurzel, also B.</p></li>
+</ul>
+</li>
+<li><p>Es geht zurück zu A - das aber immer noch nicht ausgegeben werden darf, weil zuerst sein rechter Teilbaum abgearbeitet werden muss.</p></li>
+<li><p>Dessen Wurzel © darf aber auch erst ausgegeben werden, wenn man mit Cs Teilbäumen fertig ist.</p>
+<ul>
+<li><p>Da diese (F und G) aber keine Kinder haben, werden sie tatsächlich ausgegeben.</p></li>
+<li><p>Danach die aktuelle Wurzel, also C.</p></li>
+</ul>
+</li>
+<li><p>Nun sind wir mit beiden Teilbäumen von A fertig und können ganz zum Schluss auch A ausgeben!</p></li>
+</ul>
+<p>Insgesamt ergibt sich als <strong>Postorder-Reihenfolge: D, E, B, F, G, C, A</strong></p>
+</li>
+<li><p>Inorder: Hier wird erst der linke Teilbaum, dann die Wurzel, dann der rechte Teilbaum abgearbeitet.</p>
+<ul class="simple">
+<li><p>Wir steigen also zuerst in den linken Teilbaum mit der Wurzel B. Bevor diese ausgegeben werden kann, muss aber ihr linker Teilbaum abgearbeitet worden sein, also</p>
+<ul>
+<li><p>steigen wir nach links hinunter zum Teilbaum mit der Wurzel D. Da dies ein Blattknoten ist, können wir ihn ausgeben.</p></li>
+</ul>
+</li>
+<li><p>Dann geht es zurück zur Wurzel dieses Teilbaums, also B, den wir ausgeben…</p>
+<ul>
+<li><p>und hinunter in den rechten Teilbaum mit der Wurzel E. Da dies ein Blattknoten ist, können wir ihn ausgeben.</p></li>
+</ul>
+</li>
+<li><p>Nun haben wir den gesamten Teilbaum unter B abgearbeitet. Das war der linke Teilbaum von A, so dass wir in der Inorder-Reihenfolge jetzt die Wurzel (A) ausgeben, bevor wir…</p>
+<ul>
+<li><p>in den rechten Teilbaum © hinabsteigen, den wir auf dieselbe Weise ausgeben, also: links (F) vor Wurzel © vor rechts (G)</p></li>
+</ul>
+</li>
+</ul>
+<p>Insgesamt ergibt sich als <strong>Inorder-Reihenfolge: D, B, E, A, F, C, G</strong></p>
+</li>
+</ul>
+</section>
+</section>
+<section id="id1">
+<h2><span class="section-number">7.4.5. </span>Aufgaben<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="aufgaben-zur-preorder-inorder-und-postorder-traversierung">
+<h3><span class="section-number">7.4.5.1. </span>Aufgaben zur Preorder-, Inorder- und Postorder-Traversierung<a class="headerlink" href="#aufgaben-zur-preorder-inorder-und-postorder-traversierung" title="Link to this heading">#</a></h3>
+<p>Aufgabe: Gib für die folgenden Bäume jeweils alle Elemente in</p>
+<ul class="simple">
+<li><p>Preorder-</p></li>
+<li><p>Postorder- und</p></li>
+<li><p>Inorder-Reihenfolge</p></li>
+</ul>
+<p>an.</p>
+<p>a)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_zahlen.svg"><img alt="../_images/aufgabe_binbaum_zahlen.svg" src="../_images/aufgabe_binbaum_zahlen.svg" style="width: 60%;" /></a>
+</figure>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung:</p>
+<ul class="simple">
+<li><p>Preorder: 3, 2, 4, 7, 8, 1, 5, 6, 9, 11, 10</p></li>
+<li><p>Postorder: 7, 8, 4, 2, 5, 11, 9, 10, 6, 1, 3</p></li>
+<li><p>Inorder:  7, 4, 8, 2, 3, 5, 1, 11, 9, 6, 10</p></li>
+</ul>
+</div>
+<p>b)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_suchbaum.svg"><img alt="../_images/aufgabe_binbaum_suchbaum.svg" src="../_images/aufgabe_binbaum_suchbaum.svg" style="width: 70%;" /></a>
+</figure>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung:</p>
+<ul class="simple">
+<li><p>Preorder: 58, 25, 24, 13, 12, 19, 39, 72, 60, 66, 61, 69, 76, 81, 79</p></li>
+<li><p>Postorder: 12, 19, 13, 24, 39, 25, 61, 69, 66, 60, 79, 81, 76, 72, 58</p></li>
+<li><p>Inorder:  12, 13, 19, 24, 25, 39, 58, 60, 61, 66, 69, 72, 76, 79, 81</p></li>
+</ul>
+</div>
+<p>c)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_text.svg"><img alt="../_images/aufgabe_binbaum_text.svg" src="../_images/aufgabe_binbaum_text.svg" style="width: 70%;" /></a>
+</figure>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösung:</p>
+<ul class="simple">
+<li><p>Preorder: !, D, R, I, H, I, S, E, R, P, S, U, E</p></li>
+<li><p>Postorder: I, H, R, S, E, I, D, S, U, P, E, R, !</p></li>
+<li><p>Inorder:  I, R, H, D, S, I, E, !, S, P, U, R, E</p></li>
+</ul>
+</div>
+<p>Hast du alle Aufgaben gelöst? Dann <strong>herzlichen Glückwunsch!!!</strong><a class="footnote-reference brackets" href="#easteregg" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+</section>
+</section>
+<section id="umsetzung-in-pseudo-code-rekursion">
+<h2><span class="section-number">7.4.6. </span>Umsetzung in (Pseudo-)Code. Rekursion<a class="headerlink" href="#umsetzung-in-pseudo-code-rekursion" title="Link to this heading">#</a></h2>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../_images/teilbäume.png"><img alt="../_images/teilb%C3%A4ume.png" src="../_images/teilb%C3%A4ume.png" style="width: 50%;" /></a>
+</figure>
+<p>Diesen Baum haben vorhin bereits in Preorder-, Postorder- und in Inorder-Reihenfolge ausgegeben, allerdings nur <em>von Hand</em>. Wie können wir das programmieren?</p>
+<p>Für (z.B.) <strong>Preorder</strong> kann man den Algorithmus intuitiv so beschreiben:</p>
+<div class="definition admonition">
+<p class="admonition-title">OPERATION <em>Baum <em>B</em> in Preorder-Reihenfolge ausgeben</em></p>
+<p>Um einen (Teil-)Baum <em>B</em> in Preorder-Reihenfolge auszugeben</p>
+<ul class="simple">
+<li><p>gib zuerst den Inhalt des Wurzelknotens von <em>B</em> aus</p></li>
+<li><p>dann gib <em><strong>auf dieselbe Weise</strong></em> den linken Teilbaum von <em>B</em> aus (falls dieser überhaupt existiert)</p></li>
+<li><p>dann gib <em><strong>auf dieselbe Weise</strong></em> den rechten Teilbaum von <em>B</em> aus (falls dieser überhaupt existiert)</p></li>
+</ul>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Recursion_(computer_science)"><strong>Rekursion</strong></a> in ein Programmierkonzept, bei der eine Funktion sich <em>selbst</em> aufruft (aber mit veränderten Argumenten), um ein Problem in immer kleinere, leichter lösbare Teilaufgaben zu zerlegen. Wichtig dabei ist eine Abbruchbedingung, weil sich das rekursive Programm sonst theoretisch unendlich oft selbst aufrufen würde.</p>
+</aside>
+<p>Entscheidend ist hier das hervorgehobene “auf dieselbe Weise”: Wir delegieren eine Teilaufgabe an einen Teilbaum - und dieser wendet dieselbe Operation an, die wir gerade erst beschreiben! Das nennt man <strong>Rekursion</strong>.</p>
+<p>Aber ist das überhaupt möglich/erlaubt/sinnvoll? Die Antwort auf alle diese Fragen ist <em>ja</em>! Was das intuitiv bedeutet, haben wir ja weiter oben schon gesehen und angewendet. Jetzt wirst du sehen, dass das auch in einem Programm funktioniert. Hier siehst du dasselbe Verfahren im Pseudocode der Formelsammlung:</p>
+<div class="admonition-pseudocode admonition">
+<p class="admonition-title">Pseudocode</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OPERATION ausgebenDatenPreorder() der Klasse Knoten
+
+    inhalt.ausgebenDaten()
+
+    WENN linkerKnoten != NICHTS   # Das ist die Abbruchbedingung!
+        linkerKnoten.ausgebenDatenPreorder()   # Rekursiver Aufruf
+    ENDE WENN 
+
+    WENN rechterKnoten != NICHTS   # Das ist die Abbruchbedingung!
+        rechterKnoten.ausgebenDatenPreorder()  # Rekursiver Aufruf
+    ENDE WENN
+</pre></div>
+</div>
+</div>
+<p>In Python kann man das z.B. so umsetzen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
+
+    <span class="o">...</span>  <span class="c1"># Attribute und andere Methoden</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_preorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gibt die Daten des Baums in Preorder-Reihenfolge aus.&quot;&quot;&quot;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>            <span class="c1"># Abbruchbedingung</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="o">.</span><span class="n">print_preorder</span><span class="p">()</span>   <span class="c1"># Rekursiver Aufruf</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>           <span class="c1"># Abbruchbedingung</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="o">.</span><span class="n">print_preorder</span><span class="p">()</span>  <span class="c1"># Rekursiver Aufruf</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Wichtig</p>
+<p>Rekursive Funktionen/Methoden sind immer nach einem ähnlichen Prinzip aufgebaut:</p>
+<ul class="simple">
+<li><p>Es gibt eine oder mehrere Stellen, an denen sich die Funktion selbst wieder aufruft.</p></li>
+<li><p>Bei dem rekursiven Aufruf <strong>wird das bisherige Aufrufargument verändert</strong>, so dass es “einfacher” wird.
+Was “einfacher” bedeutet, hängt von der jeweiligen Aufgabe ab, aber es geht immer darum, das Argument so zu
+verändern, dass es “näher” an einem “einfachen” Wert ist, bei dem die Rekursion abgebrochen werden kann.</p></li>
+<li><p>Vor dem rekursiven Aufruf findet deshalb <em>immer</em> eine <strong>Fallunterscheidung</strong> statt:</p>
+<ul>
+<li><p>Falls schon ein <strong>base case</strong> erreicht ist (also so ein “einfacher” Fall, bei dem das Ergebnis
+klar ist), findet <em>kein</em> rekursiver Aufruf statt, sondern dieses Teilergebnis wird sofort zurückgegeben
+oder die Funktion beendet.</p></li>
+<li><p>Ansonsten wird der Wert des Parameters angepasst (“vereinfacht”) und die Funktion mit diesem angepassten Wert rekursiv erneut aufgerufen.</p></li>
+</ul>
+</li>
+</ul>
+<p>Bsp.: Beim Durchlaufen eines Baums ist der <em>base case</em> eigentlich immer, dass man ein <em>Blatt</em> erreicht hat oder zumindest, dass ein bestimmter Teilbaum nicht existiert, so dass an dieser Stelle kein rekursiver Aufruf mehr sinnvoll ist.</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.4.7. </span>Aufgaben<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Oft sind rekursive Problemlösungen kurz und elegant (zumindest, wenn man das Prinzip erstmal kapiert hat 😉). <strong>Bei Bäumen ist es sogar so, dass Lösungen ohne Rekursion meistens extrem kompliziert werden!</strong></p>
+<p>Zur Wahrheit gehört aber auch, dass es viele Problemstellungen gibt, bei denen statt Rekursion auch eine simple <em>Schleife</em> verwendet werden kann. Man spricht dann von einem <strong>iterativen</strong> Ansatz.</p>
+<section id="aufgabe-1">
+<h3><span class="section-number">7.4.7.1. </span>Aufgabe 1<a class="headerlink" href="#aufgabe-1" title="Link to this heading">#</a></h3>
+<p>Vergleiche die beiden folgenden Funktionen - beide bestimmen die Länge einer verketteten Liste.</p>
+<ul class="simple">
+<li><p>Überlege dir jeweils, wie die Funktionen funktionieren, und erkläre es deiner Sitznachbarin,</p></li>
+<li><p>Diskutiert insbesondere, wie in der rekursiven Version verschiedene Returnwerte miteinander verrechnet werden.</p></li>
+<li><p>Worin unterscheiden und worin ähneln sich die beiden Funktionen?</p></li>
+<li><p>Welche Variante findest du leichter zu programmieren?</p></li>
+<li><p>In der nächsten Aufgabe wirst du das Grundprinzip der rekursiven Lösung von einer verketteten Liste auf Binärbäume übertragen. Was glaubst du, musst du dabei verändern?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rekursive Funktion, die die Länge einer verketteten Liste ermittelt</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">anzahl_knoten_in_liste</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Knoten im Baum ermitteln. Rekursive Variante&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># rekursiver Fall</span>
+        <span class="n">zwischenergebnis</span> <span class="o">=</span> <span class="n">anzahl_knoten_in_liste</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">zwischenergebnis</span>
+    
+<span class="c1"># Iterative Funktion, die die Länge einer verketteten Liste ermittelt</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">anzahl_knoten_in_liste_mit_schleife</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Knoten im Baum ermitteln. Iterative Variante, d.h. mit Schleife&quot;&quot;&quot;</span>
+    <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">knoten</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">anzahl</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
+    <span class="k">return</span> <span class="n">anzahl</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="aufgabe-2">
+<h3><span class="section-number">7.4.7.2. </span>Aufgabe 2<a class="headerlink" href="#aufgabe-2" title="Link to this heading">#</a></h3>
+<p>Weiter oben hatten wir diesen Baum in Python mithilfe der Klasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> definiert:</p>
+<figure class="align-center" id="fig-saeugetiere-7tiere-v2">
+<a class="reference internal image-reference" href="../_images/säugetiere_7tiere.svg"><img alt="../_images/s%C3%A4ugetiere_7tiere.svg" src="../_images/s%C3%A4ugetiere_7tiere.svg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.16 </span><span class="caption-text">Dieser Baum enthält zahlreiche Knoten (äh, wie viele waren es nochmal genau?)</span><a class="headerlink" href="#fig-saeugetiere-7tiere-v2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Dazu hatten wir mehrere <code class="docutils literal notranslate"><span class="pre">Knoten</span></code>-Objekte erzeugt und miteinander über die Attribute <code class="docutils literal notranslate"><span class="pre">linker_teilbaum</span></code> und <code class="docutils literal notranslate"><span class="pre">rechter_teilbaum</span></code> verknüpft. Den Wurzelknoten hatten wir in der Variablen <code class="docutils literal notranslate"><span class="pre">wurzel</span></code> gespeichert:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Knoten(Säugetier, L:Knoten(Hund, L:Knoten(Collie, L:None, R:None), R:Knoten(Dackel, L:None, R:None)), R:Knoten(Affe, L:Knoten(Schimpanse, L:None, R:None), R:Knoten(Orang-Utan, L:None, R:None)))
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Aufgabe:</strong> Vervollständige die untenstehende Funktion, so dass die Anzahl aller Knoten im Baum berechnet wird.</p>
+<p><strong>Achtung (1):</strong> Die Funktion soll nichts ausgeben, sondern nur per <code class="docutils literal notranslate"><span class="pre">return</span></code>-Befehl Zahlen zurückliefern. Diese kann man dann in einer Variablen speichern oder mit <code class="docutils literal notranslate"><span class="pre">print()</span></code> ausgeben usw., so wie im Test am Ende der Codezelle.</p>
+<p><strong>Achtung (2):</strong> Achte darauf, dass es sich hier nicht um eine <em>Methode</em> der Klasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> handelt, sondern um eine <em>Funktion</em>, die ein <code class="docutils literal notranslate"><span class="pre">Knoten</span></code>-Objekt als <em>Parameter</em> erhält. Wenn du also rekursiv dieselbe Funktion noch einmal aufrufst, schreibst du nicht <code class="docutils literal notranslate"><span class="pre">irgendein_knoten.anzahl_knoten_binaerbaum()</span></code>, sondern <code class="docutils literal notranslate"><span class="pre">anzahl_knoten_binaerbaum(irgendein_knoten)</span></code>!<a class="footnote-reference brackets" href="#grund" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (Genau so wird die Funktion auch im Test am Ende der Codezelle aufgerufen.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Knoten im Baum ermitteln.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Tipp: Orientiere dich an der Funktion anzahl_knoten_in_liste aus der vorherigen Aufgabe und</span>
+    <span class="c1"># überlege dir, wie du die Funktion anpassen musst, um sie für einen Binärbaum zu verwenden.</span>
+    <span class="o">...</span>
+    
+<span class="c1"># Test</span>
+<span class="n">anzahlKnoten</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>  <span class="c1"># Erwartet: 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anzahlKnoten</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lösung:</strong></p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Knoten im Baum ermitteln.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># rekursiver Fall</span>
+        <span class="n">anzahl_links</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">)</span>
+        <span class="n">anzahl_rechts</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">anzahl_links</span> <span class="o">+</span> <span class="n">anzahl_rechts</span>
+    
+<span class="c1"># Test</span>
+<span class="n">anzahlKnoten</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>  <span class="c1"># Erwartet: 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anzahlKnoten</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="aufgabe-3">
+<h3><span class="section-number">7.4.7.3. </span>Aufgabe 3<a class="headerlink" href="#aufgabe-3" title="Link to this heading">#</a></h3>
+<p>Dies ist eine Variante der vorigen Aufgabe: Statt aller Knoten sollst du jetzt nur die <em>Blattknoten</em> zählen, also diejenigen Knoten, deren linker <em>und</em> rechter Teilbaum nicht existieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Blattknoten im Baum ermitteln.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Tipp: Die Lösung ist sehr ähnlich zur vorherigen Aufgabe. Du darfst allerdings nur </span>
+    <span class="c1"># diejenigen Knoten zählen, die keine Kinder haben.</span>
+    <span class="o">...</span>
+    
+<span class="c1"># Test</span>
+<span class="n">anzahlKnoten</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>  <span class="c1"># Erwartet: 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anzahlKnoten</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lösung:</strong></p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Blattknoten im Baum ermitteln.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case 1 (leerer Teilbaum)</span>
+        <span class="k">return</span> <span class="mi">0</span>  <span class="c1"># Anzahl der Blattknoten in einem leeren Baum ist 0</span>
+    <span class="n">ist_blatt</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">==</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">ist_blatt</span><span class="p">:</span>  <span class="c1"># base case 2 (Blattknoten)</span>
+        <span class="k">return</span> <span class="mi">1</span>  <span class="c1"># Ein Blattknoten hat genau ein Blatt</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># rekursiver Fall</span>
+        <span class="n">anzahl_links</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">)</span>
+        <span class="n">anzahl_rechts</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">anzahl_links</span> <span class="o">+</span> <span class="n">anzahl_rechts</span>  
+    
+<span class="c1"># Test</span>
+<span class="n">anzahlKnoten</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>  <span class="c1"># Erwartet: 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anzahlKnoten</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="aufgabe-4">
+<h3><span class="section-number">7.4.7.4. </span>Aufgabe 4<a class="headerlink" href="#aufgabe-4" title="Link to this heading">#</a></h3>
+<p>Bestimme die <em>Tiefe</em> eines Binärbaums.</p>
+<p>Zur Erinnerung: Die Tiefe eines Baums entspricht der Anzahl der Knoten im längsten Pfad des Baums. Allerdings ist für diese Aufgabe vielleicht eine andere Beschreibung hilfreicher. Du findest sie hinter dem folgenden Tipp. Vielleicht brauchst du den Tipp ja aber gar nicht - die Lösung ist (mal wieder) <em>seeeehr</em> ähnlich wie die aus Aufgabe 2 😉.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Tipp</p>
+<p>Ein leerer Baum hat die Tiefe 0. Für alle anderen Bäume gilt: Ihre Tiefe ist um eins größer als die seines linken oder rechten Teilbaums - je nachdem, welcher von beiden die größere Tiefe hat. Anders gesagt: Die Tiefe ist um eins größer als die <em>maximale</em> Tiefe seiner beiden Teilbäume.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tiefe des Baums ermitteln.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Tipp: siehe Aufgabenstellung.</span>
+    <span class="o">...</span>
+    
+<span class="c1"># Test</span>
+<span class="n">tiefe</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>  <span class="c1"># Erwartet: 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tiefe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lösung:</strong></p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tiefe des Baums ermitteln.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case 1 (leerer Teilbaum)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># Die Tiefe eines leeren Baums ist -1; die der Wurzel ist 0</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># rekursiver Fall</span>
+        <span class="n">tiefe_links</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">)</span>
+        <span class="n">tiefe_rechts</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">tiefe_links</span><span class="p">,</span> <span class="n">tiefe_rechts</span><span class="p">)</span>
+    
+<span class="c1"># Test</span>
+<span class="n">tiefe</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>  <span class="c1"># Erwartet: 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tiefe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="aufgabe-5">
+<h3><span class="section-number">7.4.7.5. </span>Aufgabe 5<a class="headerlink" href="#aufgabe-5" title="Link to this heading">#</a></h3>
+<p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">enthält_element(knoten,</span> <span class="pre">gesuchter_wert)</span></code>, die den gesuchten Wert im Baum (ausgehend von <code class="docutils literal notranslate"><span class="pre">knoten</span></code>) sucht und <code class="docutils literal notranslate"><span class="pre">True</span></code> zurückgibt, wenn es einen Knoten gibt, dessen Inhalt der gesuchte Wert ist, und sonst <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Diese Aufgabe ist etwas schwieriger als die vorigen. Das liegt daran, dass es eine gewisse “Ungleichheit” zwischen zwei Fällen gibt:</p>
+<ul class="simple">
+<li><p>Wenn man den gesuchten Wert gefunden hat, kann man aufhören.</p></li>
+<li><p>Aber wenn man in einem Knoten oder Teilbaum den Wert <em>nicht</em> gefunden hat, weiß man noch lange nicht, ob er nicht doch noch in einem anderen Teil des Baums vorkommt.</p></li>
+</ul>
+<p>Die Aufgabe wird etwas leichter zu lösen, wenn man nicht versucht, die Suche frühzeitig zu beenden. Du findest deshalb unten <em>zwei</em> verschiedene Musterlösungen. Beide sind <em>korrekt</em>, aber die zweite ist deutlich <em>effizienter</em>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüfen, ob der Baum ein bestimmtes Element enthält.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Tipp: siehe Aufgabenstellung.</span>
+    <span class="o">...</span>
+    
+<span class="c1"># Test</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">wurzel</span><span class="p">,</span> <span class="s2">&quot;Collie&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">wurzel</span><span class="p">,</span> <span class="s2">&quot;Katze&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+None
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lösung 1:</strong> Die folgende Lösung ist zwar korrekt, aber nicht besonders effizient, wenn der gesuchte Wert eigentlich schon früh gefunden wurde. Kannst du erklären, warum?</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüfen, ob der Baum ein bestimmtes Element enthält.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case 1 (leerer Teilbaum)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">knoten</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">==</span> <span class="n">gesuchter_wert</span><span class="p">:</span>  <span class="c1"># base case 2 (Element gefunden)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="c1"># Es bleiben noch die rekursiven Fälle: Suche im linken und rechten Teilbaum</span>
+    <span class="n">links_gefunden</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span>
+    <span class="n">rechts_gefunden</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">links_gefunden</span> <span class="ow">or</span> <span class="n">rechts_gefunden</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    
+<span class="c1"># Test</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">wurzel</span><span class="p">,</span> <span class="s2">&quot;Collie&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">wurzel</span><span class="p">,</span> <span class="s2">&quot;Katze&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>Lösung 2:</strong> Diese zweite Lösung ist viel effizienter, wenn der gesuchte Wert schon früh gefunden wird. Kannst du erklären, warum?</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Effizientere Variante, die die Suche abbricht, sobald das Element gefunden wurde</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">enthält_element_effizient</span><span class="p">(</span><span class="n">knoten</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüfen, ob der Baum ein bestimmtes Element enthält. Effiziente Variante&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case 1 (leerer Teilbaum)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">knoten</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">==</span> <span class="n">gesuchter_wert</span><span class="p">:</span>  <span class="c1"># base case 2 (Element gefunden)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">):</span>  <span class="c1"># Rekursion</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">):</span> <span class="c1"># Rekursion</span>
+        <span class="k">return</span> <span class="kc">True</span> 
+    <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Gesuchter Wert wurde nirgends im Baum gefunden</span>
+    
+<span class="c1"># Test</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">wurzel</span><span class="p">,</span> <span class="s2">&quot;Collie&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">wurzel</span><span class="p">,</span> <span class="s2">&quot;Katze&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="die-klasse-binaerbaum">
+<h2><span class="section-number">7.4.8. </span>Die Klasse <em>Binaerbaum</em><a class="headerlink" href="#die-klasse-binaerbaum" title="Link to this heading">#</a></h2>
+<p>Das folgende Klassendiagramm stammt aus der Formelsammlung. Du siehst</p>
+<ul class="simple">
+<li><p>unsere altbekannte Klasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> mit Referenzen auf den <code class="docutils literal notranslate"><span class="pre">inhalt</span></code> des Knotens sowie auf seinen linken Teilbaum (<code class="docutils literal notranslate"><span class="pre">linkerKnoten</span></code>) und rechten Teilbaum (<code class="docutils literal notranslate"><span class="pre">rechterKnoten</span></code>).</p></li>
+<li><p>allerdings sind diese Referenzen jetzt <em>privat</em>, so dass <a class="reference external" href="https://de.wikipedia.org/wiki/Zugriffsfunktion">Getter- und Setter-Methoden</a> zur Verfügung gestellt werden müssen, um auf diese Attribute zugreifen zu können: <em>gibInhalt</em>, …, <em>setzeRechtenKnoten</em>.</p></li>
+<li><p>Außerdem gibt es einige weitere Methoden, insb. <em>ausgebenDatenInorder</em> usw. <strong>Diese haben wir weiter oben als separate Funktionen programmiert, die wir gleich in Methoden der Klasse umwandeln und dabei leicht verändern müssen!</strong></p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Die Klasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> könnte (sollte?) man dann sogar privat machen oder in einem öffentlich nicht zugänglichen <em>Paket</em> speichern. Allerdings gibt die Klasse <code class="docutils literal notranslate"><span class="pre">Binärbaum</span></code> durch die öffentliche Methode <code class="docutils literal notranslate"><span class="pre">gibWurzel</span></code> ohnehin Zugriff auf <code class="docutils literal notranslate"><span class="pre">Knoten</span></code>… also nützt eine weitere Kapselung vorerst sowieso nichts.</p>
+</aside>
+<p>V.a. haben wir jetzt die Klasse <code class="docutils literal notranslate"><span class="pre">Binaerbaum</span></code>, d.h. den Abstrakten Datentyp, der alle “öffentlich” zugänglichen Operationen auf Binärbäumen bereitstellt, ohne dass die Nutzer etwas von Knoten, Teilbäumen oder Rekursion verstehen müssen. Wie die Arbeit intern verteilt wird, siehst du im untenstehenden Code.</p>
+<figure class="align-center" id="fig-binbaum-fosa">
+<a class="reference internal image-reference" href="../_images/BinBaum.svg"><img alt="../_images/BinBaum.svg" src="../_images/BinBaum.svg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 7.17 </span><span class="caption-text">Klassendiagramm Binärbaum aus der Formelsammlung</span><a class="headerlink" href="#fig-binbaum-fosa" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Aufgabe:</strong> Vergleiche die Implementierung der Methoden <code class="docutils literal notranslate"><span class="pre">anzahlKnoten</span></code>, <code class="docutils literal notranslate"><span class="pre">tiefe</span></code>, <code class="docutils literal notranslate"><span class="pre">enthaeltElement</span></code> usw. mit den Lösungen aus dem vorigen Abschnitt.</p>
+<p>Hinweise:</p>
+<ul class="simple">
+<li><p>Die Implementierung ist <em>generisch</em>, d.h. jeder Knoten speichert einen bestimmten <em>Typ</em> von Daten, z.B. einen String, Integer oder eine selbstprogrammierte Klasse wie <em>Person</em>. Auch die <em>VerketteteListe</em> ist dann generisch: Eine <code class="docutils literal notranslate"><span class="pre">VerketteteListe[int]</span></code> kann nur <code class="docutils literal notranslate"><span class="pre">int</span></code>-Werte speichern, eine <code class="docutils literal notranslate"><span class="pre">VerketteteListe[Tier]</span></code> nur <code class="docutils literal notranslate"><span class="pre">Tier</span></code>-Objekte usw.</p></li>
+<li><p>Das macht die Typ-Annotationen recht kompliziert. <strong>Für das Verständnis der Algorithmen sind diese auch nicht unbedingt notwendig - also ignoriere sie, wenn sie dich eher verwirren!</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]:</span>  <span class="c1"># ab Python 3.12 ist diese Schreibweise für generische Typen möglich</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Typ</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__inhalt</span><span class="p">:</span> <span class="n">Typ</span> <span class="o">=</span> <span class="n">inhalt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__linkerKnoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__rechterKnoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">istBlatt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__linkerKnoten</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__rechterKnoten</span> <span class="o">==</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Typ</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">setzeInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">:</span> <span class="n">Typ</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__inhalt</span> <span class="o">=</span> <span class="n">pInhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibLinkenKnoten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__linkerKnoten</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">setzeLinkenKnoten</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pLinkerKnoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__linkerKnoten</span> <span class="o">=</span> <span class="n">pLinkerKnoten</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibRechtenKnoten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__rechterKnoten</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">setzeRechtenKnoten</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pRechterKnoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__rechterKnoten</span> <span class="o">=</span> <span class="n">pRechterKnoten</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Binaerbaum</span><span class="p">[</span><span class="n">Typ</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibWurzel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">setzeWurzel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pWurzel</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span> <span class="o">=</span> <span class="n">pWurzel</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span> <span class="o">==</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlKnoten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># Dies ist die öffentliche Methode zur Ermittlung der Anzahl der Knoten im Baum.</span>
+        <span class="c1"># Die eigentliche Arbeit wird von der privaten Methode __anzahlKnotenRekursiv erledigt.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__anzahlKnotenRekursiv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__anzahlKnotenRekursiv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># private Hilfsmethode, die die Anzahl der Knoten im Baum rekursiv ermittelt.</span>
+        <span class="c1"># Sie entspricht fast 1:1 der Funktion anzahl_knoten_binaerbaum aus von weiter oben.</span>
+        <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">anzahlLinks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__anzahlKnotenRekursiv</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibLinkenKnoten</span><span class="p">())</span>
+            <span class="n">anzahlRechts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__anzahlKnotenRekursiv</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibRechtenKnoten</span><span class="p">())</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">anzahlLinks</span> <span class="o">+</span> <span class="n">anzahlRechts</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlBlaetter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># Diese Methode gibt die Anzahl der Blattknoten im Baum zurück.</span>
+        <span class="c1"># Auch hier wird die eigentliche Arbeit von einer privaten Methode erledigt.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__anzahlBlaetterRekursiv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__anzahlBlaetterRekursiv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># private Hilfsmethode, die die Anzahl der Blattknoten im Baum rekursiv ermittelt</span>
+        <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">knoten</span><span class="o">.</span><span class="n">istBlatt</span><span class="p">():</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">anzahlLinks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__anzahlBlaetterRekursiv</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibLinkenKnoten</span><span class="p">())</span>
+            <span class="n">anzahlRechts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__anzahlBlaetterRekursiv</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibRechtenKnoten</span><span class="p">())</span>
+            <span class="k">return</span> <span class="n">anzahlLinks</span> <span class="o">+</span> <span class="n">anzahlRechts</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">tiefe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># Selbes Spiel wie oben: Die eigentliche Arbeit wird von einer privaten Methode erledigt.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tiefeRekursiv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__tiefeRekursiv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># Die Tiefe eines leeren Baums ist -1; die der Wurzel ist 0‚</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tiefeLinks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tiefeRekursiv</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibLinkenKnoten</span><span class="p">())</span>
+            <span class="n">tiefeRechts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tiefeRekursiv</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibRechtenKnoten</span><span class="p">())</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">tiefeLinks</span><span class="p">,</span> <span class="n">tiefeRechts</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enthaeltElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gesuchterWert</span><span class="p">:</span> <span class="n">Typ</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># Auch hier wird die eigentliche Arbeit von einer privaten Methode erledigt.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enthaeltElementRekursiv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__wurzel</span><span class="p">,</span> <span class="n">gesuchterWert</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__enthaeltElementRekursiv</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">gesuchterWert</span><span class="p">:</span> <span class="n">Typ</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># private Hilfsmethode, die prüft, ob ein bestimmtes Element im Baum enthalten ist</span>
+        <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">knoten</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">()</span> <span class="o">==</span> <span class="n">gesuchterWert</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">linksGefunden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enthaeltElementRekursiv</span><span class="p">(</span>
+            <span class="n">knoten</span><span class="o">.</span><span class="n">gibLinkenKnoten</span><span class="p">(),</span> <span class="n">gesuchterWert</span>
+        <span class="p">)</span>
+        <span class="n">rechtsGefunden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enthaeltElementRekursiv</span><span class="p">(</span>
+            <span class="n">knoten</span><span class="o">.</span><span class="n">gibRechtenKnoten</span><span class="p">(),</span> <span class="n">gesuchterWert</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">linksGefunden</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">rechtsGefunden</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tests</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Binärbaum zum Speichern von Integer-Werten anlegen.&quot;</span><span class="p">)</span>
+<span class="n">baum</span> <span class="o">=</span> <span class="n">Binaerbaum</span><span class="p">[</span><span class="nb">int</span><span class="p">]()</span>  <span class="c1"># Erzeugen eines leeren Baums, der Integer-Werte speichert</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ist der Baum leer?&quot;</span><span class="p">,</span> <span class="n">baum</span><span class="o">.</span><span class="n">istLeer</span><span class="p">())</span>  <span class="c1"># Erwartet: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anzahl der Knoten im leeren Baum:&quot;</span><span class="p">,</span> <span class="n">baum</span><span class="o">.</span><span class="n">anzahlKnoten</span><span class="p">())</span>  <span class="c1"># Erwartet: 0</span>
+
+<span class="n">k1</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">k2</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">k3</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">k4</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">k5</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">k6</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">k7</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wir fügen die Knoten 1 bis 7 ein.&quot;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">setzeWurzel</span><span class="p">(</span><span class="n">k1</span><span class="p">)</span>
+<span class="n">k1</span><span class="o">.</span><span class="n">setzeLinkenKnoten</span><span class="p">(</span><span class="n">k2</span><span class="p">)</span>
+<span class="n">k1</span><span class="o">.</span><span class="n">setzeRechtenKnoten</span><span class="p">(</span><span class="n">k3</span><span class="p">)</span>
+<span class="n">k2</span><span class="o">.</span><span class="n">setzeLinkenKnoten</span><span class="p">(</span><span class="n">k4</span><span class="p">)</span>
+<span class="n">k2</span><span class="o">.</span><span class="n">setzeRechtenKnoten</span><span class="p">(</span><span class="n">k5</span><span class="p">)</span>
+<span class="n">k3</span><span class="o">.</span><span class="n">setzeLinkenKnoten</span><span class="p">(</span><span class="n">k6</span><span class="p">)</span>
+<span class="n">k3</span><span class="o">.</span><span class="n">setzeRechtenKnoten</span><span class="p">(</span><span class="n">k7</span><span class="p">)</span>
+
+<span class="n">anzahlKnoten</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">anzahlKnoten</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anzahl der Knoten ist jetzt: </span><span class="si">{</span><span class="n">anzahlKnoten</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: 7</span>
+
+<span class="n">anzahlBlätter</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">anzahlBlaetter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anzahl der Blattknoten ist: </span><span class="si">{</span><span class="n">anzahlBlätter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Erwartet: 4</span>
+
+<span class="n">tiefe</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">tiefe</span><span class="p">()</span>  <span class="c1"># Erwartet: 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die Tiefe des Baums ist: </span><span class="si">{</span><span class="n">tiefe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enthält der Baum die Zahl 3?&quot;</span><span class="p">,</span> <span class="n">baum</span><span class="o">.</span><span class="n">enthaeltElement</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># Erwartet: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enthält der Baum die Zahl 8?&quot;</span><span class="p">,</span> <span class="n">baum</span><span class="o">.</span><span class="n">enthaeltElement</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>  <span class="c1"># Erwartet: False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Binärbaum zum Speichern von Integer-Werten anlegen.
+Ist der Baum leer? True
+Anzahl der Knoten im leeren Baum: 0
+Wir fügen die Knoten 1 bis 7 ein.
+Anzahl der Knoten ist jetzt: 7
+Anzahl der Blattknoten ist: 4
+Die Tiefe des Baums ist: 2
+Enthält der Baum die Zahl 3? True
+Enthält der Baum die Zahl 8? False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">anzahlKnoten</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">anzahlLinks</span> <span class="o">=</span> <span class="n">anzahlKnoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibLinkenKnoten</span><span class="p">())</span>
+        <span class="n">anzahlRechts</span> <span class="o">=</span> <span class="n">anzahlKnoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">gibRechtenKnoten</span><span class="p">())</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">anzahlLinks</span> <span class="o">+</span> <span class="n">anzahlRechts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="easteregg" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Aber hast du auch das <em>easter egg</em> gefunden?</p>
+</aside>
+<aside class="footnote brackets" id="grund" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>Der Grund für die Verwendung einer allgemeinen Funktion statt einer Methode der Klasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> ist, dass es damit leichter wird, den <code class="docutils literal notranslate"><span class="pre">None</span></code>-fall zu überprüfen. Der Parameter <code class="docutils literal notranslate"><span class="pre">knoten</span></code> kann jetzt auch <code class="docutils literal notranslate"><span class="pre">None</span></code> sein, so dass man den <em>base case</em> mit einer Abfrage à la  <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">knoten</span> <span class="pre">==</span> <span class="pre">None:</span> <span class="pre">...</span></code>  überprüfen kann.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jil91/ds_ki-js2",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./datenstrukturen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="baeume.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Bäume</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="suchbaeume.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">7.5. </span>Binäre Suchbäume</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung">7.4.1. Einführung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben">7.4.2. Aufgaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-python">7.4.3. Umsetzung in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knoten">7.4.3.1. Knoten</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-baumen-sachen-machen">7.4.4. Mit Bäumen Sachen machen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alle-inhalte-eines-baums-ausgeben">7.4.4.1. Alle Inhalte eines Baums ausgeben</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.4.5. Aufgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben-zur-preorder-inorder-und-postorder-traversierung">7.4.5.1. Aufgaben zur Preorder-, Inorder- und Postorder-Traversierung</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-pseudo-code-rekursion">7.4.6. Umsetzung in (Pseudo-)Code. Rekursion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.4.7. Aufgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-1">7.4.7.1. Aufgabe 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-2">7.4.7.2. Aufgabe 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-3">7.4.7.3. Aufgabe 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-4">7.4.7.4. Aufgabe 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-5">7.4.7.5. Aufgabe 5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-klasse-binaerbaum">7.4.8. Die Klasse <em>Binaerbaum</em></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

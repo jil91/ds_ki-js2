@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5.2. Übungen zu Stapeln &#8212; Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy\datenstrukturen\stack-aufgaben.c2251b8d-ac6d-4076-9b7f-a45dd7d18210.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/stack-aufgaben';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/datenstrukturen/stack-aufgaben.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="5.3. Warteschlangen" href="warteschlangen.html" />
+    <link rel="prev" title="5.1. Stapel (Stack)" href="stack.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einstieg in die OOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="datenstrukturen_allgemein.html">3. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="listen_einfuehrung.html">4. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_listen.html">4.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen1.html">4.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen2.html">4.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen_loesungen.html">4.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="stapel_und_warteschlangen_intro.html">5. Stapel und Warteschlangen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stack.html">5.1. Stapel (Stack)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warteschlangen.html">5.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assoziative_arrays.html">6. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="baeume.html">7. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="binaerbaeume.html">7.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suchbaeume.html">7.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="klausurvorbereitung_mit_loesungen.html">8. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ki/ki_allgemein.html">9. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/knearestneighbor.html">10. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/knearestneighbor2.html">10.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/kmeansclustering.html">11. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_aufgabe.html">11.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering2_loesung.html">11.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/entscheidungsbaumlernen.html">12. Entscheidungsbäume lernen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/minimax.html">13. Der Minimax-Algorithmus</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/datenstrukturen/stack-aufgaben.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Übungen zu Stapeln</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hohe-des-stapels-bestimmen">5.2.1. Höhe des Stapels bestimmen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-umgekehrte-polnische-notation-upn">5.2.2. Aufgabe: Umgekehrte polnische Notation (UPN)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ubungen-zu-stapeln">
+<h1><span class="section-number">5.2. </span>Übungen zu Stapeln<a class="headerlink" href="#ubungen-zu-stapeln" title="Link to this heading">#</a></h1>
+<section id="hohe-des-stapels-bestimmen">
+<h2><span class="section-number">5.2.1. </span>Höhe des Stapels bestimmen<a class="headerlink" href="#hohe-des-stapels-bestimmen" title="Link to this heading">#</a></h2>
+<p>In der folgenden Zelle siehst du die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code>, die wir bereits entwickelt haben. Schau dir nun insb. die Methode <code class="docutils literal notranslate"><span class="pre">anzahl_elemente</span></code> an, mit der man die “Höhe” des Stapels bestimmen kann.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Warum ist diese Lösung ineffizient?</p>
+<p>Weil zur Ermittlung der Höhe alle Elemente des Stapels durchlaufen werden müssen.</p>
+</div>
+<p>Es geht natürlich besser - weißt du wie?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Antwort nur anschauen, wenn du nicht allein darauf kommst!</p>
+<p>Man kann die aktuelle Höhe des Stapels als <em>Attribut</em> <code class="docutils literal notranslate"><span class="pre">hoehe</span></code> speichern und dieses in <code class="docutils literal notranslate"><span class="pre">anzahl_elemente</span></code> einfach zurückgeben.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Man muss dabei allerdings darauf achten, dass…</p>
+<p>…bei jedem <code class="docutils literal notranslate"><span class="pre">push</span></code> und <code class="docutils literal notranslate"><span class="pre">pop</span></code> das Attribut <code class="docutils literal notranslate"><span class="pre">hoehe</span></code> hoch- bzw. heruntergezählt wird.</p>
+</div>
+</div>
+<p><strong>Aufgabe:</strong> Ändere die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> und insb. die Methode <code class="docutils literal notranslate"><span class="pre">anzahl_elemente</span></code>, so dass die Höhe des Stapels nun geschickt verwaltet und ohne Aufwand zurückgegeben wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Stapel</span><span class="p">:</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">,</span> <span class="n">naechster</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># Wenn für naechster kein Wert angegeben wird, ist er None (Standardwert)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">inhalt</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">naechster</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="p">:</span> <span class="n">Stapel</span><span class="o">.</span><span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daten</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;legt ein neues Element auf den Stapel&quot;&quot;&quot;</span>
+        <span class="n">neuer_knoten</span> <span class="o">=</span> <span class="n">Stapel</span><span class="o">.</span><span class="n">Knoten</span><span class="p">(</span><span class="n">daten</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="p">)</span>  <span class="c1"># Der neue Knoten zeigt auf den bisherigen Anfang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="o">=</span> <span class="n">neuer_knoten</span>  <span class="c1"># Der neue Knoten ist jetzt der Anfang</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt das oberste Element vom Stapel und gibt es zurück&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Pop-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="n">inhalt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>  <span class="c1"># Inhalt des ersten Knotens merken</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">naechster</span>  <span class="c1"># Anfang auf den nächsten Knoten setzen</span>
+        <span class="k">return</span> <span class="n">inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt das oberste Element des Stapels zurück, ohne es zu entfernen&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Kurzform für if self.anfang is None: return True else: return False</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
+        <span class="c1"># ACHTUNG: Diese Methode ist ineffizient, da sie die gesamte interne Liste durchlaufen muss!</span>
+        <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">knoten</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span>
+        <span class="k">while</span> <span class="n">knoten</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">anzahl</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
+        <span class="k">return</span> <span class="n">anzahl</span>
+    
+<span class="c1"># Test</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">Stapel</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">):</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>  <span class="c1"># Bei der schlechten Implementierung dauert das lange</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100000
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lösung:</strong></p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Stapel</span><span class="p">:</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">,</span> <span class="n">naechster</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># Wenn für naechster kein Wert angegeben wird, ist er None (Standardwert)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">inhalt</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">naechster</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="p">:</span> <span class="n">Stapel</span><span class="o">.</span><span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># TEIL DER LÖSUNG</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daten</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;legt ein neues Element auf den Stapel&quot;&quot;&quot;</span>
+        <span class="n">neuer_knoten</span> <span class="o">=</span> <span class="n">Stapel</span><span class="o">.</span><span class="n">Knoten</span><span class="p">(</span><span class="n">daten</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="p">)</span>  <span class="c1"># Der neue Knoten zeigt auf den bisherigen Anfang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="o">=</span> <span class="n">neuer_knoten</span>  <span class="c1"># Der neue Knoten ist jetzt der Anfang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># TEIL DER LÖSUNG</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt das oberste Element vom Stapel und gibt es zurück&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Pop-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="n">inhalt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>  <span class="c1"># Inhalt des ersten Knotens merken</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">naechster</span>  <span class="c1"># Anfang auf den nächsten Knoten setzen</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span> <span class="o">-=</span> <span class="mi">1</span>   <span class="c1"># TEIL DER LÖSUNG</span>
+        <span class="k">return</span> <span class="n">inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt das oberste Element des Stapels zurück, ohne es zu entfernen&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Kurzform für if self.anfang is None: return True else: return False</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span>   <span class="c1"># TEIL DER LÖSUNG</span>
+
+<span class="c1"># Test</span>
+<span class="c1"># s = Stapel()</span>
+<span class="c1"># s.push(1)</span>
+<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 1</span>
+<span class="c1"># s.push(2)</span>
+<span class="c1"># s.push(3)</span>
+<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 3</span>
+<span class="c1"># s.pop()</span>
+<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 2</span>
+<span class="c1"># s.pop()</span>
+<span class="c1"># s.pop()</span>
+<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 0</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="aufgabe-umgekehrte-polnische-notation-upn">
+<h2><span class="section-number">5.2.2. </span>Aufgabe: Umgekehrte polnische Notation (UPN)<a class="headerlink" href="#aufgabe-umgekehrte-polnische-notation-upn" title="Link to this heading">#</a></h2>
+<p>In der <a class="reference external" href="https://de.wikipedia.org/wiki/Umgekehrte_polnische_Notation">umgekehrten polnischen Notation (UPN)</a> für Rechenausdrücke werden die Operanden <em>vor</em> den Operatoren geschrieben.</p>
+<p>Beispiel: 3 4 + 5 * bedeutet (3 + 4) * 5 = 35</p>
+<p><strong>Aufgabe</strong>: Schreibe eine Funktion, die einen String in UPN auswertet.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hinweis</p>
+<p>Umgangsprachlich kann man die Berechnung so beschreiben:</p>
+<ul class="simple">
+<li><p>Man durchläuft nacheinander alle Elemente des Ausdrucks (jeweils durch Leerzeichen getrennt)</p></li>
+<li><p>Trifft man auf eine Zahl, legt man sie auf den Stack</p></li>
+<li><p>Trifft man auf einen Operator <code class="docutils literal notranslate"><span class="pre">op</span></code></p>
+<ul>
+<li><p>nimmt man die beiden obersten Elemente vom Stack</p></li>
+<li><p>und verrechnet sie mit dem Operator <code class="docutils literal notranslate"><span class="pre">op</span></code>.</p></li>
+<li><p>Das Ergebnis legt man wieder auf den Stack</p></li>
+</ul>
+</li>
+<li><p>Zum Schluss gibt man das oberste Element des Stacks zurück.</p></li>
+</ul>
+</div>
+<p>Hinweise:</p>
+<ul class="simple">
+<li><p>Zerlege den Eingabe-String zuerst mit der <code class="docutils literal notranslate"><span class="pre">split</span></code>-Methode in Einzelelemente. (<a class="reference external" href="https://www.python-lernen.de/methode-string-split.htm">Hier findest du eine Erklärung zu <code class="docutils literal notranslate"><span class="pre">split</span></code></a>.)</p></li>
+<li><p>Dann bearbeite mit einer Schleife jedes Element.</p></li>
+<li><p>Nutze die unten definierte Funktion <code class="docutils literal notranslate"><span class="pre">ist_zahl</span></code>, um zwischen Zahlen und Operatoren zu unterscheiden.</p></li>
+<li><p>Ach ja, und falls das noch nicht offensichtlich war: Nutze einen <strong>Stapel</strong>!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ist_zahl</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;prüft, ob ein String eine Zahl ist. Bsp. ist_zahl(&quot;-123&quot;) -&gt; True, ist_zahl(&quot;abc&quot;) -&gt; False&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">berechne_upn</span><span class="p">(</span><span class="n">eingabe_im_upn_format</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;berechnet den Wert eines UPN-Ausdrucks und gibt ihn zurück.</span>
+<span class="sd">    Beispiel: berechne_upn(&quot;3 4 + 6 *&quot;) liefert 42&quot;&quot;&quot;</span>
+
+    <span class="o">...</span> <span class="c1"># Hier kommt dein Code hin</span>
+    
+    <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># Hier musst du den berechneten Wert des Term zurückgeben</span>
+
+
+<span class="c1"># Test: Liste mit Beispielen (jeweils UPN-Ausdruck und erwartetes Ergebnis)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tests für die Funktion berechne_upn:&quot;</span><span class="p">)</span>
+<span class="n">beispiele</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 +&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 -&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 *&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;8 4 //&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 + 6 *&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;6 7 * 0 *&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;2 3 + 4 * 14 + 2 // 20 - 0 3 - *&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;2 3 + 4 * 14 + 2 // 20 - -3 *&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;42 1 1 - //&quot;</span><span class="p">,</span> <span class="s2">&quot;Fehler: Division durch 0&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">upn</span><span class="p">,</span> <span class="n">erwartet</span> <span class="ow">in</span> <span class="n">beispiele</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">berechne_upn</span><span class="p">(</span><span class="n">upn</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Richtig: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> ergibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Falsch: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> ergibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">, erwartet war </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Richtig: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> wirft </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Falsch: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> wirft </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, erwartet war </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tests für die Funktion berechne_upn:
+Falsch: 3 4 + ergibt None, erwartet war 7
+Falsch: 3 4 - ergibt None, erwartet war -1
+Falsch: 3 4 * ergibt None, erwartet war 12
+Falsch: 8 4 // ergibt None, erwartet war 2
+Falsch: 3 4 + 6 * ergibt None, erwartet war 42
+Falsch: 6 7 * 0 * ergibt None, erwartet war 0
+Falsch: 2 3 + 4 * 14 + 2 // 20 - 0 3 - * ergibt None, erwartet war 9
+Falsch: 2 3 + 4 * 14 + 2 // 20 - -3 * ergibt None, erwartet war 9
+Falsch: 42 1 1 - // ergibt None, erwartet war Fehler: Division durch 0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lösung:</strong></p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">berechne_upn</span><span class="p">(</span><span class="n">eingabe_im_upn_format</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">stapel</span> <span class="o">=</span> <span class="n">Stapel</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">eingabe_im_upn_format</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ist_zahl</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>  <span class="c1"># Wenn das Token eine (positive) Zahl ist</span>
+            <span class="n">stapel</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">stapel</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">stapel</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+                <span class="n">stapel</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                <span class="n">stapel</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+                <span class="n">stapel</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;//&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Fehler: Division durch 0&quot;</span><span class="p">)</span>
+                <span class="n">stapel</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span> <span class="o">//</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unbekanntes Token </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">stapel</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+
+<span class="c1"># Test: Liste mit Beispielen (jeweils UPN-Ausdruck und erwartetes Ergebnis)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tests für die Funktion berechne_upn:&quot;</span><span class="p">)</span>
+<span class="n">beispiele</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 +&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 -&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 *&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;8 4 //&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;3 4 + 6 *&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;6 7 * 0 *&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;2 3 + 4 * 14 + 2 // 20 - 0 3 - *&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;2 3 + 4 * 14 + 2 // 20 - -3 *&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;42 1 1 - //&quot;</span><span class="p">,</span> <span class="s2">&quot;Fehler: Division durch 0&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">upn</span><span class="p">,</span> <span class="n">erwartet</span> <span class="ow">in</span> <span class="n">beispiele</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">berechne_upn</span><span class="p">(</span><span class="n">upn</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Richtig: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> ergibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Falsch: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> ergibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">, erwartet war </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Richtig: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> wirft </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Falsch: </span><span class="si">{</span><span class="n">upn</span><span class="si">}</span><span class="s2"> wirft </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, erwartet war </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Richtig: 3 4 + ergibt 7
+Richtig: 3 4 - ergibt -1
+Richtig: 3 4 * ergibt 12
+Richtig: 8 4 // ergibt 2
+Richtig: 3 4 + 6 * ergibt 42
+Richtig: 6 7 * 0 * ergibt 0
+Richtig: 2 3 + 4 * 14 + 2 // 20 - 0 3 - * ergibt 9
+Richtig: 2 3 + 4 * 14 + 2 // 20 - -3 * ergibt 9
+Richtig: 42 1 1 - // wirft Fehler: Division durch 0
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jil91/ds_ki-js2",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./datenstrukturen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="stack.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Stapel (Stack)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="warteschlangen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>Warteschlangen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hohe-des-stapels-bestimmen">5.2.1. Höhe des Stapels bestimmen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-umgekehrte-polnische-notation-upn">5.2.2. Aufgabe: Umgekehrte polnische Notation (UPN)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

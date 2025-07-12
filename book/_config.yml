@@ -16,6 +16,12 @@ html:
         <div>
             🤖
         </div>
+  # Hier können andere html-bezogene Einstellungen stehen, z.B.
+  # use_repository_button: true
+  # home_page_in_navbar: false
+  # baseurl: "https://jil91.github.io/ds_ki-js2/" # Nur wenn du eine Basis-URL hast
+
+  html_extra_path: ["_static/pdfs"] # <-- Diese Zeile ist entscheidend!
 
 #######################################################################################
 # Parse and render settings

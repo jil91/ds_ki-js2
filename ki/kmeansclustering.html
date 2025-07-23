@@ -32,8 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
     <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
@@ -56,19 +58,26 @@
     <script src="../_static/translations.js?v=79cc9f76"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy\ki\kmeansclustering.3c06aecb-3747-4cdf-9fbc-78d794fcbe1d.js"></script>
+    <script defer="defer" src="../_static/tippy/ki/kmeansclustering.9c7a68ca-bab8-47ff-8c24-a343bbbbadc3.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ki/kmeansclustering';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
-    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/ki/kmeansclustering.html" />
+    <link rel="canonical" href=" &#34;https://jil91.github.io/&#34;/ki/kmeansclustering.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
@@ -466,7 +475,8 @@ document.write(`
 <p>In einfachen Beispielen könnten wir die Cluster auch mit dem Auge erkennen und auch ablesen, welche Zahl für <span class="math notranslate nohighlight">\(k\)</span> sinnvoll wäre. Bei großen Datenmengen oder nicht eindeutigen Clustern benötigen wir dann aber die Hilfe des Algorithmus.</p>
 <p><strong>Aufgabe 1:</strong> Wie würdest du denn die folgenden Daten in Cluster aufteilen?</p>
 <figure class="align-center" id="fig-kmeans-3-cluster-einfach-datenpunkte">
-<a class="reference internal image-reference" href="../_images/kmeans_3_cluster_einfach_datenpunkte.svg"><img alt="../_images/kmeans_3_cluster_einfach_datenpunkte.svg" src="../_images/kmeans_3_cluster_einfach_datenpunkte.svg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_3_cluster_einfach_datenpunkte.svg"><img alt="../_images/kmeans_3_cluster_einfach_datenpunkte.svg" src="../_images/kmeans_3_cluster_einfach_datenpunkte.svg" style="width: 80%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.1 </span><span class="caption-text">Beispiel von einfacher Verteilung von Datenpunkten</span><a class="headerlink" href="#fig-kmeans-3-cluster-einfach-datenpunkte" title="Link to this image">#</a></p>
 </figcaption>
@@ -474,7 +484,8 @@ document.write(`
 <div class="tip dropdown admonition">
 <p class="admonition-title">Lösung</p>
 <figure class="align-center" id="fig-kmeans-3-cluster-einfach-ergebnis">
-<a class="reference internal image-reference" href="../_images/kmeans_3_cluster_einfach_ergebnis.svg"><img alt="../_images/kmeans_3_cluster_einfach_ergebnis.svg" src="../_images/kmeans_3_cluster_einfach_ergebnis.svg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_3_cluster_einfach_ergebnis.svg"><img alt="../_images/kmeans_3_cluster_einfach_ergebnis.svg" src="../_images/kmeans_3_cluster_einfach_ergebnis.svg" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.2 </span><span class="caption-text">Ergebnis des k-Means-Clustering mit k=3</span><a class="headerlink" href="#fig-kmeans-3-cluster-einfach-ergebnis" title="Link to this image">#</a></p>
 </figcaption>
@@ -483,7 +494,8 @@ document.write(`
 </div>
 <p><strong>Aufgabe 2:</strong> Wenn du dir das nächste Beispiel anschaust: welche Cluster-Einteilung würdest du hier vornehmen?</p>
 <figure class="align-center" id="fig-kmeans-3-cluster-komplex-datenpunkte">
-<a class="reference internal image-reference" href="../_images/kmeans_4_cluster_komplex_datenpunkte.svg"><img alt="../_images/kmeans_4_cluster_komplex_datenpunkte.svg" src="../_images/kmeans_4_cluster_komplex_datenpunkte.svg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_4_cluster_komplex_datenpunkte.svg"><img alt="../_images/kmeans_4_cluster_komplex_datenpunkte.svg" src="../_images/kmeans_4_cluster_komplex_datenpunkte.svg" style="width: 80%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.3 </span><span class="caption-text">Beispiel von komplexer Verteilung von Datenpunkten</span><a class="headerlink" href="#fig-kmeans-3-cluster-komplex-datenpunkte" title="Link to this image">#</a></p>
 </figcaption>
@@ -491,7 +503,8 @@ document.write(`
 <div class="tip dropdown admonition">
 <p class="admonition-title">Lösung</p>
 <figure class="align-center" id="fig-kmeans-3-cluster-komplex-ergebnis">
-<a class="reference internal image-reference" href="../_images/kmeans_4_cluster_komplex_ergebnis.svg"><img alt="../_images/kmeans_4_cluster_komplex_ergebnis.svg" src="../_images/kmeans_4_cluster_komplex_ergebnis.svg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_4_cluster_komplex_ergebnis.svg"><img alt="../_images/kmeans_4_cluster_komplex_ergebnis.svg" src="../_images/kmeans_4_cluster_komplex_ergebnis.svg" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.4 </span><span class="caption-text">Ergebnis des k-Means-Clustering mit k=4</span><a class="headerlink" href="#fig-kmeans-3-cluster-komplex-ergebnis" title="Link to this image">#</a></p>
 </figcaption>
@@ -618,7 +631,8 @@ Die Schritte 2 und 3 werden solange wiederholt, bis sich die Zentroiden nicht me
 </small><p>Keine übergroße Menge aber es ist schon mal nicht einfach, hier ad hoc eine konkrete Hilfestellung für unsere Obstfrage zu erhalten.</p>
 <p>In <a class="reference internal" href="#fig-kmeans-obst"><span class="std std-numref">Abb. 11.5</span></a> ist die Sammlung von Obstsorten visualisiert: 🍎 (Apfel), 🍐 (Birne), 🍌 (Banane), 🍊 (Orange), 🍇 (Weintrauben), 🍓 (Erdbeere), 🍉 (Wassermelone), 🥭 (Mango). Wir möchten diese Obstsorten nun basierend auf Wasser- und Fruchtzuckergehalt in Cluster aufteilen.</p>
 <figure class="align-center" id="fig-kmeans-obst">
-<a class="reference internal image-reference" href="../_images/kmeans_obst.svg"><img alt="../_images/kmeans_obst.svg" src="../_images/kmeans_obst.svg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_obst.svg"><img alt="../_images/kmeans_obst.svg" src="../_images/kmeans_obst.svg" style="width: 80%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.5 </span><span class="caption-text">Obstsorten visualisiert nach Wassergehalt und Fruchzuckergehalt</span><a class="headerlink" href="#fig-kmeans-obst" title="Link to this image">#</a></p>
 </figcaption>
@@ -627,7 +641,8 @@ Die Schritte 2 und 3 werden solange wiederholt, bis sich die Zentroiden nicht me
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ergebnis k-Means</p>
 <figure class="align-center" id="fig-kmeans-obst-3">
-<a class="reference internal image-reference" href="../_images/kmeans_obst_clusters_3.svg"><img alt="../_images/kmeans_obst_clusters_3.svg" src="../_images/kmeans_obst_clusters_3.svg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_obst_clusters_3.svg"><img alt="../_images/kmeans_obst_clusters_3.svg" src="../_images/kmeans_obst_clusters_3.svg" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.6 </span><span class="caption-text">k-Means-Clustering der Obstsorten mit k=3</span><a class="headerlink" href="#fig-kmeans-obst-3" title="Link to this image">#</a></p>
 </figcaption>
@@ -647,7 +662,8 @@ Die Schritte 2 und 3 werden solange wiederholt, bis sich die Zentroiden nicht me
 <div class="tip dropdown admonition">
 <p class="admonition-title">Ergebnis k-Means Variante 2</p>
 <figure class="align-center" id="fig-kmeans-obst-42">
-<a class="reference internal image-reference" href="../_images/kmeans_obst_clusters_42.svg"><img alt="../_images/kmeans_obst_clusters_42.svg" src="../_images/kmeans_obst_clusters_42.svg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_obst_clusters_42.svg"><img alt="../_images/kmeans_obst_clusters_42.svg" src="../_images/kmeans_obst_clusters_42.svg" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.7 </span><span class="caption-text">k-Means-Clustering der Obstsorten mit k=3 Variante 2</span><a class="headerlink" href="#fig-kmeans-obst-42" title="Link to this image">#</a></p>
 </figcaption>
@@ -755,7 +771,8 @@ Der Algorithmus findet also nicht immer die ‘beste’ Lösung, sondern eine, d
 <li><p>Jedoch flacht die Abnahme ab, und ab einem bestimmten Punkt lohnt es sich nicht mehr, die Anzahl der Cluster weiter zu erhöhen. Dieser Punkt wird als <strong>Knickpunkt (Elbow)</strong> bezeichnet.</p></li>
 </ul>
 <figure class="align-center" id="fig-kmeans-elbow-demo-svg">
-<a class="reference internal image-reference" href="../_images/kmeans_elbow_demo.svg"><img alt="../_images/kmeans_elbow_demo.svg" src="../_images/kmeans_elbow_demo.svg" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans_elbow_demo.svg"><img alt="../_images/kmeans_elbow_demo.svg" src="../_images/kmeans_elbow_demo.svg" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 11.8 </span><span class="caption-text">Demonstration der Elbow-Methode</span><a class="headerlink" href="#fig-kmeans-elbow-demo-svg" title="Link to this image">#</a></p>
 </figcaption>
@@ -771,25 +788,24 @@ Der Algorithmus findet also nicht immer die ‘beste’ Lösung, sondern eine, d
 </div>
 </section>
 
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "jil91/ds_ki-js2",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            name: "python3",
-            path: "./ki"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
 
                 </article>
               

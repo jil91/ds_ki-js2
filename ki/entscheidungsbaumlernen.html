@@ -32,8 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
     <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
@@ -56,19 +58,26 @@
     <script src="../_static/translations.js?v=79cc9f76"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy\ki\entscheidungsbaumlernen.216c5455-16a7-4064-8912-d7a93ad7f645.js"></script>
+    <script defer="defer" src="../_static/tippy/ki/entscheidungsbaumlernen.fb090128-d309-4902-93ac-63420defc397.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ki/entscheidungsbaumlernen';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
-    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/ki/entscheidungsbaumlernen.html" />
+    <link rel="canonical" href=" &#34;https://jil91.github.io/&#34;/ki/entscheidungsbaumlernen.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
@@ -732,7 +741,8 @@ Für jede Aufteilung berechnen wir</p>
 <h3><span class="section-number">12.4.4. </span>Der Entscheidungsbaum nach dem ersten Schritt<a class="headerlink" href="#der-entscheidungsbaum-nach-dem-ersten-schritt" title="Link to this heading">#</a></h3>
 <p>Der Entscheidungsbaum beginnt also mit der Frage nach dem Feature <em>Kamera</em>. Da dieses Merkmal drei mögliche Werte hat (<em>mittel</em>, <em>wichtig</em>, <em>egal</em>), teilen wir die Datensätze entsprechend auf.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg"><img alt="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg" src="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg"><img alt="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg" src="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg" style="width: 50%;" />
+</a>
 </figure>
 </section>
 <section id="daten-mit-denen-weitergearbeitet-wird">
@@ -842,7 +852,8 @@ Feature <em>Speicher</em> auch nicht besonders aussagekräftig.</p></li>
 <section id="fertiger-entscheidungsbaum-tiefe-2">
 <h3><span class="section-number">12.4.6. </span>Fertiger Entscheidungsbaum (Tiefe 2)<a class="headerlink" href="#fertiger-entscheidungsbaum-tiefe-2" title="Link to this heading">#</a></h3>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/entscheidungsbaum_tiefe_2.svg"><img alt="../_images/entscheidungsbaum_tiefe_2.svg" src="../_images/entscheidungsbaum_tiefe_2.svg" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/entscheidungsbaum_tiefe_2.svg"><img alt="../_images/entscheidungsbaum_tiefe_2.svg" src="../_images/entscheidungsbaum_tiefe_2.svg" style="width: 80%;" />
+</a>
 </figure>
 <p>Achtung: Die Werte in den Endknoten sind die <em>häufigsten</em> Empfehlungen in den jeweiligen Datensätzen. Das bedeutet nicht, dass die Empfehlung immer so ausfällt. Es ist nur die häufigste Empfehlung in den jeweiligen Datensätzen. Um zu überprüfen, wie gut der
 Entscheidungsbaum die Trainingsdaten klassifiziert, können wir die <em>Genauigkeit</em> berechnen. Dazu zählen wir die Anzahl der Datensätze, bei denen die Empfehlung des Entscheidungsbaums mit der tatsächlichen Empfehlung übereinstimmt und teilen durch die Gesamtanzahl der Datensätze.</p>
@@ -960,25 +971,24 @@ Entscheidungsbaum die Trainingsdaten klassifiziert, können wir die <em>Genauigk
 </section>
 </section>
 
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "jil91/ds_ki-js2",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            name: "python3",
-            path: "./ki"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
 
                 </article>
               

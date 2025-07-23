@@ -32,8 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
     <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
@@ -56,19 +58,26 @@
     <script src="../_static/translations.js?v=79cc9f76"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy\datenstrukturen\binaerbaeume.c8e2848a-6974-41e0-929f-ea4f2ec132a2.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/binaerbaeume.8b19bf4e-82f6-4b06-bf16-4ccb089ac25b.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/binaerbaeume';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
-    <link rel="canonical" href=" &#34;/ds_ki-js2/&#34;/datenstrukturen/binaerbaeume.html" />
+    <link rel="canonical" href=" &#34;https://jil91.github.io/&#34;/datenstrukturen/binaerbaeume.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
@@ -479,7 +488,8 @@ document.write(`
 <li><p>der Knoten “Fisch” die Wurzel des <strong>rechten Teilbaums</strong>.</p></li>
 </ul>
 <figure class="align-center" id="fig-saeugetiere15">
-<a class="reference internal image-reference" href="../_images/säugetiere_15knoten.svg"><img alt="../_images/s%C3%A4ugetiere_15knoten.svg" src="../_images/s%C3%A4ugetiere_15knoten.svg" style="width: 95%;" /></a>
+<a class="reference internal image-reference" href="../_images/säugetiere_15knoten.svg"><img alt="../_images/s%C3%A4ugetiere_15knoten.svg" src="../_images/s%C3%A4ugetiere_15knoten.svg" style="width: 95%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.9 </span><span class="caption-text">Binärbaum mit verschiedenen Säugetier-Kategorien</span><a class="headerlink" href="#fig-saeugetiere15" title="Link to this image">#</a></p>
 </figcaption>
@@ -489,7 +499,8 @@ document.write(`
 <h2><span class="section-number">7.4.2. </span>Aufgaben<a class="headerlink" href="#aufgaben" title="Link to this heading">#</a></h2>
 <p>Betrachte den Baum in <a class="reference internal" href="#fig-aufgabe-binbaum-zahlen"><span class="std std-numref">Abb. 7.10</span></a> und beantworte dann die folgenden Fragen:</p>
 <figure class="align-center" id="fig-aufgabe-binbaum-zahlen">
-<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_zahlen.svg"><img alt="../_images/aufgabe_binbaum_zahlen.svg" src="../_images/aufgabe_binbaum_zahlen.svg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_zahlen.svg"><img alt="../_images/aufgabe_binbaum_zahlen.svg" src="../_images/aufgabe_binbaum_zahlen.svg" style="width: 70%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.10 </span><span class="caption-text">Ein Binärbaum voller Zahlen</span><a class="headerlink" href="#fig-aufgabe-binbaum-zahlen" title="Link to this image">#</a></p>
 </figcaption>
@@ -526,7 +537,8 @@ document.write(`
 <section id="knoten">
 <h3><span class="section-number">7.4.3.1. </span>Knoten<a class="headerlink" href="#knoten" title="Link to this heading">#</a></h3>
 <figure class="align-center" id="fig-knoten9">
-<a class="reference internal image-reference" href="../_images/knoten9.svg"><img alt="../_images/knoten9.svg" src="../_images/knoten9.svg" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../_images/knoten9.svg"><img alt="../_images/knoten9.svg" src="../_images/knoten9.svg" style="width: 25%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.11 </span><span class="caption-text">Knoten mit zwei ausgehenden Kanten</span><a class="headerlink" href="#fig-knoten9" title="Link to this image">#</a></p>
 </figcaption>
@@ -556,7 +568,8 @@ document.write(`
 <p>Um zu verstehen, wie aus einer so einfachen Datenstruktur ein komplexes Gebilde wie der Baum aus
 <a class="reference internal" href="#fig-saeugetiere-7tiere"><span class="std std-numref">Abb. 7.12</span></a> entstehen kann, bauen wir dieses Beispiel einfach in Python nach:</p>
 <figure class="align-center" id="fig-saeugetiere-7tiere">
-<a class="reference internal image-reference" href="../_images/säugetiere_7tiere.svg"><img alt="../_images/s%C3%A4ugetiere_7tiere.svg" src="../_images/s%C3%A4ugetiere_7tiere.svg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/säugetiere_7tiere.svg"><img alt="../_images/s%C3%A4ugetiere_7tiere.svg" src="../_images/s%C3%A4ugetiere_7tiere.svg" style="width: 70%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.12 </span><span class="caption-text">Dieser Baum enthält zahlreiche Knoten (naja, sieben)</span><a class="headerlink" href="#fig-saeugetiere-7tiere" title="Link to this image">#</a></p>
 </figcaption>
@@ -614,7 +627,8 @@ document.write(`
 Der Grund dafür ist… ach, eigentlich gibt es keinen, außer dass das doch ganz hübsch aussieht, oder nicht? Und vielleicht, weil diese Symbole im Automaten immer wieder in anderen Reihenfolgen erscheinen - genau wie bei uns auch gleich.</p>
 </aside>
 <figure class="align-center" id="fig-baum3einarmiger-bandit">
-<a class="reference internal image-reference" href="../_images/baum3einarmiger_bandit.svg"><img alt="../_images/baum3einarmiger_bandit.svg" src="../_images/baum3einarmiger_bandit.svg" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../_images/baum3einarmiger_bandit.svg"><img alt="../_images/baum3einarmiger_bandit.svg" src="../_images/baum3einarmiger_bandit.svg" style="width: 25%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.13 </span><span class="caption-text">Ein Baum mit drei Knoten. In welcher Reihenfolge würdest du sie ausgeben?</span><a class="headerlink" href="#fig-baum3einarmiger-bandit" title="Link to this image">#</a></p>
 </figcaption>
@@ -628,7 +642,8 @@ Der Grund dafür ist… ach, eigentlich gibt es keinen, außer dass das doch gan
 </ul>
 <p>Jede dieser Reihenfolgen kann bei bestimmten Anwendungen sinnvoll sein. Es wird allerdings leider etwas komplizierter, wenn der Baum größer ist…</p>
 <figure class="align-center" id="fig-baum7buchstaben">
-<a class="reference internal image-reference" href="../_images/baum7buchstaben.svg"><img alt="../_images/baum7buchstaben.svg" src="../_images/baum7buchstaben.svg" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/baum7buchstaben.svg"><img alt="../_images/baum7buchstaben.svg" src="../_images/baum7buchstaben.svg" style="width: 50%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.14 </span><span class="caption-text">Ein Baum mit sieben Knoten.</span><a class="headerlink" href="#fig-baum7buchstaben" title="Link to this image">#</a></p>
 </figcaption>
@@ -640,7 +655,8 @@ Der Grund dafür ist… ach, eigentlich gibt es keinen, außer dass das doch gan
 <li><p><strong>Inorder:</strong> Die Wurzel wird <strong>zwischen</strong> den beiden <strong>Teilbäumen</strong> ausgegeben, d.h. nachdem der linke und bevor der rechte Teilbaum ausgegeben wurde. Natürlich werden auch hier die beiden <strong>Teilbäume - wie der Gesamtbaum - in Inorder-Reihenfolge durchlaufen</strong> und ausgegeben.</p></li>
 </ul>
 <figure class="align-center" id="fig-teilbaume">
-<a class="reference internal image-reference" href="../_images/teilbäume.png"><img alt="../_images/teilb%C3%A4ume.png" src="../_images/teilb%C3%A4ume.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/teilbäume.png"><img alt="../_images/teilb%C3%A4ume.png" src="../_images/teilb%C3%A4ume.png" style="width: 50%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.15 </span><span class="caption-text">Der Gesamtbaum hat 7 Knoten. Er besteht aus einer Wurzel und zwei Teilbäumen mit je 3 Knoten.</span><a class="headerlink" href="#fig-teilbaume" title="Link to this image">#</a></p>
 </figcaption>
@@ -716,7 +732,8 @@ muss man zuerst in den linken Teilbaum steigen.</p>
 <p>an.</p>
 <p>a)</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_zahlen.svg"><img alt="../_images/aufgabe_binbaum_zahlen.svg" src="../_images/aufgabe_binbaum_zahlen.svg" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_zahlen.svg"><img alt="../_images/aufgabe_binbaum_zahlen.svg" src="../_images/aufgabe_binbaum_zahlen.svg" style="width: 60%;" />
+</a>
 </figure>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Lösung:</p>
@@ -728,7 +745,8 @@ muss man zuerst in den linken Teilbaum steigen.</p>
 </div>
 <p>b)</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_suchbaum.svg"><img alt="../_images/aufgabe_binbaum_suchbaum.svg" src="../_images/aufgabe_binbaum_suchbaum.svg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_suchbaum.svg"><img alt="../_images/aufgabe_binbaum_suchbaum.svg" src="../_images/aufgabe_binbaum_suchbaum.svg" style="width: 70%;" />
+</a>
 </figure>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Lösung:</p>
@@ -740,7 +758,8 @@ muss man zuerst in den linken Teilbaum steigen.</p>
 </div>
 <p>c)</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_text.svg"><img alt="../_images/aufgabe_binbaum_text.svg" src="../_images/aufgabe_binbaum_text.svg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/aufgabe_binbaum_text.svg"><img alt="../_images/aufgabe_binbaum_text.svg" src="../_images/aufgabe_binbaum_text.svg" style="width: 70%;" />
+</a>
 </figure>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Lösung:</p>
@@ -756,7 +775,8 @@ muss man zuerst in den linken Teilbaum steigen.</p>
 <section id="umsetzung-in-pseudo-code-rekursion">
 <h2><span class="section-number">7.4.6. </span>Umsetzung in (Pseudo-)Code. Rekursion<a class="headerlink" href="#umsetzung-in-pseudo-code-rekursion" title="Link to this heading">#</a></h2>
 <figure class="align-right">
-<a class="reference internal image-reference" href="../_images/teilbäume.png"><img alt="../_images/teilb%C3%A4ume.png" src="../_images/teilb%C3%A4ume.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../_images/teilbäume.png"><img alt="../_images/teilb%C3%A4ume.png" src="../_images/teilb%C3%A4ume.png" style="width: 50%;" />
+</a>
 </figure>
 <p>Diesen Baum haben vorhin bereits in Preorder-, Postorder- und in Inorder-Reihenfolge ausgegeben, allerdings nur <em>von Hand</em>. Wie können wir das programmieren?</p>
 <p>Für (z.B.) <strong>Preorder</strong> kann man den Algorithmus intuitiv so beschreiben:</p>
@@ -870,7 +890,8 @@ oder die Funktion beendet.</p></li>
 <h3><span class="section-number">7.4.7.2. </span>Aufgabe 2<a class="headerlink" href="#aufgabe-2" title="Link to this heading">#</a></h3>
 <p>Weiter oben hatten wir diesen Baum in Python mithilfe der Klasse <code class="docutils literal notranslate"><span class="pre">Knoten</span></code> definiert:</p>
 <figure class="align-center" id="fig-saeugetiere-7tiere-v2">
-<a class="reference internal image-reference" href="../_images/säugetiere_7tiere.svg"><img alt="../_images/s%C3%A4ugetiere_7tiere.svg" src="../_images/s%C3%A4ugetiere_7tiere.svg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/säugetiere_7tiere.svg"><img alt="../_images/s%C3%A4ugetiere_7tiere.svg" src="../_images/s%C3%A4ugetiere_7tiere.svg" style="width: 70%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.16 </span><span class="caption-text">Dieser Baum enthält zahlreiche Knoten (äh, wie viele waren es nochmal genau?)</span><a class="headerlink" href="#fig-saeugetiere-7tiere-v2" title="Link to this image">#</a></p>
 </figcaption>
@@ -914,10 +935,10 @@ oder die Funktion beendet.</p></li>
 </div>
 <p><strong>Lösung:</strong></p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -969,10 +990,10 @@ oder die Funktion beendet.</p></li>
 </div>
 <p><strong>Lösung:</strong></p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -1031,10 +1052,10 @@ oder die Funktion beendet.</p></li>
 </div>
 <p><strong>Lösung:</strong></p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="p">:</span> <span class="n">Knoten</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -1094,10 +1115,10 @@ None
 </div>
 <p><strong>Lösung 1:</strong> Die folgende Lösung ist zwar korrekt, aber nicht besonders effizient, wenn der gesuchte Wert eigentlich schon früh gefunden wurde. Kannst du erklären, warum?</p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -1132,10 +1153,10 @@ False
 </div>
 <p><strong>Lösung 2:</strong> Diese zweite Lösung ist viel effizienter, wenn der gesuchte Wert schon früh gefunden wird. Kannst du erklären, warum?</p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Effizientere Variante, die die Suche abbricht, sobald das Element gefunden wurde</span>
@@ -1183,7 +1204,8 @@ False
 </aside>
 <p>V.a. haben wir jetzt die Klasse <code class="docutils literal notranslate"><span class="pre">Binaerbaum</span></code>, d.h. den Abstrakten Datentyp, der alle “öffentlich” zugänglichen Operationen auf Binärbäumen bereitstellt, ohne dass die Nutzer etwas von Knoten, Teilbäumen oder Rekursion verstehen müssen. Wie die Arbeit intern verteilt wird, siehst du im untenstehenden Code.</p>
 <figure class="align-center" id="fig-binbaum-fosa">
-<a class="reference internal image-reference" href="../_images/BinBaum.svg"><img alt="../_images/BinBaum.svg" src="../_images/BinBaum.svg" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../_images/BinBaum.svg"><img alt="../_images/BinBaum.svg" src="../_images/BinBaum.svg" style="width: 70%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 7.17 </span><span class="caption-text">Klassendiagramm Binärbaum aus der Formelsammlung</span><a class="headerlink" href="#fig-binbaum-fosa" title="Link to this image">#</a></p>
 </figcaption>
@@ -1386,25 +1408,24 @@ Enthält der Baum die Zahl 8? False
 </section>
 </section>
 
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "jil91/ds_ki-js2",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            name: "python3",
-            path: "./datenstrukturen"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
 
                 </article>
               

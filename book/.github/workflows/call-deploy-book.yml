@@ -1,0 +1,48 @@
+name: Deploy Book
+# This workflow builds and deploys the Jupyter Book to GitHub Pages
+# (Neu erstellt und sauber eingefügt am 23. Mai 2025)
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - book/**
+      - .github/workflows/call-deploy-book.yml
+  workflow_dispatch: # Ermöglicht manuelles Auslösen in GitHub Actions
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    permissions: # <--- DIESEN BLOCK HINZUFÜGEN
+      contents: write # Erlaubt dem Bot, in das Repository zu schreiben (für den Push)
+      pages: write    # Erlaubt dem Bot, GitHub Pages zu verwalten
+      id-token: write # Wichtig für OIDC, falls benötigt (ist schon da, aber schadet nicht)
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0n
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # Deine bestätigte Version ist 3.9.1, also passt '3.9' hier
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install jupyter-book==1.0.4
+          pip install myst-parser
+          # Optional: pip install myst-nb # Falls du Jupyter Notebooks hast
+
+      - name: Build the Book
+        run: |
+          cd book # Wechsel in den 'book'-Ordner, wo dein _config.yml ist
+          jupyter-book build .
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book/_build/html # Hier sind die fertigen HTML-Dateien nach dem Build
+          publish_branch: gh-pages # Hierher wird der Branch erstellt/aktualisiert

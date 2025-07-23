@@ -10,7 +10,7 @@ only_build_toc_files: true
 
 html:
   favicon : "figures/favicon.ico"
-  baseurl :  "https://github.io/jil91/ds_ki-js2" #Replace this with your own URL
+  baseurl :  "https://jil91.github.io/" #/ds_ki-js2/" # Beachte: KEIN https://jil91.github.io/ davor, nur den Repository-Namen mit Schrägstrichen
   home_page_in_navbar       : true
   extra_footer: |
         <div>

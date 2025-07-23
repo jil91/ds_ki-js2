@@ -1,0 +1,58 @@
+format: jb-book
+root: intro.md
+
+parts:
+  - caption: Nutzung   # Das wird Part 1 (Teile werden nicht nummeriert)
+    numbered: 2
+    chapters:
+    - file: nutzung.md
+      sections:
+      - file: live_code.ipynb
+      - file: parsons_problems_einfuehrung.ipynb
+      # - file: features.ipynb
+  
+  - caption: Objektorienterte Programmierung (OOP)
+    numbered: 3
+    chapters:
+    - file: oop/t01_einstieg.md #Test mmit PDF
+
+  - caption: Datenstrukturen  # Das wird Part 2
+    numbered: 4
+    chapters:
+    - file: datenstrukturen/datenstrukturen_allgemein.ipynb
+    - file: datenstrukturen/listen_einfuehrung.ipynb
+      title: Listen
+      sections:
+      - file: datenstrukturen/verkettete_listen.ipynb
+      - file: datenstrukturen/verkettete_liste_operationen1.ipynb
+      - file: datenstrukturen/verkettete_liste_operationen2.ipynb
+      - file: datenstrukturen/verkettete_liste_operationen_loesungen.ipynb
+    - file: datenstrukturen/stapel_und_warteschlangen_intro.md
+      title: Stapel und Warteschlangen
+      sections:
+      - file: datenstrukturen/stack.ipynb
+      - file: datenstrukturen/stack-aufgaben.ipynb
+      - file: datenstrukturen/warteschlangen.ipynb
+    - file: datenstrukturen/assoziative_arrays.ipynb
+    - file: datenstrukturen/baeume.ipynb
+      title: Bäume
+      sections:
+      - file: datenstrukturen/binaerbaeume.ipynb
+      - file: datenstrukturen/suchbaeume.ipynb
+    - file: datenstrukturen/klausurvorbereitung_mit_loesungen.ipynb
+
+  - caption: Künstliche Intelligenz
+    numbered: 5
+    chapters:
+    - file: ki/ki_allgemein.ipynb
+    - file: ki/knearestneighbor.ipynb
+      sections:
+      - file: ki/knearestneighbor2.ipynb
+    - file: ki/kmeansclustering.ipynb
+      sections:
+      - file: ki/kmeansclustering2_aufgabe.ipynb
+      - file: ki/kmeansclustering2_loesung.ipynb
+    - file: ki/entscheidungsbaumlernen.ipynb
+    - file: ki/minimax.ipynb
+    - file: ki/neuronalenetze.ipynb
+

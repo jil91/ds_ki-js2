@@ -15,6 +15,24 @@ parts:
     numbered: 3
     chapters:
     - file: oop/t01_einstieg.md #Test mmit PDF
+      title: Einführung in OOP
+    - file: oop/t02_kapselung.md
+      title: Datenkapselung
+    - file: oop/t03_vererbung.md
+      title: Vererbung
+    - file: oop/t04_abstrakeKlassen.md
+      title: Abstrakte Klassen
+    - file: oop/t05_interfaces.md
+      title: Interfaces
+    - file: oop/t06_klassenvariablen.md
+      title: Klassenvariablen
+    - file: oop/t07_assoziationen.md
+      title: Assoziationen
+    - file: oop/t08_3SA.md
+      title: 3SA - Drei-Schichten-Architektur
+    - file: oop/t09_sequenzdiagramme.md
+      title: Sequenzdiagramme
+      
 
   - caption: Datenstrukturen  # Das wird Part 2
     numbered: 4

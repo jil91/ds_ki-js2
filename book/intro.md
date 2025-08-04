@@ -1,6 +1,6 @@
-# Datenstrukturen und Künstliche Intelligenz
+# OOP, Datenbanken, Datenstrukturen und Künstliche Intelligenz
 
-*Skript für die Jahrgangsstufe 2 des Profilfachs Informationstechnik am Technischen Gymnasium (BW)*  
+*Skript für die Jahrgangsstufe 1 und 2 des Profilfachs Informationstechnik am Technischen Gymnasium (BW)*  
 
 **Michael Brenner**<br>
 **Schuljahr 2025/2026**<br>

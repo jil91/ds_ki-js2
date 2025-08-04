@@ -32,10 +32,21 @@ parts:
       title: 3SA - Drei-Schichten-Architektur
     - file: oop/t09_sequenzdiagramme.md
       title: Sequenzdiagramme
-      
+  
+  - caption: Datenbanken
+    numbered: 4
+    chapters:
+    - file: db/t10_einstieg_db.md
+      title: Einstieg Datenbanken
+    - file: db/t11_erm.md
+      title: Entity-Relationship-Modell (ERM)
+    - file: db/t12_erm_rm.md
+      title: Vom ERM ins Relationale Modell (RM)
+    - file: db/t13_normalisierung.md
+      title: Normalisierung
 
   - caption: Datenstrukturen  # Das wird Part 2
-    numbered: 4
+    numbered: 5
     chapters:
     - file: datenstrukturen/datenstrukturen_allgemein.ipynb
     - file: datenstrukturen/listen_einfuehrung.ipynb
@@ -60,7 +71,7 @@ parts:
     - file: datenstrukturen/klausurvorbereitung_mit_loesungen.ipynb
 
   - caption: Künstliche Intelligenz
-    numbered: 5
+    numbered: 6
     chapters:
     - file: ki/ki_allgemein.ipynb
     - file: ki/knearestneighbor.ipynb

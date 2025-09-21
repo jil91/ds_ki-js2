@@ -6,5 +6,6 @@
 <p>
 Hier klicken, um die die Datei als PDF anzusehen:
 
-[Einsteig OOP (PDF)](t01_einstieg.pdf)
+<a href="../_static/pdfs/t01_einstieg.pdf" target="_blank" rel="noopener noreferrer">Einstieg OOP (PDF)</a>
+
 </p>

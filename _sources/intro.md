@@ -20,7 +20,9 @@ name: fig:mindmap_abistoff_it
 Die [BPE 12 des Bildungsplans](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#Objektorientierter%20Entwurf%20II) enthält mehrere sehr unterschiedliche Themen. Davon wird aber bis auf weiteres nur das Thema *Datenstrukturen* relevant fürs Abitur sein... und deshalb konzentrieren wir uns hier darauf 😉.
 ```
 
-In diesem Skript geht es umd die beiden abitur-relevanten Software-Themen aus dem [Bildungsplan der Jahrgangsstufe 13](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS):
+In diesem Skript geht es umd die abitur-relevanten Software-Themen aus dem [Bildungsplan der Jahrgangsstufe 12 und 13](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS):
 
-* **Datenstrukturen** (aus der [Bildungsplaneinheit 12](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#Objektorientierter%20Entwurf%20II)) und
-* **Künstliche Intelligenz** (aus der [Bildungsplaneinheit 13](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS#K%C3%BCnstliche%20Intelligenz))
+* **Objektorienterter Entwurf I** (aus der [Bildungsplaneinheit 8](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))
+* **Datenbanksysteme** (aus der [Bildungsplaneinheit 9](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))
+* **Datenstrukturen (Objekttorienter Entwurf II)** (aus der [Bildungsplaneinheit 12](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))
+* **Künstliche Intelligenz** (aus der [Bildungsplaneinheit 13](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))

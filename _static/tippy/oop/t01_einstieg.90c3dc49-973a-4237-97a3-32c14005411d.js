@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#oop-einstieg\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">2. </span>OOP - Einstieg<a class=\"headerlink\" href=\"#oop-einstieg\" title=\"Link to this heading\">#</a></h1><p>\n<iframe height=\"600\" src=\"../_static/pdfs/t01_einstieg.pdf\" style=\"border: none;\" width=\"800\"></iframe>\n</p>"}
+selector_to_html = {"a[href=\"#oop-einstieg\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">2. </span>OOP - Einstieg<a class=\"headerlink\" href=\"#oop-einstieg\" title=\"Link to this heading\">#</a></h1><p>\n<iframe height=\"600\" src=\"../_static/pdfs/t01_einstieg.pdf\" style=\"border: none;\" width=\"800\"></iframe>\n</p><p>\nHier klicken, um die die Datei als PDF anzusehen:\n<p><a class=\"reference internal\" href=\"#t01_einstieg.pdf\"><span class=\"xref myst\">Einsteig OOP (PDF)</span></a></p>\n</p>"}
 skip_classes = ["headerlink", "sd-stretched-link"]
 
 window.onload = function () {

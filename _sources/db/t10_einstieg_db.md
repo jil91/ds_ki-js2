@@ -12,7 +12,7 @@
            target="_blank" 
            rel="noopener noreferrer" 
            style="color: #007ACC; font-weight: bold; text-decoration: none;">
-            Datenkapselung (PDF)
+            Einstieg DB (PDF)
         </a>
     </p>
 </div>

@@ -70,18 +70,18 @@ parts:
       - file: datenstrukturen/suchbaeume.ipynb
     - file: datenstrukturen/klausurvorbereitung_mit_loesungen.ipynb
 
-  - caption: Künstliche Intelligenz
-    numbered: 6
-    chapters:
-    - file: ki/ki_allgemein.ipynb
-    - file: ki/knearestneighbor.ipynb
-      sections:
-      - file: ki/knearestneighbor2.ipynb
-    - file: ki/kmeansclustering.ipynb
-      sections:
-      - file: ki/kmeansclustering2_aufgabe.ipynb
-      - file: ki/kmeansclustering2_loesung.ipynb
-    - file: ki/entscheidungsbaumlernen.ipynb
-    - file: ki/minimax.ipynb
-    - file: ki/neuronalenetze.ipynb
+  # - caption: Künstliche Intelligenz
+  #   numbered: 6
+  #   chapters:
+  #   - file: ki/ki_allgemein.ipynb
+  #   - file: ki/knearestneighbor.ipynb
+  #     sections:
+  #     - file: ki/knearestneighbor2.ipynb
+  #   - file: ki/kmeansclustering.ipynb
+  #     sections:
+  #     - file: ki/kmeansclustering2_aufgabe.ipynb
+  #     - file: ki/kmeansclustering2_loesung.ipynb
+  #   - file: ki/entscheidungsbaumlernen.ipynb
+  #   - file: ki/minimax.ipynb
+  #   - file: ki/neuronalenetze.ipynb
 

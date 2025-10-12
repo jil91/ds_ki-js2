@@ -23,5 +23,5 @@ In diesem Skript geht es umd die abitur-relevanten Software-Themen aus dem [Bild
 
 * **Objektorienterter Entwurf I** (aus der [Bildungsplaneinheit 8](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))
 * **Datenbanksysteme** (aus der [Bildungsplaneinheit 9](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))
-* **Datenstrukturen (Objekttorienter Entwurf II)** (aus der [Bildungsplaneinheit 12](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))
+* **Datenstrukturen (Objektorienter Entwurf II)** (aus der [Bildungsplaneinheit 12](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))
 * **Künstliche Intelligenz** (aus der [Bildungsplaneinheit 13](https://www.bildungsplaene-bw.de/,Lde/InfTech_OS))

@@ -6,12 +6,11 @@
 **Schuljahr 2025/2026**<br>
 ***Überarbeitet von Manuel Jilg***
 
-```{figure} figures/mindmapNeu.png
----
-name: fig:mindmap_abistoff_it
----
+```{raw} html
+<div style="text-align: center; margin: 20px 0;">
+    <iframe src="_static/mindmap.html" width="100%" height="450" style="border: 2px solid #1e88e5; border-radius: 8px;"></iframe>
+</div>
 Übersicht der Inhalte in Klasse 12 und 13...
-
 ```
 
 ## Worum geht es in diesem Buch?

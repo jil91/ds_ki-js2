@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Themen JS1 und JS2</title>
+
+  <!-- Google Font für modernes Look & Feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Mermaid.js laden -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "dark",
+      themeVariables: {
+        fontFamily: 'Inter',
+        background: '#121212',
+        nodeTextColor: '#ffffff',
+        mainBkg: '#1e1e2f',
+        clusterBkg: '#2c2c3c',
+        clusterBorder: '#3c3c4c',
+        primaryColor: '#1e88e5',
+        edgeLabelBackground: '#1e1e2f',
+        fontSize: '16px',
+        lineColor: '#888',
+        nodeBorder: '#1e88e5',
+        nodeFontSize: '16px'
+      }
+    });
+  </script>
+
+  <style>
+    .mermaid {
+      margin-top: 2rem;    
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mermaid">
+mindmap
+  root((🚀 **Informationstechnik in JS1 und JS2**))
+    🗄️ Datenbanken
+        MySQL-Workbench
+        Einstieg, Begriffe
+        ERM
+        Normalisierung
+        ERM -> RM
+        SQL
+    🧮 Datenstrukturen
+        ADT vs DS
+        Listen
+        Stapel
+        Assoziative Arrays
+        Warteschlangen
+        Bäume
+    🤖 Künstliche Intelligenz
+        Grundlagen
+        k-Nächste-Nachbarn Algorithmus
+        k-Means-Clustering 
+        Entscheidungsbaumlernen
+        Minimax-Algorithmus
+        Alpha-beta pruning 
+        Neuronale Netze
+    🐍 Objektorientierte Programmierung (OOP mit Python)
+        Objekte und Klassen
+        Vererbung
+        Abstrakte Klassen
+        Klassenvariablen und Klassenmethoden
+        Interfaces
+        3-Schichten-Architektur
+        Assoziationen
+        Datenkapselung
+        UML-Modellierung 
+            Klassendiagramm
+            Objektdiagramm
+            Sequenzdiagramm
+  </div>
+</body>
+</html>

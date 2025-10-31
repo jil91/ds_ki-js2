@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/assoziative_arrays.f18c6d9b-bec3-44ac-8b72-374ca0c98cb6.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/assoziative_arrays.def6b1e3-cb28-4697-bcfa-0ccea227e258.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/assoziative_arrays';</script>
@@ -479,12 +479,12 @@ Klar ist: Wir brauchen dazu eine Datenstruktur, die uns ermöglicht <em>schnell<
 <code class="docutils literal notranslate"><span class="pre">namen[17]</span> <span class="pre">=</span> <span class="pre">&quot;Bibi&quot;</span></code>, d.h. an der Position 17 wird der Wert “Bibi” gespeichert. In einer
 zweiten Liste für Telefonnummern kann man dann z.B.
 <code class="docutils literal notranslate"><span class="pre">telefonnummern[17]</span> <span class="pre">=</span> <span class="pre">&quot;0711-1234&quot;</span></code> zuordnene, d.h. an der Position 17 wird der Wert “0711-1234” gespeichert.</p>
-<p>Das ist oft aber nur eine umständliche Behelfslösung für das, was man eigentlich benötigt. Denn wenn man z.B. die Telefonummer von “Heinz” sucht, muss
+<p>Das ist oft aber nur eine umständliche Behelfslösung für das, was man eigentlich benötigt. Denn wenn man z.B. die Telefonnummer von “Heinz” sucht, muss
 man erst die <em>Position</em> von “Heinz” in der Liste <code class="docutils literal notranslate"><span class="pre">namen</span></code> suchen und dann an der gleichen Position in der Liste
 <code class="docutils literal notranslate"><span class="pre">telefonnummern</span></code> nachsehen. Das ist umständlich und fehleranfällig!</p>
 <p>In einem Dictionary wird jedem Schlüssel ein Wert zugeordnet.</p>
 <p><code class="docutils literal notranslate"><span class="pre">telefonbuch[&quot;Heinz&quot;]</span> <span class="pre">=</span> <span class="pre">&quot;0711-1234&quot;</span></code></p>
-<p>bedeutet, das für den Schlüssel “Heinz” der Wert “0711-1234” gespeichert wird.</p>
+<p>bedeutet, dass für den Schlüssel “Heinz” der Wert “0711-1234” gespeichert wird.</p>
 <p>Will man die Telefonnummer von “Heinz” in einem Dictionary <em>suchen</em>, so fragt man einfach nach dem Wert, der dem Schlüssel “Heinz” zugeordnet ist, sozusagen dem Wert an der Position “Heinz”:</p>
 <p><code class="docutils literal notranslate"><span class="pre">tel_heinz</span> <span class="pre">=</span> <span class="pre">telefonbuch[&quot;Heinz&quot;]</span></code></p>
 <p>Das ist einfacher, weniger fehleranfällig und - mit der richtigen Implementierung - sogar viel schneller!</p>
@@ -592,9 +592,10 @@ Schlüssel im Telefonbuch: dict_keys([&#39;Tina&#39;, &#39;Amadeus&#39;])
 <section id="aufgabe-artikel-und-preise">
 <h3><span class="section-number">17.3.1. </span>Aufgabe: Artikel und Preise<a class="headerlink" href="#aufgabe-artikel-und-preise" title="Link to this heading">#</a></h3>
 <p>Unten siehst du ein Dictionary, das Produkte (als Schlüssel) und deren Preise (als Werte) enthält.</p>
-<p>a) Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">preis_fuer</span></code>, die als Parameter einen Produktnamen übergeben bekommt und den Preis des Produkts zurückgibt. Falls das Produkt nicht im Dictionary ist, soll eine Fehlermeldung angezeigt werden.</p>
-<p>b) Wenn ein Artikelname unbekannt ist, soll einfach 0.0 zurückegeliefert werden. (Es gibt mehrere Möglichkeiten, das zu erreichen. Schaue dir die Code-Beispiele zum Telefonbuch weiter oben an.)</p>
-<p>c) Angenommen, Gurken würden, genau wie Äpfel, 0,50 Euro kosten. Ist das ein Problem? Falls ja, welche Fehlermeldung erwartest du?</p>
+<p>a) Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">preis_fuer</span></code>, die als Parameter einen Produktnamen übergeben bekommt und den Preis des Produkts zurückgibt. Falls das Produkt nicht im Dictionary ist, soll eine Fehlermeldung angezeigt werden. Falls das Produkt nicht im Dictionary ist, soll
+einfach 0.0 zurückgeliefert werden. (Es gibt mehrere
+Möglichkeiten, das zu erreichen. Schaue dir die Code-Beispiele zum Telefonbuch weiter oben an.)</p>
+<p>b) Angenommen, Gurken würden, genau wie Äpfel, 0,50 Euro kosten. Ist das ein Problem? Falls ja, welche Fehlermeldung erwartest du?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preis_dict</span> <span class="o">=</span> <span class="p">{</span>
@@ -616,6 +617,28 @@ Schlüssel im Telefonbuch: dict_keys([&#39;Tina&#39;, &#39;Amadeus&#39;])
 </pre></div>
 </div>
 </div>
+</div>
+<p>Lösung:</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">preis_fuer</span><span class="p">(</span><span class="n">artikel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="c1"># Prüfen, ob der Artikel im Dictionary ist</span>
+    <span class="k">if</span> <span class="n">artikel</span> <span class="ow">in</span> <span class="n">preis_dict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">preis_dict</span><span class="p">[</span><span class="n">artikel</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+<span class="c1">#oder</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">preis_fuer</span><span class="p">(</span><span class="n">artikel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">preis_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">artikel</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 </section>
 <section id="aufgabe-haufigkeit-von-buchstaben-zahlen">

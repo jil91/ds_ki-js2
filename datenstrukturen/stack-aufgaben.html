@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/stack-aufgaben.ecc39658-3926-4ce7-9979-aca5b6da77a1.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/stack-aufgaben.b0608c63-d276-41ed-81ff-7d0aed3beab4.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/stack-aufgaben';</script>
@@ -447,7 +447,7 @@ document.write(`
 <h1><span class="section-number">16.2. </span>Übungen zu Stapeln<a class="headerlink" href="#ubungen-zu-stapeln" title="Link to this heading">#</a></h1>
 <section id="hohe-des-stapels-bestimmen">
 <h2><span class="section-number">16.2.1. </span>Höhe des Stapels bestimmen<a class="headerlink" href="#hohe-des-stapels-bestimmen" title="Link to this heading">#</a></h2>
-<p>In der folgenden Zelle siehst du die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code>, die wir bereits entwickelt haben. Schau dir nun insb. die Methode <code class="docutils literal notranslate"><span class="pre">anzahl_elemente</span></code> an, mit der man die “Höhe” des Stapels bestimmen kann.</p>
+<p>In der folgenden Zelle siehst du die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code>, die wir bereits entwickelt haben. Schau dir nun insb. die Methode <code class="docutils literal notranslate"><span class="pre">anzahlElemente</span></code> an, mit der man die “Höhe” des Stapels bestimmen kann.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Warum ist diese Lösung ineffizient?</p>
 <p>Weil zur Ermittlung der Höhe alle Elemente des Stapels durchlaufen werden müssen.</p>
@@ -455,13 +455,13 @@ document.write(`
 <p>Es geht natürlich besser - weißt du wie?</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Antwort nur anschauen, wenn du nicht allein darauf kommst!</p>
-<p>Man kann die aktuelle Höhe des Stapels als <em>Attribut</em> <code class="docutils literal notranslate"><span class="pre">hoehe</span></code> speichern und dieses in <code class="docutils literal notranslate"><span class="pre">anzahl_elemente</span></code> einfach zurückgeben.</p>
+<p>Man kann die aktuelle Höhe des Stapels als <em>Attribut</em> <code class="docutils literal notranslate"><span class="pre">hoehe</span></code> speichern und dieses in <code class="docutils literal notranslate"><span class="pre">anzahlElemente</span></code> einfach zurückgeben.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Man muss dabei allerdings darauf achten, dass…</p>
 <p>…bei jedem <code class="docutils literal notranslate"><span class="pre">push</span></code> und <code class="docutils literal notranslate"><span class="pre">pop</span></code> das Attribut <code class="docutils literal notranslate"><span class="pre">hoehe</span></code> hoch- bzw. heruntergezählt wird.</p>
 </div>
 </div>
-<p><strong>Aufgabe:</strong> Ändere die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> und insb. die Methode <code class="docutils literal notranslate"><span class="pre">anzahl_elemente</span></code>, so dass die Höhe des Stapels nun geschickt verwaltet und ohne Aufwand zurückgegeben wird.</p>
+<p><strong>Aufgabe:</strong> Ändere die Klasse <code class="docutils literal notranslate"><span class="pre">Stapel</span></code> und insb. die Methode <code class="docutils literal notranslate"><span class="pre">anzahlElemente</span></code>, so dass die Höhe des Stapels nun geschickt verwaltet und ohne Aufwand zurückgegeben wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Stapel</span><span class="p">:</span>
@@ -493,11 +493,11 @@ document.write(`
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Kurzform für if self.anfang is None: return True else: return False</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
         <span class="c1"># ACHTUNG: Diese Methode ist ineffizient, da sie die gesamte interne Liste durchlaufen muss!</span>
         <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
@@ -511,7 +511,7 @@ document.write(`
 <span class="n">s</span> <span class="o">=</span> <span class="n">Stapel</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">):</span>
     <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>  <span class="c1"># Bei der schlechten Implementierung dauert das lange</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>  <span class="c1"># Bei der schlechten Implementierung dauert das lange</span>
 </pre></div>
 </div>
 </div>
@@ -561,26 +561,26 @@ document.write(`
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Kurzform für if self.anfang is None: return True else: return False</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span>   <span class="c1"># TEIL DER LÖSUNG</span>
 
 <span class="c1"># Test</span>
 <span class="c1"># s = Stapel()</span>
 <span class="c1"># s.push(1)</span>
-<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 1</span>
+<span class="c1"># print(s.anzahlElemente())  # Ausgabe: 1</span>
 <span class="c1"># s.push(2)</span>
 <span class="c1"># s.push(3)</span>
-<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 3</span>
+<span class="c1"># print(s.anzahlElemente())  # Ausgabe: 3</span>
 <span class="c1"># s.pop()</span>
-<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 2</span>
+<span class="c1"># print(s.anzahlElemente())  # Ausgabe: 2</span>
 <span class="c1"># s.pop()</span>
 <span class="c1"># s.pop()</span>
-<span class="c1"># print(s.anzahl_elemente())  # Ausgabe: 0</span>
+<span class="c1"># print(s.anzahlElemente())  # Ausgabe: 0</span>
 </pre></div>
 </div>
 </div>

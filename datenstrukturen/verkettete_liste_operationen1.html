@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/verkettete_liste_operationen1.df915566-cd5e-4810-bc8f-71d61eafb8c3.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/verkettete_liste_operationen1.b7621135-4113-47f3-aaf8-3660a5d2d67f.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/verkettete_liste_operationen1';</script>
@@ -489,41 +489,41 @@ dass die Tests erfolgreich durchgeführt werden.</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">beispiel_liste</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># print(&quot;Liste vorbereiten&quot;)</span>
         <span class="n">test_liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ZuTestendeKlasse</span><span class="p">()</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>   <span class="c1"># Diese Methode existiert schon</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Bibi&quot;</span><span class="p">)</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Coco&quot;</span><span class="p">)</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Dina&quot;</span><span class="p">)</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>   <span class="c1"># Diese Methode existiert schon</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Bibi&quot;</span><span class="p">)</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Coco&quot;</span><span class="p">)</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Dina&quot;</span><span class="p">)</span>
         <span class="c1"># print(&quot;Die Liste sieht am Anfang so aus:&quot;, test_liste)</span>
         <span class="k">return</span> <span class="n">test_liste</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">leere_liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ZuTestendeKlasse</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Ein leere verkettete Liste wurde nicht als leer erkannt. Tipp: Die Methode ist_leer() sollte True zurückgeben, wenn der Kopf der Liste None ist.&quot;</span>    
+        <span class="k">assert</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">istLeer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Ein leere verkettete Liste wurde nicht als leer erkannt. Tipp: Die Methode istLeer() sollte True zurückgeben, wenn der Kopf der Liste None ist.&quot;</span>    
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="n">liste</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Für eine Liste, die Elemente enthält, hat die Methode ist_leer() False zurückgegeben.&quot;</span>
+        <span class="k">assert</span> <span class="n">liste</span><span class="o">.</span><span class="n">istLeer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Für eine Liste, die Elemente enthält, hat die Methode istLeer() False zurückgegeben.&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">leere_liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ZuTestendeKlasse</span><span class="p">()</span>
         <span class="n">korrekt</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">()</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">korrekt</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Die korrekte Anzahl der Elemente in einer leeren Liste ist 0, aber deine Methode gibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2"> zurück.&quot;</span>    
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
         <span class="n">korrekt</span> <span class="o">=</span> <span class="mi">4</span>
-        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">()</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">korrekt</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Die korrekte Anzahl der Elemente in der Liste ist </span><span class="si">{</span><span class="n">korrekt</span><span class="si">}</span><span class="s2">, aber deine Methode gibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2"> zurück.&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_gib_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_gibInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Dina&quot;</span>
-        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="c1"># sicherstellen, dass kein Typ Knoten zurückgegeben wird</span>
-        <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">erhalten</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Knoten</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Die Methode gib_inhalt() sollte den Inhalt des Knotens zurückgeben, nicht den Knoten selbst.&quot;</span>
+        <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">erhalten</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Knoten</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Die Methode gibInhalt() sollte den Inhalt des Knotens zurückgeben, nicht den Knoten selbst.&quot;</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Das erste Element sollte </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Coco&quot;</span>
-        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Das zweite Element sollte </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Anna&quot;</span>
-        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Das letzte Element sollte </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">teste_ersetzen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -582,7 +582,7 @@ dass die Tests erfolgreich durchgeführt werden.</p>
             <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
         <span class="k">return</span> <span class="s2">&quot; -&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inhalte</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegenVorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fügt einen neuen Knoten mit pInhalt am Anfang der Liste ein.&quot;&quot;&quot;</span>
         <span class="n">neu</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">pInhalt</span><span class="p">)</span>   <span class="c1"># &quot;Verpacke&quot; den Inhalt in einen Knoten</span>
         <span class="n">neu</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>  <span class="c1"># Nachfolger des neuen Knotens ist der bisherige Listenkopf</span>
@@ -590,15 +590,15 @@ dass die Tests erfolgreich durchgeführt werden.</p>
 
    <span class="c1"># AUFGABE: Implementiere die folgenden Methoden für die Klasse VerketteteListe:</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn die Liste leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="o">...</span>  <span class="c1"># Hier Lösung ergänzen</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Gibt die Anzahl der Elemente in der Liste zurück. &quot;&quot;&quot;</span>
         <span class="o">...</span>  <span class="c1"># Hier Lösung ergänzen</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">gib_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Gibt den Inhalt des Knotens an der Stelle index zurück. &quot;&quot;&quot;</span>
         <span class="c1"># ACHTUNG: Gib nicht den Knoten selbst zurück, sondern nur den Inhalt!</span>
         <span class="c1"># D.h. dein Code sollte sowas enthalten wie: return aktuell.inhalt</span>
@@ -614,7 +614,7 @@ dass die Tests erfolgreich durchgeführt werden.</p>
 <span class="c1"># Führe einfach diese Zelle aus, um die Tests zu starten.</span>
 
 <span class="n">test</span> <span class="o">=</span> <span class="n">TestsVerketteteListe</span><span class="p">(</span><span class="n">VerketteteListe</span><span class="p">)</span>
-<span class="n">reihenfolge</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ist_leer&quot;</span><span class="p">,</span> <span class="s2">&quot;anzahl_elemente&quot;</span><span class="p">,</span> <span class="s2">&quot;gib_inhalt&quot;</span><span class="p">,</span> <span class="s2">&quot;ersetzen&quot;</span><span class="p">]</span>
+<span class="n">reihenfolge</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;istLeer&quot;</span><span class="p">,</span> <span class="s2">&quot;anzahlElemente&quot;</span><span class="p">,</span> <span class="s2">&quot;gibInhalt&quot;</span><span class="p">,</span> <span class="s2">&quot;ersetzen&quot;</span><span class="p">]</span>
 <span class="n">test</span><span class="o">.</span><span class="n">fuehre_tests_aus</span><span class="p">(</span><span class="n">reihenfolge</span><span class="p">)</span>
 </pre></div>
 </div>

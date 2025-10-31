@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/verkettete_liste_operationen_loesungen.f1c7048f-a830-44d3-90c3-dfb0b1250bc1.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/verkettete_liste_operationen_loesungen.787b18ba-e493-4311-9d60-2fedb4702dbb.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/verkettete_liste_operationen_loesungen';</script>
@@ -482,39 +482,39 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">beispiel_liste</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># print(&quot;Liste vorbereiten&quot;)</span>
         <span class="n">test_liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ZuTestendeKlasse</span><span class="p">()</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>   <span class="c1"># Diese Methode existiert schon</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Bibi&quot;</span><span class="p">)</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Coco&quot;</span><span class="p">)</span>
-        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="s2">&quot;Dina&quot;</span><span class="p">)</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>   <span class="c1"># Diese Methode existiert schon</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Bibi&quot;</span><span class="p">)</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Coco&quot;</span><span class="p">)</span>
+        <span class="n">test_liste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="s2">&quot;Dina&quot;</span><span class="p">)</span>
         <span class="c1"># print(&quot;Die Liste sieht am Anfang so aus:&quot;, test_liste)</span>
         <span class="k">return</span> <span class="n">test_liste</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">leere_liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ZuTestendeKlasse</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Ein leere verkettete Liste wurde nicht als leer erkannt. Tipp: Die Methode ist_leer() sollte True zurückgeben, wenn der Kopf der Liste None ist.&quot;</span>    
+        <span class="k">assert</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">istLeer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Ein leere verkettete Liste wurde nicht als leer erkannt. Tipp: Die Methode istLeer() sollte True zurückgeben, wenn der Kopf der Liste None ist.&quot;</span>    
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="n">liste</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Für eine Liste, die Elemente enthält, hat die Methode ist_leer() False zurückgegeben.&quot;</span>
+        <span class="k">assert</span> <span class="n">liste</span><span class="o">.</span><span class="n">istLeer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Für eine Liste, die Elemente enthält, hat die Methode istLeer() False zurückgegeben.&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">leere_liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ZuTestendeKlasse</span><span class="p">()</span>
         <span class="n">korrekt</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">()</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">leere_liste</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">korrekt</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Die korrekte Anzahl der Elemente in einer leeren Liste ist 0, aber deine Methode gibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2"> zurück.&quot;</span>    
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
         <span class="n">korrekt</span> <span class="o">=</span> <span class="mi">4</span>
-        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">()</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">korrekt</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Die korrekte Anzahl der Elemente in der Liste ist </span><span class="si">{</span><span class="n">korrekt</span><span class="si">}</span><span class="s2">, aber deine Methode gibt </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2"> zurück.&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_gib_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_gibInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Dina&quot;</span>
-        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Das erste Element sollte </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Coco&quot;</span>
-        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Das zweite Element sollte </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Anna&quot;</span>
-        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">erhalten</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Das letzte Element sollte </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">teste_ersetzen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -591,28 +591,28 @@ document.write(`
         <span class="n">erhalten</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Nach dem Entfernen von &#39;Bibi&#39; sollte die Liste </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_entfernen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_entfernenVorne</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
-        <span class="n">liste</span><span class="o">.</span><span class="n">entfernen_vorne</span><span class="p">()</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">entfernenVorne</span><span class="p">()</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Coco -&gt; Bibi -&gt; Anna&quot;</span>
         <span class="n">erhalten</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Nach dem Entfernen des ersten Elements sollte die Liste </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="n">liste</span><span class="o">.</span><span class="n">entfernen_vorne</span><span class="p">()</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">entfernenVorne</span><span class="p">()</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Bibi -&gt; Anna&quot;</span>
         <span class="n">erhalten</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Nach dem Entfernen des ersten Elements sollte die Liste </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">teste_entfernen_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">teste_entfernenInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beispiel_liste</span><span class="p">()</span>
-        <span class="n">liste</span><span class="o">.</span><span class="n">entfernen_inhalt</span><span class="p">(</span><span class="s2">&quot;Coco&quot;</span><span class="p">)</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">entfernenInhalt</span><span class="p">(</span><span class="s2">&quot;Coco&quot;</span><span class="p">)</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Dina -&gt; Bibi -&gt; Anna&quot;</span>
         <span class="n">erhalten</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Nach dem Entfernen von &#39;Coco&#39; sollte die Liste </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="n">liste</span><span class="o">.</span><span class="n">entfernen_inhalt</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">entfernenInhalt</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Dina -&gt; Bibi&quot;</span>
         <span class="n">erhalten</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Nach dem Entfernen von &#39;Anna&#39; sollte die Liste </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="n">liste</span><span class="o">.</span><span class="n">entfernen_inhalt</span><span class="p">(</span><span class="s2">&quot;Dina&quot;</span><span class="p">)</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">entfernenInhalt</span><span class="p">(</span><span class="s2">&quot;Dina&quot;</span><span class="p">)</span>
         <span class="n">erwartet</span> <span class="o">=</span> <span class="s2">&quot;Bibi&quot;</span>
         <span class="n">erhalten</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">erhalten</span> <span class="o">==</span> <span class="n">erwartet</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Test mit Liste &#39;</span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">Nach dem Entfernen von &#39;Dina&#39; sollte die Liste </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2"> sein, ist aber </span><span class="si">{</span><span class="n">erhalten</span><span class="si">}</span><span class="s2">.&quot;</span>
@@ -657,7 +657,7 @@ document.write(`
             <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
         <span class="k">return</span> <span class="s2">&quot; -&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inhalte</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegenVorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fügt einen neuen Knoten mit pInhalt am Anfang der Liste ein.&quot;&quot;&quot;</span>
         <span class="n">neu</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">pInhalt</span><span class="p">)</span>   <span class="c1"># &quot;Verpacke&quot; den Inhalt in einen Knoten</span>
         <span class="n">neu</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>  <span class="c1"># Nachfolger des neuen Knotens ist der bisherige Listenkopf</span>
@@ -665,14 +665,14 @@ document.write(`
 
    <span class="c1"># AUFGABE: Implementiere die folgenden Methoden für die Klasse VerketteteListe:</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn die Liste leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente in der Liste zurück&quot;&quot;&quot;</span>
         <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">aktuell</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
@@ -681,7 +681,7 @@ document.write(`
             <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
         <span class="k">return</span> <span class="n">anzahl</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">gib_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt den Inhalt des Knotens an der Stelle index zurück&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -723,7 +723,7 @@ document.write(`
                 <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
             <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">neu</span>
            
-    <span class="k">def</span><span class="w"> </span><span class="nf">entfernen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entfernenVorne</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt den ersten Knoten und gibt dessen Inhalt zurück&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -753,7 +753,7 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">einfuegen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;fügt einen neuen Knoten mit inhalt an der Stelle index ein&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>
             <span class="k">return</span>
         <span class="n">neu</span><span class="p">:</span> <span class="n">Knoten</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>
         <span class="c1"># Knoten vor der Einfügeposition finden</span>
@@ -768,7 +768,7 @@ document.write(`
         <span class="n">neu</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
         <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">neu</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">entfernen_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entfernenInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt alle Knoten mit dem gegebenen Inhalt&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
@@ -788,34 +788,34 @@ document.write(`
 
 <span class="n">test</span> <span class="o">=</span> <span class="n">TestsVerketteteListe</span><span class="p">(</span><span class="n">VerketteteListe</span><span class="p">)</span>
 
-<span class="n">reihenfolge</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ist_leer&quot;</span><span class="p">,</span> <span class="s2">&quot;anzahl_elemente&quot;</span><span class="p">,</span> <span class="s2">&quot;gib_inhalt&quot;</span><span class="p">,</span> <span class="s2">&quot;ersetzen&quot;</span><span class="p">,</span> 
-               <span class="s2">&quot;enthaelt&quot;</span><span class="p">,</span> <span class="s2">&quot;anhaengen&quot;</span><span class="p">,</span> <span class="s2">&quot;entfernen_vorne&quot;</span><span class="p">,</span> <span class="s2">&quot;entfernen&quot;</span><span class="p">,</span> <span class="s2">&quot;einfuegen&quot;</span><span class="p">,</span> <span class="s2">&quot;entfernen_inhalt&quot;</span><span class="p">]</span>
+<span class="n">reihenfolge</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;istLeer&quot;</span><span class="p">,</span> <span class="s2">&quot;anzahlElemente&quot;</span><span class="p">,</span> <span class="s2">&quot;gibInhalt&quot;</span><span class="p">,</span> <span class="s2">&quot;ersetzen&quot;</span><span class="p">,</span> 
+               <span class="s2">&quot;enthaelt&quot;</span><span class="p">,</span> <span class="s2">&quot;anhaengen&quot;</span><span class="p">,</span> <span class="s2">&quot;entfernenVorne&quot;</span><span class="p">,</span> <span class="s2">&quot;entfernen&quot;</span><span class="p">,</span> <span class="s2">&quot;einfuegen&quot;</span><span class="p">,</span> <span class="s2">&quot;entfernenInhalt&quot;</span><span class="p">]</span>
 <span class="n">test</span><span class="o">.</span><span class="n">fuehre_tests_aus</span><span class="p">(</span><span class="n">reihenfolge</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mögen die Tests beginnen!
-Starte Test: teste_ist_leer...
-  teste_ist_leer war erfolgreich. Aktuelle Punktzahl: 1/10
-Starte Test: teste_anzahl_elemente...
-  teste_anzahl_elemente war erfolgreich. Aktuelle Punktzahl: 2/10
-Starte Test: teste_gib_inhalt...
-  teste_gib_inhalt war erfolgreich. Aktuelle Punktzahl: 3/10
+Starte Test: teste_istLeer...
+  teste_istLeer war erfolgreich. Aktuelle Punktzahl: 1/10
+Starte Test: teste_anzahlElemente...
+  teste_anzahlElemente war erfolgreich. Aktuelle Punktzahl: 2/10
+Starte Test: teste_gibInhalt...
+  teste_gibInhalt war erfolgreich. Aktuelle Punktzahl: 3/10
 Starte Test: teste_ersetzen...
   teste_ersetzen war erfolgreich. Aktuelle Punktzahl: 4/10
 Starte Test: teste_enthaelt...
   teste_enthaelt war erfolgreich. Aktuelle Punktzahl: 5/10
 Starte Test: teste_anhaengen...
   teste_anhaengen war erfolgreich. Aktuelle Punktzahl: 6/10
-Starte Test: teste_entfernen_vorne...
-  teste_entfernen_vorne war erfolgreich. Aktuelle Punktzahl: 7/10
+Starte Test: teste_entfernenVorne...
+  teste_entfernenVorne war erfolgreich. Aktuelle Punktzahl: 7/10
 Starte Test: teste_entfernen...
   teste_entfernen war erfolgreich. Aktuelle Punktzahl: 8/10
 Starte Test: teste_einfuegen...
   teste_einfuegen war erfolgreich. Aktuelle Punktzahl: 9/10
-Starte Test: teste_entfernen_inhalt...
-  teste_entfernen_inhalt war erfolgreich. Aktuelle Punktzahl: 10/10
+Starte Test: teste_entfernenInhalt...
+  teste_entfernenInhalt war erfolgreich. Aktuelle Punktzahl: 10/10
 
 Herzlichen Glückwunsch! Alle Tests erfolgreich.
 </pre></div>

@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/binaerbaeume.7e4d32d4-ee74-4498-86b2-ce6007cf40e3.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/binaerbaeume.38f389bc-1605-46cc-b939-e184d8ec73d3.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/binaerbaeume';</script>
@@ -552,17 +552,17 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">inhalt</span>  <span class="c1"># Ein beliebiger Inhalt (d.h. eine Zahl, ein String, ein anderes Objekt, ...)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Verweis auf den Knoten, der als Wurzel des linken Teilbaums dient</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># Verweis auf den Knoten, der als Wurzel des rechten Teilbaums dient</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linkerKnoten</span> <span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Verweis auf den Knoten, der als Wurzel des linken Teilbaums dient</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rechterKnoten</span> <span class="p">:</span> <span class="n">Knoten</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># Verweis auf den Knoten, der als Wurzel des rechten Teilbaums dient</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Knoten in Textform ausgeben&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Knoten(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="si">}</span><span class="s2">, L:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="si">}</span><span class="s2">, R:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Knoten(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="si">}</span><span class="s2">, L:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">linkerKnoten</span><span class="w"> </span><span class="si">}</span><span class="s2">, R:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rechterKnoten</span><span class="w"> </span><span class="si">}</span><span class="s2">)&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Das sieht doch wirklich recht ähnlich aus wie bei einer verketteten Liste… nur dass wir statt eines einzigen Verweis <code class="docutils literal notranslate"><span class="pre">naechster</span></code> auf den Nachfolgeknoten in der Liste jetzt Verweise auf <em>zwei</em> Nachfolgerknoten haben, <code class="docutils literal notranslate"><span class="pre">linker_teilbaum</span></code> und <code class="docutils literal notranslate"><span class="pre">rechter_teilbaum</span></code>.</p>
+<p>Das sieht doch wirklich recht ähnlich aus wie bei einer verketteten Liste… nur dass wir statt eines einzigen Verweis <code class="docutils literal notranslate"><span class="pre">naechster</span></code> auf den Nachfolgeknoten in der Liste jetzt Verweise auf <em>zwei</em> Nachfolgerknoten haben, <code class="docutils literal notranslate"><span class="pre">linkerKnoten</span> </code> und <code class="docutils literal notranslate"><span class="pre">rechterKnoten</span> </code>.</p>
 <p>Um zu verstehen, wie aus einer so einfachen Datenstruktur ein komplexes Gebilde wie der Baum aus
 <a class="reference internal" href="#fig-saeugetiere-7tiere"><span class="std std-numref">Abb. 18.12</span></a> entstehen kann, bauen wir dieses Beispiel einfach in Python nach:</p>
 <figure class="align-center" id="fig-saeugetiere-7tiere">
@@ -584,12 +584,12 @@ document.write(`
 <span class="n">k6</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Schimpanse&quot;</span><span class="p">)</span>
 <span class="n">k7</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="s2">&quot;Orang-Utan&quot;</span><span class="p">)</span>
 <span class="c1"># Das ist die entscheidende Stelle: Wir verknüpfen die Knoten miteinander</span>
-<span class="n">wurzel</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">=</span> <span class="n">k2</span>  <span class="c1"># k2 (Hund) wird als linker Teilbaum an wurzel (Säugetier) angehängt </span>
-<span class="n">k2</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">=</span> <span class="n">k3</span>  <span class="c1"># k3 (Collie) wird als linker Teilbaum an k2 (Hund) angehängt</span>
-<span class="n">k2</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">=</span> <span class="n">k4</span>  <span class="c1"># usw.</span>
-<span class="n">wurzel</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">=</span> <span class="n">k5</span>
-<span class="n">k5</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">=</span> <span class="n">k6</span>
-<span class="n">k5</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">=</span> <span class="n">k7</span>
+<span class="n">wurzel</span><span class="o">.</span><span class="n">linkerKnoten</span>  <span class="o">=</span> <span class="n">k2</span>  <span class="c1"># k2 (Hund) wird als linker Teilbaum an wurzel (Säugetier) angehängt </span>
+<span class="n">k2</span><span class="o">.</span><span class="n">linkerKnoten</span>  <span class="o">=</span> <span class="n">k3</span>  <span class="c1"># k3 (Collie) wird als linker Teilbaum an k2 (Hund) angehängt</span>
+<span class="n">k2</span><span class="o">.</span><span class="n">rechterKnoten</span>  <span class="o">=</span> <span class="n">k4</span>  <span class="c1"># usw.</span>
+<span class="n">wurzel</span><span class="o">.</span><span class="n">rechterKnoten</span>  <span class="o">=</span> <span class="n">k5</span>
+<span class="n">k5</span><span class="o">.</span><span class="n">linkerKnoten</span>  <span class="o">=</span> <span class="n">k6</span>
+<span class="n">k5</span><span class="o">.</span><span class="n">rechterKnoten</span>  <span class="o">=</span> <span class="n">k7</span>
 
 <span class="c1"># Ausgabe der Struktur (Achtung: Das wird eine lange, unübersichtliche Textzeile)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>
@@ -795,16 +795,14 @@ muss man zuerst in den linken Teilbaum steigen.</p>
 <p>Aber ist das überhaupt möglich/erlaubt/sinnvoll? Die Antwort auf alle diese Fragen ist <em>ja</em>! Was das intuitiv bedeutet, haben wir ja weiter oben schon gesehen und angewendet. Jetzt wirst du sehen, dass das auch in einem Programm funktioniert. Hier siehst du dasselbe Verfahren im Pseudocode der Formelsammlung:</p>
 <div class="admonition-pseudocode admonition">
 <p class="admonition-title">Pseudocode</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OPERATION ausgebenDatenPreorder() der Klasse Knoten
-
-    inhalt.ausgebenDaten()
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OPERATION ausgebenDatenInorder() der Klasse Knoten
 
     WENN linkerKnoten != NICHTS   # Das ist die Abbruchbedingung!
-        linkerKnoten.ausgebenDatenPreorder()   # Rekursiver Aufruf
+        linkerKnoten.ausgebenDatenInorder()   # Rekursiver Aufruf
     ENDE WENN 
-
+    inhalt.ausgebenDaten()
     WENN rechterKnoten != NICHTS   # Das ist die Abbruchbedingung!
-        rechterKnoten.ausgebenDatenPreorder()  # Rekursiver Aufruf
+        rechterKnoten.ausgebenDatenInorder()  # Rekursiver Aufruf
     ENDE WENN
 </pre></div>
 </div>
@@ -814,16 +812,14 @@ muss man zuerst in den linken Teilbaum steigen.</p>
 
     <span class="o">...</span>  <span class="c1"># Attribute und andere Methoden</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">print_preorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gibt die Daten des Baums in Preorder-Reihenfolge aus.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">printInorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gibt die Daten des Baums in Inorder-Reihenfolge aus.&quot;&quot;&quot;</span>
 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">linkerKnoten</span>  <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>            <span class="c1"># Abbruchbedingung</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linkerKnoten</span><span class="o">.</span><span class="n">printInorder</span><span class="p">()</span>  <span class="c1"># Rekursiver Aufruf</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inhalt</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>            <span class="c1"># Abbruchbedingung</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="o">.</span><span class="n">print_preorder</span><span class="p">()</span>   <span class="c1"># Rekursiver Aufruf</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>           <span class="c1"># Abbruchbedingung</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="o">.</span><span class="n">print_preorder</span><span class="p">()</span>  <span class="c1"># Rekursiver Aufruf</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rechterKnoten</span>  <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>           <span class="c1"># Abbruchbedingung</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rechterKnoten</span><span class="o">.</span><span class="n">printInorder</span>  <span class="c1"># Rekursiver Aufruf</span>
 </pre></div>
 </div>
 <div class="admonition important">
@@ -894,7 +890,7 @@ oder die Funktion beendet.</p></li>
 <p><span class="caption-number">Abb. 18.16 </span><span class="caption-text">Dieser Baum enthält zahlreiche Knoten (äh, wie viele waren es nochmal genau?)</span><a class="headerlink" href="#fig-saeugetiere-7tiere-v2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Dazu hatten wir mehrere <code class="docutils literal notranslate"><span class="pre">Knoten</span></code>-Objekte erzeugt und miteinander über die Attribute <code class="docutils literal notranslate"><span class="pre">linker_teilbaum</span></code> und <code class="docutils literal notranslate"><span class="pre">rechter_teilbaum</span></code> verknüpft. Den Wurzelknoten hatten wir in der Variablen <code class="docutils literal notranslate"><span class="pre">wurzel</span></code> gespeichert:</p>
+<p>Dazu hatten wir mehrere <code class="docutils literal notranslate"><span class="pre">Knoten</span></code>-Objekte erzeugt und miteinander über die Attribute <code class="docutils literal notranslate"><span class="pre">linkerKnoten</span> </code> und <code class="docutils literal notranslate"><span class="pre">rechterKnoten</span> </code> verknüpft. Den Wurzelknoten hatten wir in der Variablen <code class="docutils literal notranslate"><span class="pre">wurzel</span></code> gespeichert:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wurzel</span><span class="p">)</span>
@@ -944,8 +940,8 @@ oder die Funktion beendet.</p></li>
     <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># rekursiver Fall</span>
-        <span class="n">anzahl_links</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">)</span>
-        <span class="n">anzahl_rechts</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">)</span>
+        <span class="n">anzahl_links</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linkerKnoten</span> <span class="p">)</span>
+        <span class="n">anzahl_rechts</span> <span class="o">=</span> <span class="n">anzahl_knoten_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechterKnoten</span> <span class="p">)</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">anzahl_links</span> <span class="o">+</span> <span class="n">anzahl_rechts</span>
     
 <span class="c1"># Test</span>
@@ -998,12 +994,12 @@ oder die Funktion beendet.</p></li>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Blattknoten im Baum ermitteln.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case 1 (leerer Teilbaum)</span>
         <span class="k">return</span> <span class="mi">0</span>  <span class="c1"># Anzahl der Blattknoten in einem leeren Baum ist 0</span>
-    <span class="n">ist_blatt</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span> <span class="o">==</span> <span class="kc">None</span>
+    <span class="n">ist_blatt</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">linkerKnoten</span>  <span class="o">==</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">knoten</span><span class="o">.</span><span class="n">rechterKnoten</span>  <span class="o">==</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">ist_blatt</span><span class="p">:</span>  <span class="c1"># base case 2 (Blattknoten)</span>
         <span class="k">return</span> <span class="mi">1</span>  <span class="c1"># Ein Blattknoten hat genau ein Blatt</span>
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># rekursiver Fall</span>
-        <span class="n">anzahl_links</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">)</span>
-        <span class="n">anzahl_rechts</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">)</span>
+        <span class="n">anzahl_links</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linkerKnoten</span> <span class="p">)</span>
+        <span class="n">anzahl_rechts</span> <span class="o">=</span> <span class="n">anzahl_blattknoten</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechterKnoten</span> <span class="p">)</span>
         <span class="k">return</span> <span class="n">anzahl_links</span> <span class="o">+</span> <span class="n">anzahl_rechts</span>  
     
 <span class="c1"># Test</span>
@@ -1061,8 +1057,8 @@ oder die Funktion beendet.</p></li>
     <span class="k">if</span> <span class="n">knoten</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># base case 1 (leerer Teilbaum)</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># Die Tiefe eines leeren Baums ist -1; die der Wurzel ist 0</span>
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># rekursiver Fall</span>
-        <span class="n">tiefe_links</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">)</span>
-        <span class="n">tiefe_rechts</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">)</span>
+        <span class="n">tiefe_links</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linkerKnoten</span> <span class="p">)</span>
+        <span class="n">tiefe_rechts</span> <span class="o">=</span> <span class="n">tiefe_binaerbaum</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechterKnoten</span> <span class="p">)</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">tiefe_links</span><span class="p">,</span> <span class="n">tiefe_rechts</span><span class="p">)</span>
     
 <span class="c1"># Test</span>
@@ -1126,8 +1122,8 @@ None
     <span class="k">if</span> <span class="n">knoten</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">==</span> <span class="n">gesuchter_wert</span><span class="p">:</span>  <span class="c1"># base case 2 (Element gefunden)</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="c1"># Es bleiben noch die rekursiven Fälle: Suche im linken und rechten Teilbaum</span>
-    <span class="n">links_gefunden</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span>
-    <span class="n">rechts_gefunden</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span>
+    <span class="n">links_gefunden</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linkerKnoten</span> <span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span>
+    <span class="n">rechts_gefunden</span> <span class="o">=</span> <span class="n">enthält_element</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechterKnoten</span> <span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">links_gefunden</span> <span class="ow">or</span> <span class="n">rechts_gefunden</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1164,9 +1160,9 @@ False
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">knoten</span><span class="o">.</span><span class="n">inhalt</span> <span class="o">==</span> <span class="n">gesuchter_wert</span><span class="p">:</span>  <span class="c1"># base case 2 (Element gefunden)</span>
         <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linker_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">):</span>  <span class="c1"># Rekursion</span>
+    <span class="k">if</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">linkerKnoten</span> <span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">):</span>  <span class="c1"># Rekursion</span>
         <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechter_teilbaum</span><span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">):</span> <span class="c1"># Rekursion</span>
+    <span class="k">if</span> <span class="n">enthält_element_effizient</span><span class="p">(</span><span class="n">knoten</span><span class="o">.</span><span class="n">rechterKnoten</span> <span class="p">,</span> <span class="n">gesuchter_wert</span><span class="p">):</span> <span class="c1"># Rekursion</span>
         <span class="k">return</span> <span class="kc">True</span> 
     <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Gesuchter Wert wurde nirgends im Baum gefunden</span>
     
@@ -1322,6 +1318,14 @@ False
         <span class="k">if</span> <span class="n">linksGefunden</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">rechtsGefunden</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Knoten</span><span class="p">[</span><span class="n">Typ</span><span class="p">]:</span>  <span class="c1"># ab Python 3.12 ist diese Schreibweise für generische Typen möglich</span>
+                <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>

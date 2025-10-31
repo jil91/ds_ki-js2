@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/stack.0e0cf979-4416-4afa-a150-d14a5d402802.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/stack.92c86517-e5a4-4db2-8439-757bc8c7b2f7.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/stack';</script>
@@ -614,7 +614,7 @@ Der Nutzer klickt ein weiteres Mal auf “Rückgängig”. Jetzt wird der Kreis 
 <a class="reference internal image-reference" href="../_images/kd_stack_fosa.svg"><img alt="../_images/kd_stack_fosa.svg" src="../_images/kd_stack_fosa.svg" style="width: 80%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Abb. 16.1 </span><span class="caption-text">Klassendiagramm für den Datentyp <em>Stapel/Stack</em> (FoSa 5.2)</span><a class="headerlink" href="#fig-kd-stack-fosa" title="Link to this image">#</a></p>
+<p><span class="caption-number">Abb. 16.1 </span><span class="caption-text">Klassendiagramm für den Datentyp <em>Stapel/Stack</em> (FoSa 4.68)</span><a class="headerlink" href="#fig-kd-stack-fosa" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In gewissem Sinn ist diese Umsetzung des Stacks einfach eine “abgespeckte” Liste, denn die beiden Operationen <code class="docutils literal notranslate"><span class="pre">push</span></code> und <code class="docutils literal notranslate"><span class="pre">pop</span></code> entsprechen <a class="reference internal" href="verkettete_listen.html#sec-verkettete-listen-uml"><span class="std std-ref">bei der Liste</span></a> genau den folgenden Operationen:</p>
@@ -770,11 +770,11 @@ dass sie zusätzlichen Entwicklungsaufwand erfordert und fehleranfällig sein ka
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span>  <span class="c1"># Kurzform für if self.anfang is None: return True else: return False</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
         <span class="c1"># ACHTUNG: Diese Methode ist ineffizient, da sie die gesamte interne Liste durchlaufen muss!</span>
         <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
@@ -795,7 +795,7 @@ dass sie zusätzlichen Entwicklungsaufwand erfordert und fehleranfällig sein ka
 <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1"># Ausgabe: 15</span>
 <span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">top</span><span class="p">())</span>  <span class="c1"># Ausgabe: 25</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">())</span>  <span class="c1"># Ausgabe: False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">istLeer</span><span class="p">())</span>  <span class="c1"># Ausgabe: False</span>
 </pre></div>
 </div>
 </div>
@@ -853,20 +853,20 @@ False
             <span class="n">knoten</span> <span class="o">=</span> <span class="n">knoten</span><span class="o">.</span><span class="n">naechster</span>
         <span class="k">return</span> <span class="s2">&quot; -&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inhalte</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">einfuegenVorne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pInhalt</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fügt einen neuen Knoten mit pInhalt am Anfang der Liste ein.&quot;&quot;&quot;</span>
         <span class="n">neu</span> <span class="o">=</span> <span class="n">Knoten</span><span class="p">(</span><span class="n">pInhalt</span><span class="p">)</span>   <span class="c1"># &quot;Verpacke&quot; den Inhalt in einen Knoten</span>
         <span class="n">neu</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>  <span class="c1"># Nachfolger des neuen Knotens ist der bisherige Listenkopf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="o">=</span> <span class="n">neu</span>  <span class="c1"># Der neue Knoten ist ab jetzt der Listenkopf</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn die Liste leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente in der Liste zurück&quot;&quot;&quot;</span>
         <span class="n">anzahl</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">aktuell</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span>
@@ -875,7 +875,7 @@ False
             <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
         <span class="k">return</span> <span class="n">anzahl</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">gib_inhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibInhalt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt den Inhalt des Knotens an der Stelle index zurück&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -917,7 +917,7 @@ False
             <span class="n">aktuell</span> <span class="o">=</span> <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span>
         <span class="n">aktuell</span><span class="o">.</span><span class="n">naechster</span> <span class="o">=</span> <span class="n">neu</span>
            
-    <span class="k">def</span><span class="w"> </span><span class="nf">entfernen_vorne</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entfernenVorne</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt den ersten Knoten und gibt dessen Inhalt zurück&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">erster</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -942,28 +942,28 @@ False
 
     <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;legt ein neues Element inhalt auf den Stapel&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">einfuegen_vorne</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">einfuegenVorne</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;entfernt das oberste Element vom Stapel und gibt es zurück&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">():</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">istLeer</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Pop-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">entfernen_vorne</span><span class="p">()</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">entfernenVorne</span><span class="p">()</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt das oberste Element des Stapels zurück, ohne es zu entfernen&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">():</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">istLeer</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">gib_inhalt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">gibInhalt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">()</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">istLeer</span><span class="p">()</span>  <span class="c1"># Arbeit wird an die Hilfsliste delegiert</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
         <span class="c1"># ACHTUNG: Diese Methode ist ineffizient, da sie die gesamte interne Liste durchlaufen muss!</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hilfsliste</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">()</span>
 
 
 <span class="c1"># Beispielverwendung</span>
@@ -976,7 +976,7 @@ False
 <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1"># Ausgabe: 15</span>
 <span class="n">st</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">top</span><span class="p">())</span>  <span class="c1"># Ausgabe: 25</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">())</span>  <span class="c1"># Ausgabe: False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">istLeer</span><span class="p">())</span>  <span class="c1"># Ausgabe: False</span>
 </pre></div>
 </div>
 </div>

@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/warteschlangen.036dd187-9df1-42d9-a9e7-cbffa089c92b.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/warteschlangen.8e765be5-540e-40b2-81dc-a156bdd08fa2.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/warteschlangen';</script>
@@ -442,7 +442,7 @@ Warteschlange entnommen werden (mit der Operation <code class="docutils literal 
 <a class="reference internal image-reference" href="../_images/kd_queue_fosa.svg"><img alt="../_images/kd_queue_fosa.svg" src="../_images/kd_queue_fosa.svg" style="width: 80%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Abb. 16.2 </span><span class="caption-text">Klassendiagramm für den Datentyp <em>Warteschlange (Queue)</em> (FoSa 5.3)</span><a class="headerlink" href="#fig-kd-queue-fosa" title="Link to this image">#</a></p>
+<p><span class="caption-number">Abb. 16.2 </span><span class="caption-text">Klassendiagramm für den Datentyp <em>Warteschlange (Queue)</em> (FoSa 4.68)</span><a class="headerlink" href="#fig-kd-queue-fosa" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Aufgabe:</strong>
@@ -491,39 +491,39 @@ entsprechend dem UML-Diagramm aus <a class="reference internal" href="#fig-kd-qu
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Top-Operation auf leerem Stapel nicht möglich&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span><span class="o">.</span><span class="n">inhalt</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn der Stapel leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anfang</span> <span class="ow">is</span> <span class="kc">None</span> 
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente auf dem Stapel zurück&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span> 
 
 <span class="c1"># Test</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tests für Warteschlange&quot;</span><span class="p">)</span>
 <span class="n">q</span> <span class="o">=</span> <span class="n">Warteschlange</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leere Warteschlange ist leer:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leere Warteschlange ist leer:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">istLeer</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anna, Berta und Cora stellen sich nacheinander an&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Berta&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Cora&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="n">erste</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Die erste Kundin wird bedient:&quot;</span><span class="p">,</span> <span class="n">erste</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Die zweite Kundin wird bedient:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dora stellt sich an&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Dora&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="n">weitere</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ella&quot;</span><span class="p">,</span> <span class="s2">&quot;Frieda&quot;</span><span class="p">,</span> <span class="s2">&quot;Greta&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Weitere Kundinnen stellen sich an:&quot;</span><span class="p">,</span> <span class="n">weitere</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">kundin</span> <span class="ow">in</span> <span class="n">weitere</span><span class="p">:</span>
     <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">kundin</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alle verbleibenden Kundinnen werden bedient:&quot;</span><span class="p">)</span>
-<span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">():</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">istLeer</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -533,12 +533,12 @@ entsprechend dem UML-Diagramm aus <a class="reference internal" href="#fig-kd-qu
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">46</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="c1"># Test</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tests für Warteschlange&quot;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">46</span> <span class="n">q</span> <span class="o">=</span> <span class="n">Warteschlange</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leere Warteschlange ist leer:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">())</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anna, Berta und Cora stellen sich nacheinander an&quot;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">45</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="c1"># Test</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tests für Warteschlange&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">q</span> <span class="o">=</span> <span class="n">Warteschlange</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leere Warteschlange ist leer:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">istLeer</span><span class="p">())</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anna, Berta und Cora stellen sich nacheinander an&quot;</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;Warteschlange&#39; is not defined
 </pre></div>
@@ -586,39 +586,39 @@ entsprechend dem UML-Diagramm aus <a class="reference internal" href="#fig-kd-qu
         <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">inhalt</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">ist_leer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">istLeer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt True zurück, wenn die Warterschlange leer ist, sonst False&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kopf</span> <span class="ow">is</span> <span class="kc">None</span> 
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_elemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahlElemente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;gibt die Anzahl der Elemente in der Warteschlange zurück&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hoehe</span> 
 
 <span class="c1"># Test</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tests für Warteschlange&quot;</span><span class="p">)</span>
 <span class="n">q</span> <span class="o">=</span> <span class="n">Warteschlange</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leere Warteschlange ist leer:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leere Warteschlange ist leer:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">istLeer</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anna, Berta und Cora stellen sich nacheinander an&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Berta&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Cora&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="n">erste</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Die erste Kundin wird bedient:&quot;</span><span class="p">,</span> <span class="n">erste</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Die zweite Kundin wird bedient:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dora stellt sich an&quot;</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Dora&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="n">weitere</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ella&quot;</span><span class="p">,</span> <span class="s2">&quot;Frieda&quot;</span><span class="p">,</span> <span class="s2">&quot;Greta&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Weitere Kundinnen stellen sich an:&quot;</span><span class="p">,</span> <span class="n">weitere</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">kundin</span> <span class="ow">in</span> <span class="n">weitere</span><span class="p">:</span>
     <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">kundin</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alle verbleibenden Kundinnen werden bedient:&quot;</span><span class="p">)</span>
-<span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">ist_leer</span><span class="p">():</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">istLeer</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahl_elemente</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Länge der Warteschlange:&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">anzahlElemente</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>

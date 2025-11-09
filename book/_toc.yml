@@ -9,7 +9,6 @@ parts:
       sections:
       - file: live_code.ipynb
       - file: parsons_problems_einfuehrung.ipynb
-      # - file: features.ipynb
   
   - caption: Objektorienterte Programmierung (OOP)
     numbered: 3

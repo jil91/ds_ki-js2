@@ -1,6 +1,7 @@
 format: jb-book
 root: intro.md
 
+
 parts:
   - caption: Nutzung   # Das wird Part 1 (Teile werden nicht nummeriert)
     numbered: 2
@@ -19,7 +20,7 @@ parts:
       title: Datenkapselung
     - file: oop/t03_vererbung.md
       title: Vererbung
-    - file: oop/t04_abstrakeKlassen.md
+    - file: oop/t04_abstrakteKlassen.md
       title: Abstrakte Klassen
     - file: oop/t05_interfaces.md
       title: Interfaces
@@ -76,11 +77,10 @@ parts:
     - file: ki/knearestneighbor.ipynb
       sections:
       - file: ki/knearestneighbor2.ipynb
-      - file: ki/kmeansclustering.ipynb
+    - file: ki/kmeansclustering.ipynb
   #     sections:
   #     - file: ki/kmeansclustering2_aufgabe.ipynb
   #     - file: ki/kmeansclustering2_loesung.ipynb
   #   - file: ki/entscheidungsbaumlernen.ipynb
   #   - file: ki/minimax.ipynb
   #   - file: ki/neuronalenetze.ipynb
-

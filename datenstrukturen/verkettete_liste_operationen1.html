@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15.4. Operationen für verkettete Listen implementieren (Teil 1) &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
+    <title>16.4. Operationen für verkettete Listen implementieren (Teil 1) &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
   
   
   
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/datenstrukturen/verkettete_liste_operationen1.7cd93a34-f5dc-494c-8bf5-a8a81995dc2b.js"></script>
+    <script defer="defer" src="../_static/tippy/datenstrukturen/verkettete_liste_operationen1.891c0062-effa-412a-afcd-298bae9cdcd4.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'datenstrukturen/verkettete_liste_operationen1';</script>
@@ -81,8 +81,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
-    <link rel="next" title="15.5. Operationen für verkettete Listen implementieren (Teil 2)" href="verkettete_liste_operationen2.html" />
-    <link rel="prev" title="15.2. Verkettete Listen" href="verkettete_listen.html" />
+    <link rel="next" title="16.5. Operationen für verkettete Listen implementieren (Teil 2)" href="verkettete_liste_operationen2.html" />
+    <link rel="prev" title="16.2. Verkettete Listen" href="verkettete_listen.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="de"/>
   </head>
@@ -199,53 +199,54 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einführung in OOP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oop/t02_kapselung.html">3. Datenkapselung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oop/t03_vererbung.html">4. Vererbung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../oop/t05_interfaces.html">5. Interfaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../oop/t06_klassenvariablen.html">6. Klassenvariablen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../oop/t07_assoziationen.html">7. Assoziationen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../oop/t08_3SA.html">8. 3SA - Drei-Schichten-Architektur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../oop/t09_sequenzdiagramme.html">9. Sequenzdiagramme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t04_abstrakteKlassen.html">5. Abstrakte Klassen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t05_interfaces.html">6. Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t06_klassenvariablen.html">7. Klassenvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t07_assoziationen.html">8. Assoziationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t08_3SA.html">9. 3SA - Drei-Schichten-Architektur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t09_sequenzdiagramme.html">10. Sequenzdiagramme</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenbanken</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../db/t10_einstieg_db.html">10. Einstieg Datenbanken</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db/t11_erm.html">11. Entity-Relationship-Modell (ERM)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db/t12_erm_rm.html">12. Vom ERM ins Relationale Modell (RM)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db/t13_normalisierung.html">13. Normalisierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t10_einstieg_db.html">11. Einstieg Datenbanken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t11_erm.html">12. Entity-Relationship-Modell (ERM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t12_erm_rm.html">13. Vom ERM ins Relationale Modell (RM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t13_normalisierung.html">14. Normalisierung</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="datenstrukturen_allgemein.html">14. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="listen_einfuehrung.html">15. Listen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="verkettete_listen.html">15.2. Verkettete Listen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datenstrukturen_allgemein.html">15. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="listen_einfuehrung.html">16. Listen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="verkettete_listen.html">16.2. Verkettete Listen</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">15.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen2.html">15.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen_loesungen.html">15.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">16.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen2.html">16.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verkettete_liste_operationen_loesungen.html">16.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="stapel_und_warteschlangen_intro.html">16. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="stack.html">16.1. Stapel (Stack)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stack-aufgaben.html">16.2. Übungen zu Stapeln</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warteschlangen.html">16.3. Warteschlangen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="stapel_und_warteschlangen_intro.html">17. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">17.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack-aufgaben.html">17.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warteschlangen.html">17.3. Warteschlangen</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="assoziative_arrays.html">17. Assoziative Arrays</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="baeume.html">18. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="binaerbaeume.html">18.4. Binärbäume</a></li>
-<li class="toctree-l2"><a class="reference internal" href="suchbaeume.html">18.5. Binäre Suchbäume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assoziative_arrays.html">18. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="baeume.html">19. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="binaerbaeume.html">19.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suchbaeume.html">19.5. Binäre Suchbäume</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="klausurvorbereitung_mit_loesungen.html">19. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="klausurvorbereitung_mit_loesungen.html">20. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ki/ki_allgemein.html">20. Künstliche Intelligenz: Einführung</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/knearestneighbor.html">21. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ki/knearestneighbor2.html">21.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ki/knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ki/knearestneighbor2.html">22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../ki/kmeansclustering.html">21.8. k-Means-Clustering</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ki/kmeansclustering.html">23. k-Means-Clustering</a></li>
 </ul>
 
     </div>
@@ -443,9 +444,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="operationen-fur-verkettete-listen-implementieren-teil-1">
-<h1><span class="section-number">15.4. </span>Operationen für verkettete Listen implementieren (Teil 1)<a class="headerlink" href="#operationen-fur-verkettete-listen-implementieren-teil-1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">16.4. </span>Operationen für verkettete Listen implementieren (Teil 1)<a class="headerlink" href="#operationen-fur-verkettete-listen-implementieren-teil-1" title="Link to this heading">#</a></h1>
 <p>In diesem Notebook wirst du die Operationen der Klasse <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> implementieren,
-s. <a class="reference internal" href="verkettete_listen.html#fig-kd-verkettete-liste"><span class="std std-numref">Abb. 15.3</span></a>.</p>
+s. <a class="reference internal" href="verkettete_listen.html#fig-kd-verkettete-liste"><span class="std std-numref">Abb. 16.3</span></a>.</p>
 <p>Automatische Tests werden dir dabei helfen, deine Implementierungen zu überprüfen. Diese
 Tests werden weiter unten definiert. Wie genau sie arbeiten ist für dich nicht wichtig; du
 musst nur sicherstellen, dass du die Operationen der Klasse <code class="docutils literal notranslate"><span class="pre">VerketteteListe</span></code> so implementierst,
@@ -681,7 +682,7 @@ Leider waren noch nicht alle Tests erfolgreich. Probiere es noch einmal!
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">zurück</p>
-        <p class="prev-next-title"><span class="section-number">15.2. </span>Verkettete Listen</p>
+        <p class="prev-next-title"><span class="section-number">16.2. </span>Verkettete Listen</p>
       </div>
     </a>
     <a class="right-next"
@@ -689,7 +690,7 @@ Leider waren noch nicht alle Tests erfolgreich. Probiere es noch einmal!
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">weiter</p>
-        <p class="prev-next-title"><span class="section-number">15.5. </span>Operationen für verkettete Listen implementieren (Teil 2)</p>
+        <p class="prev-next-title"><span class="section-number">16.5. </span>Operationen für verkettete Listen implementieren (Teil 2)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

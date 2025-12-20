@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#datenbanken-einstieg\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">10. </span>Datenbanken - Einstieg<a class=\"headerlink\" href=\"#datenbanken-einstieg\" title=\"Link to this heading\">#</a></h1><p>\n<iframe height=\"600\" src=\"../_static/pdfs/t10_einstieg_db.pdf\" style=\"border: none;\" width=\"800\"></iframe>\n</p>"}
+selector_to_html = {"a[href=\"#oop-klassenvariablen\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">7. </span>OOP - Klassenvariablen<a class=\"headerlink\" href=\"#oop-klassenvariablen\" title=\"Link to this heading\">#</a></h1><p>\n<iframe height=\"600\" src=\"../_static/pdfs/t06_klassenvariablen.pdf\" style=\"border: none;\" width=\"800\"></iframe>\n</p>"}
 skip_classes = ["headerlink", "sd-stretched-link"]
 
 window.onload = function () {

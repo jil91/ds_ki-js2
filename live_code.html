@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
@@ -51,10 +51,10 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleHintShow = 'Klicken zum Anzeigen';</script>
+    <script>let toggleHintHide = 'Klicken zum Ausblenden';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
     <script src="_static/translations.js?v=79cc9f76"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/live_code.bd64f09a-362f-416f-b8d2-25e9d615e964.js"></script>
+    <script defer="defer" src="_static/tippy/live_code.1c6d5326-0706-4778-9f74-1ed677e04396.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'live_code';</script>
@@ -242,11 +242,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ki/ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="ki/knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="ki/knearestneighbor2.html">22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="ki/knearestneighbor221.html">22.1. Einführung: Tiere klassifizieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ki/knearestneighbor2.html">22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ki/knearestneighbor222.html">22.3. Programmierung des Algorihmus (1)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="ki/kmeansclustering.html">23. k-Means-Clustering</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ki/kmeansclustering.html">23. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="ki/kmeansclustering2_aufgabe.html">23.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ki/kmeansclustering2_loesung.html">23.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -441,11 +446,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-erster-versuch">Live Coding: Erster Versuch</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">Übungsaufgabe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-erster-versuch">1.3.1. Live Coding: Erster Versuch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">1.3.1.1. Übungsaufgabe</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben-herunterladen">Aufgaben herunterladen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben-herunterladen">1.3.2. Aufgaben herunterladen</a></li>
 </ul>
             </nav>
         </div>
@@ -462,7 +467,7 @@ document.write(`
 <p>Auf manchen Seiten in diesem Buch siehst du ganz oben ein 🚀 Raketensymbol. Klicke es an und wähle dann “Live Code”. Dadurch wird die Seite zu einem Jupyter Notebook, das du direkt im Browser bearbeiten und ausführen kannst - ganz ohne Software zu installieren!</p>
 <p>Probiere es hier unten gleich einmal aus 👇</p>
 <section id="live-coding-erster-versuch">
-<h2>Live Coding: Erster Versuch<a class="headerlink" href="#live-coding-erster-versuch" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.3.1. </span>Live Coding: Erster Versuch<a class="headerlink" href="#live-coding-erster-versuch" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aufgabe 1: Führe den Code aus (🚀 ⟶ Live Code ⟶ &quot;run&quot;-Button unterhalb dieser Zelle). </span>
@@ -485,7 +490,7 @@ Hallo
 </div>
 </div>
 <section id="ubungsaufgabe">
-<h3>Übungsaufgabe<a class="headerlink" href="#ubungsaufgabe" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.3.1.1. </span>Übungsaufgabe<a class="headerlink" href="#ubungsaufgabe" title="Link to this heading">#</a></h3>
 <p>Bearbeite die folgende Aufgabe direkt im Browser (🚀-Button).</p>
 <p>Wenn du die Zelle ausführst, laufen ein paar automatische Tests ab. Wenn sie alle fehlerfrei durchlaufen, herzlichen Glückwunsch! Falls nicht, sieh dir an, welcher Test schief ging und überlege warum.</p>
 <div class="cell docutils container">
@@ -530,7 +535,7 @@ Hallo
 </section>
 </section>
 <section id="aufgaben-herunterladen">
-<h2>Aufgaben herunterladen<a class="headerlink" href="#aufgaben-herunterladen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.3.2. </span>Aufgaben herunterladen<a class="headerlink" href="#aufgaben-herunterladen" title="Link to this heading">#</a></h2>
 <p>Dieses Skript besteht aus <em>Jupyter Notebooks</em>. Du kannst, wie oben gezeigt, die Notebooks im Browser bearbeiten. Das ist v.a. für kurze, einfache Aufgaben sinnvoll. Allerdings sind deine Eingaben beim Neuladen der Webseite sofort wieder verschwunden.</p>
 <p>Du kannst die Notebooks aber auch herunterladen und <em>auf deinem eigenen Rechner</em> damit arbeiten (z.B. in <em>VS Code</em>).</p>
 <p>Zum Herunterladen einer Seite,</p>
@@ -694,11 +699,11 @@ Anna Musterfrau (Gehalt: 4500 €)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-erster-versuch">Live Coding: Erster Versuch</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">Übungsaufgabe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-erster-versuch">1.3.1. Live Coding: Erster Versuch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">1.3.1.1. Übungsaufgabe</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben-herunterladen">Aufgaben herunterladen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgaben-herunterladen">1.3.2. Aufgaben herunterladen</a></li>
 </ul>
   </nav></div>
 

@@ -1,0 +1,1235 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>23.8. Programmierung des Algorithmus &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Klicken zum Anzeigen';</script>
+    <script>let toggleHintHide = 'Klicken zum Ausblenden';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/ki/kmeansclustering2_aufgabe.63a9d38c-3522-495e-b886-64e28b95e0d4.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ki/kmeansclustering2_aufgabe';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;https://jil91.github.io/&#34;/ki/kmeansclustering2_aufgabe.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="23.9. Programmierung des Algorithmus (Lösung)" href="kmeansclustering2_loesung.html" />
+    <link rel="prev" title="23. k-Means-Clustering" href="kmeansclustering.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OOP, Datenbanken, Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einführung in OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t02_kapselung.html">3. Datenkapselung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t03_vererbung.html">4. Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t04_abstrakteKlassen.html">5. Abstrakte Klassen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t05_interfaces.html">6. Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t06_klassenvariablen.html">7. Klassenvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t07_assoziationen.html">8. Assoziationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t08_3SA.html">9. 3SA - Drei-Schichten-Architektur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t09_sequenzdiagramme.html">10. Sequenzdiagramme</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenbanken</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../db/t10_einstieg_db.html">11. Einstieg Datenbanken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t11_erm.html">12. Entity-Relationship-Modell (ERM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t12_erm_rm.html">13. Vom ERM ins Relationale Modell (RM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t13_normalisierung.html">14. Normalisierung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/datenstrukturen_allgemein.html">15. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/listen_einfuehrung.html">16. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_listen.html">16.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen1.html">16.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen2.html">16.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen_loesungen.html">16.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/stapel_und_warteschlangen_intro.html">17. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack.html">17.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack-aufgaben.html">17.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/warteschlangen.html">17.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/assoziative_arrays.html">18. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/baeume.html">19. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/binaerbaeume.html">19.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/suchbaeume.html">19.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/klausurvorbereitung_mit_loesungen.html">20. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor221.html">22.1. Einführung: Tiere klassifizieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor2.html">22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor222.html">22.3. Programmierung des Algorihmus (1)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="kmeansclustering.html">23. k-Means-Clustering</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">23.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_loesung.html">23.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ki/kmeansclustering2_aufgabe.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Programmierung des Algorithmus</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudocode">23.8.1. Pseudocode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorentlastungen">23.8.2. Vorentlastungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-tests">23.8.2.1. Unit Tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datenpunkt-klasse">23.8.2.2. <code class="docutils literal notranslate"><span class="pre">Datenpunkt</span></code>-Klasse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generiere-datenpunkte">23.8.2.3. <code class="docutils literal notranslate"><span class="pre">generiere_datenpunkte()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialisiere-zentroiden">23.8.2.4. <code class="docutils literal notranslate"><span class="pre">initialisiere_zentroiden()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a1-berechne-euklidische-distanz">23.8.3. A1: <code class="docutils literal notranslate"><span class="pre">berechne_euklidische_distanz()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a2-finde-naechsten-zentroiden">23.8.4. A2: <code class="docutils literal notranslate"><span class="pre">finde_naechsten_zentroiden()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a3-datenpunkte-zuweisen">23.8.5. A3: <code class="docutils literal notranslate"><span class="pre">datenpunkte_zuweisen()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a4-berechne-zentroid-koordinaten">23.8.6. A4: <code class="docutils literal notranslate"><span class="pre">berechne_zentroid_koordinaten()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a5-aktualisiere-zentroiden">23.8.7. A5: <code class="docutils literal notranslate"><span class="pre">aktualisiere_zentroiden()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finale-k-means">23.8.8. Finale: <code class="docutils literal notranslate"><span class="pre">k_means()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="programmierung-des-algorithmus">
+<h1><span class="section-number">23.8. </span>Programmierung des Algorithmus<a class="headerlink" href="#programmierung-des-algorithmus" title="Link to this heading">#</a></h1>
+<p>Wir werden uns nun Schritt für Schritt die nötigen Methoden den k-Means-Clustering Algorithmus erarbeiten. Um am Ende nicht einen großen Codeblock erstellen zu müssen, werden wir soviel Vorarbeit wie möglich erledigen. So kannst du dich am Ende ganz auf die Implementierung der Teile des Algorithmus konzentrieren [Stichwort: externe kognitive Belastung gering halten, siehe <a class="reference external" href="https://de.wikipedia.org/wiki/Cognitive_Load_Theory">Cognitive Load Theory (CLT)</a> 😉]</p>
+<section id="pseudocode">
+<h2><span class="section-number">23.8.1. </span>Pseudocode<a class="headerlink" href="#pseudocode" title="Link to this heading">#</a></h2>
+<p>Nochmals die Grundidee des <a class="reference internal" href="kmeansclustering.html#ablauf-k-means-algorithmus"><span class="std std-ref">Algorithmus</span></a>:</p>
+<ol class="arabic simple">
+<li><p><strong>Clusterzentren initialisieren:</strong> Zu Beginn werden <span class="math notranslate nohighlight">\(k\)</span> Zentroiden (Mittelwerte der Cluster) zufällig oder nach einer bestimmten Heuristik gewählt.</p></li>
+<li><p><strong>Datenpunkte zuweisen:</strong> Jeder Datenpunkt wird dem nächstgelegenen Clusterzentrum zugeordnet. Diese Zuordnung basiert üblicherweise auf der euklidischen Distanz.</p></li>
+<li><p><strong>Zentroiden aktualisieren:</strong> Nach der Zuordnung werden die Zentroiden neu berechnet, indem der Mittelwert aller Punkte in jedem Cluster bestimmt wird.</p></li>
+<li><p><strong>Wiederholen</strong>: Die Schritte der Zuordnung und Aktualisierung werden wiederholt, bis sich die Clusterzentren nicht mehr ändern oder eine maximale Anzahl von Iterationen erreicht wurde.</p></li>
+</ol>
+<p>Folgend siehst du die Umsetzung des Algorithmus in Pseudocode nach der Formelsammlung, vervollständigt mit Kommentaren.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATION</span> <span class="n">k_means</span><span class="p">(</span>
+    <span class="n">daten</span><span class="p">:</span> <span class="n">Liste</span><span class="o">&lt;</span><span class="n">Datenpunkt</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">max_iterationen</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">Liste</span><span class="o">&lt;</span><span class="n">Datenpunkt</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">Liste</span><span class="o">&lt;</span><span class="n">Datenpunkt</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="n">Lokale</span> <span class="n">Variablen</span><span class="p">:</span> 
+        <span class="n">zentroiden</span><span class="p">:</span> <span class="n">Liste</span><span class="o">&lt;</span><span class="n">Datenpunkt</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">neue_zentroiden</span><span class="p">:</span> <span class="n">Liste</span><span class="o">&lt;</span><span class="n">Datenpunkt</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">cluster</span><span class="p">:</span> <span class="n">Liste</span><span class="o">&lt;</span><span class="n">Datenpunkt</span><span class="o">&gt;</span>
+
+    <span class="c1"># Initialisierung der Zentroiden</span>
+    <span class="n">zentroiden</span> <span class="o">=</span> <span class="n">initialisiere_zentroiden</span><span class="p">(</span><span class="n">daten</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+    <span class="c1"># Hauptalgorithmus: Wiederhole für maximal max_iterationen</span>
+    <span class="n">FÜR</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="n">BIS</span> <span class="n">max_iterationen</span> <span class="n">SCHRITT</span> <span class="mi">1</span>
+        <span class="c1"># Cluster-Zuordnung: Weise jeden Datenpunkt dem nächsten Zentroiden zu</span>
+        <span class="n">cluster</span> <span class="o">=</span> <span class="n">berechne_cluster</span><span class="p">(</span><span class="n">daten</span><span class="p">,</span> <span class="n">zentroiden</span><span class="p">)</span>
+
+        <span class="c1"># Zentroiden-Aktualisierung: Berechne die neuen Zentroiden als Mittelwert der zugeordneten Punkte</span>
+        <span class="n">neue_zentroiden</span> <span class="o">=</span> <span class="n">aktualisiere_zentroiden</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
+
+        <span class="c1"># Abbruchbedingung: Wenn die Zentroiden sich nicht mehr ändern, ist der Algorithmus fertig</span>
+        <span class="n">WENN</span> <span class="n">neue_zentroiden</span> <span class="o">==</span> <span class="n">zentroiden</span>  <span class="c1"># Das ist die Abbruchbedingung!</span>
+            <span class="n">ABBRUCH</span>
+        <span class="n">ENDE</span> <span class="n">WENN</span>
+
+        <span class="c1"># Aktualisiere die Zentroiden für die nächste Iteration</span>
+        <span class="n">zentroiden</span> <span class="o">=</span> <span class="n">neue_zentroiden</span>
+    <span class="n">ENDE</span> <span class="n">FÜR</span>
+
+    <span class="c1"># Rückgabe der finalen Cluster-Zuordnung und Zentroiden</span>
+    <span class="n">RÜCKGABE</span> <span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">zentroiden</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Laut Pseudocode benötigen wir die Methoden <code class="docutils literal notranslate"><span class="pre">initialisiere_zentroiden()</span></code> <code class="docutils literal notranslate"><span class="pre">datenpunkte_zuweisen()</span></code> und <code class="docutils literal notranslate"><span class="pre">aktualisiere_zentroiden()</span></code>. Die Methode <code class="docutils literal notranslate"><span class="pre">initialisiere_zentroiden()</span></code> ist bereits implementiert.</p>
+<p>Die beiden anderen Methoden sind deine Aufgabe. In beiden Fällen benötigst du die Eukledische Distanz (<strong>A1</strong>).<br />
+Dann brauchst du eine Methode, die entscheidet, welcher Zentroid der nächste zu einem Datenpunkt ist (<strong>A2</strong>). Mit dieser Methode kannst du dann die Datenpunkte den Clustern zuweisen (<strong>A3</strong>).<br />
+Danach müssen die Koordinaten der Zentroiden neu berechnet werden. Zunächst für einen (<strong>A4</strong>), dann für alle Zentroiden (<strong>A5</strong>).</p>
+<p><strong>Deine Aufgaben sind:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#aufgabe1"><span class="std std-ref">A1</span></a>: <code class="docutils literal notranslate"><span class="pre">berechne_euklidische_distanz()</span></code></p></li>
+<li><p><a class="reference internal" href="#aufgabe2"><span class="std std-ref">A2</span></a>: <code class="docutils literal notranslate"><span class="pre">finde_naechsten_zentroiden()</span></code></p></li>
+<li><p><a class="reference internal" href="#aufgabe3"><span class="std std-ref">A3</span></a>: <code class="docutils literal notranslate"><span class="pre">datenpunkte_zuweisen()</span></code></p></li>
+<li><p><a class="reference internal" href="#aufgabe4"><span class="std std-ref">A4</span></a>: <code class="docutils literal notranslate"><span class="pre">berechne_zentroid_koordinaten()</span></code></p></li>
+<li><p><a class="reference internal" href="#aufgabe5"><span class="std std-ref">A5</span></a>: <code class="docutils literal notranslate"><span class="pre">aktualisiere_zentroiden()</span></code></p></li>
+</ul>
+<p>Wenn alle Aufgaben erledigt, sollte <a class="reference internal" href="kmeansclustering2_loesung.html#k-means-final"><span class="std std-ref">die Methode <code class="docutils literal notranslate"><span class="pre">k_means()</span></code></span></a> korrekt funktionieren 😎.</p>
+<div class="note admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Die folgenden Unterpunkte bis zur <a class="reference internal" href="#aufgabe1"><span class="std std-ref">ersten Aufgabe</span></a> sind nicht essentiel, um den Algorithmus zu verstehen, aber dennoch hilfreich für die spätere Implementierung. Und auch generell wichtig für das vielleicht spätere Leben als ProgrammiererIn.</p>
+</div>
+</section>
+<section id="vorentlastungen">
+<h2><span class="section-number">23.8.2. </span>Vorentlastungen<a class="headerlink" href="#vorentlastungen" title="Link to this heading">#</a></h2>
+<p>Wir werden nun vor der ersten Aufgabe folgende Schritte bereits erledigen:</p>
+<ul class="simple">
+<li><p>Konfiguration von Unit Tests: für das Beschreiben der Methoden und für nachvollziehbare Testfälle</p></li>
+<li><p>Klasse <code class="docutils literal notranslate"><span class="pre">Datenpunkt</span></code>: für das Handling von X- und Y-Koordinaten</p></li>
+<li><p>Methode <code class="docutils literal notranslate"><span class="pre">generiere_datenpunkte()</span></code>: für das Generieren von zufälligen Datenpunkten</p></li>
+<li><p>Methode <code class="docutils literal notranslate"><span class="pre">initialisiere_zentroiden()</span></code>: für das Initialisieren der ersten Zentroiden</p></li>
+</ul>
+<p>In den Aufgaben selber sind auch teilweise schon Tipps und Hilfen. Achte auf die Stelle <code class="docutils literal notranslate"><span class="pre">...</span>&#160; <span class="pre">#</span> <span class="pre">Hier</span> <span class="pre">die</span> <span class="pre">weitere</span> <span class="pre">Lösung</span> <span class="pre">ergänzen</span></code>: nur dort muss dein Code hin 😉.</p>
+<section id="unit-tests">
+<h3><span class="section-number">23.8.2.1. </span>Unit Tests<a class="headerlink" href="#unit-tests" title="Link to this heading">#</a></h3>
+<p>Wir werden zum Testen unserer Methoden <a class="reference external" href="https://en.wikipedia.org/wiki/Unit_testing">Unit-Tests</a> verwenden. Das sind kleine, automatisierte Tests, die jeweils eine <strong>einzelne</strong> Funktion oder Methode in einem Programm überprüfen. Sie helfen sicherzustellen, dass jede Komponente des Codes genau das tut, was sie tun soll. Stell dir Unit-Tests wie eine Checkliste vor, die jede Funktion Schritt für Schritt überprüft, ob sie die erwarteten Ergebnisse liefert.</p>
+<p>Bei den einzelnen Methoden sind bereits jeweils Unit-Tests hinterlegt, sodass sie dir eine Hilfe bei der Implementierung geben. Wenn du die Test-Methoden studierst, siehst du, wie die zu implementierenden Methoden aufgerufen werden.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Bei Interesse: weitere Infos zu Unit-Tests</p>
+<p><strong>Vorteile von Unit-Tests:</strong></p>
+<ul class="simple">
+<li><p><strong>Frühes Erkennen von Fehlern</strong>: Unit-Tests helfen dabei, Fehler früh zu finden, noch bevor der ganze Code zusammengesetzt wird. Das macht es einfacher und billiger, diese Fehler zu beheben.</p></li>
+<li><p><strong>Sicherheit bei Änderungen</strong>: Wenn du etwas an deinem Code änderst, kannst du die Unit-Tests erneut ausführen, um sicherzustellen, dass die Änderung nichts kaputt gemacht hat. Sie geben also Vertrauen, dass alte Funktionen nach wie vor korrekt laufen.</p></li>
+<li><p><strong>Besserer Code</strong>: Oft sorgt das Schreiben von Unit-Tests dafür, dass der eigentliche Code sauberer und verständlicher wird, weil man genau überlegen muss, was die Funktion tut.</p></li>
+<li><p><strong>Dokumentation</strong>: Unit-Tests dokumentieren, wie der Code verwendet wird und welche Eingaben erwartete Ausgaben ergeben. Das hilft anderen Entwickler:innen (oder deinem zukünftigen Selbst), den Code besser zu verstehen.</p></li>
+</ul>
+<p>Mit Unit-Tests bist du also gut aufgestellt, um zuverlässigen und stabilen Code zu schreiben, der leichter zu warten ist.</p>
+</div>
+<p>Folgend ist wird definiert, wie die Erfolgs- und Fehlerausgabe in einem für uns gut lesbaren Format ausgegeben wird. Du musst es nicht verstehen, es ist nur wichtig, bei den Implementierungen <code class="docutils literal notranslate"><span class="pre">run_doctests_mit_lesbarer_ausgabe(methoden_name)</span></code> auszuführen, um die Methode zu testen und die Ausgabe dazu erhalten. Du erhältst immer die Info, ob die Methode erfolgreich implementiert wurde oder ob es noch Tests gibt, die fehlschlagen.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Für die Unit Tests benötigen wir das Modul doctest. Damit können wir die Docstrings in den Funktionen testen.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">doctest</span>
+
+<span class="c1"># Damit die Ausgabe für dich gut lesbar ist, verwenden wir eine eigenes Output-Format</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomOutputChecker</span><span class="p">(</span><span class="n">doctest</span><span class="o">.</span><span class="n">OutputChecker</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Diese Klasse ist ein Wrapper für den Doctest-OutputChecker, um die Ausgabe zu formatieren.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">example</span><span class="p">,</span> <span class="n">got</span><span class="p">,</span> <span class="n">optionflags</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Diese Funktion gibt die Testergebnisse in einer lesbaren Form zurück.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Test fehlgeschlagen:</span>
+<span class="s2">  Beispiel: </span><span class="si">{</span><span class="n">example</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span>
+<span class="s2">  Erwartet: </span><span class="si">{</span><span class="n">example</span><span class="o">.</span><span class="n">want</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span>
+<span class="s2">  Erhalten: </span><span class="si">{</span><span class="n">got</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Diese Funktion führt die Doctests aus und gibt eine lesbare Ausgabe zurück.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        func (function): Die Funktion, die getestet werden soll.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">DocTestRunner</span><span class="p">(</span><span class="n">checker</span><span class="o">=</span><span class="n">CustomOutputChecker</span><span class="p">(),</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="n">tests</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">DocTestFinder</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="n">total_failed</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+        <span class="n">total_failed</span> <span class="o">+=</span> <span class="n">result</span><span class="o">.</span><span class="n">failed</span>
+    
+    <span class="n">runner</span><span class="o">.</span><span class="n">summarize</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">total_failed</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">() wurde erfolgreich implementiert!&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">() hat </span><span class="si">{</span><span class="n">total_failed</span><span class="si">}</span><span class="s1"> fehlgeschlagene Tests&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>In Python können wir Funktionen und Klassen mit Docstrings dokumentieren. Docstrings sind mehrzeilige Kommentare unter der <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">...</span></code>-Zeile, die erklären, was die Funktion macht, welche Parameter sie benötigt und was sie zurückgibt. Außerdem können wir Beispiel-Aufrufe direkt in die Docstrings schreiben, um die Funktionsweise zu zeigen. Und damit haben wir auch schon unsere Unit Tests, wie praktisch! Denn iese Beispiele kann man mit den Unit Tests einfach nachspielen. Im Beispiel unten erfolgt das mit der Zeile</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">ist_gerade</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ist_gerade</span><span class="p">(</span><span class="n">zahl</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prüft, ob eine Zahl gerade ist.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        zahl (int): Die zu prüfende Zahl</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True, wenn die Zahl gerade ist, sonst False</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; ist_gerade(2)</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; ist_gerade(3)</span>
+<span class="sd">        False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Zum Testen kannst du die Funktion mal so abändern, dass sie ein falsches Ergebnis zurückgibt</span>
+    <span class="c1"># return True # auskommentieren, um den Test fehlschlagen zu lassen</span>
+    <span class="k">return</span> <span class="n">zahl</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="c1"># Unit Test ausführen</span>
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">ist_gerade</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="datenpunkt-klasse">
+<h3><span class="section-number">23.8.2.2. </span><code class="docutils literal notranslate"><span class="pre">Datenpunkt</span></code>-Klasse<a class="headerlink" href="#datenpunkt-klasse" title="Link to this heading">#</a></h3>
+<p>Damit du die Koordinaten der Datenpunkte und der Zentroiden bequem veralten können, ist die Hilfsklasse <code class="docutils literal notranslate"><span class="pre">Datenpunkt</span></code> bereits vorhanden. In dieser Klasse erweitern wir noch die internen Methoden <code class="docutils literal notranslate"><span class="pre">__eq__()</span></code> und <code class="docutils literal notranslate"><span class="pre">__hash__()</span></code>, damit wir es später leichter haben, die neuen Zentroiden mit den alten Zentroiden der vorigen Iteration zu vergleichen (siehe Schritt 4 des <a class="reference internal" href="kmeansclustering.html#ablauf-k-means-algorithmus"><span class="std std-ref">Algorithmus</span></a>). Es wäre auch möglich, die Koordinaten in verschachtelten Arrays zu verwalten, aber die Lösung einer eigenen Klasse ist eleganter und wir können Komplexität in diese Klasse auslagern. Für dich wichtig zu wissen: einen neuen Datenpunkt kannst du mit <code class="docutils literal notranslate"><span class="pre">punkt</span> <span class="pre">=</span> <span class="pre">Datenpunkt(1.2345,</span> <span class="pre">6.789)</span></code> erzeugen.</p>
+<div class="note admonition">
+<p class="admonition-title">Zentroiden &amp; Datenpunkte</p>
+<p>Zentroiden sind nichts anderes als Datenpunkte wie aus den Eingabedaten. Beide zeichnet aus, dass sie <code class="docutils literal notranslate"><span class="pre">X</span></code>- und <code class="docutils literal notranslate"><span class="pre">Y</span></code>-Koordinaten haben.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Datenpunkt</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Klasse, die einen Datenpunkt repräsentiert mit XY-Koordinaten.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Erzeugt einen Datenpunkt mit den gegebenen Koordinaten, gerundet auf zwei Dezimalstellen.</span>
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; punkt = Datenpunkt(1.2345, 6.789)</span>
+<span class="sd">            &gt;&gt;&gt; punkt.x</span>
+<span class="sd">            1.23</span>
+<span class="sd">            &gt;&gt;&gt; punkt.y</span>
+<span class="sd">            6.79</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">anderer_datenpunkt</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Vergleicht zwei Datenpunkte basierend auf ihren Koordinaten.</span>
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Datenpunkt(1.23, 4.56) == Datenpunkt(1.23, 4.56)</span>
+<span class="sd">            True</span>
+<span class="sd">            &gt;&gt;&gt; Datenpunkt(1.23, 4.56) == Datenpunkt(0.00, 4.56)</span>
+<span class="sd">            False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">anderer_datenpunkt</span><span class="p">,</span> <span class="n">Datenpunkt</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">anderer_datenpunkt</span><span class="o">.</span><span class="n">x</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">anderer_datenpunkt</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Berechnet den Hashwert eines Datenpunktes.</span>
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; hash(Datenpunkt(1.23, 4.56)) == hash(Datenpunkt(1.23, 4.56))</span>
+<span class="sd">            True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gibt eine lesbare Repräsentation eines Datenpunktes zurück.</span>
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; repr(Datenpunkt(1.23, 4.56))</span>
+<span class="sd">            &#39;Datenpunkt(1.23, 4.56)&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Datenpunkt(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">Datenpunkt</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span>
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">Datenpunkt</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">)</span>
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">Datenpunkt</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">)</span>
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">Datenpunkt</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generiere-datenpunkte">
+<h3><span class="section-number">23.8.2.3. </span><code class="docutils literal notranslate"><span class="pre">generiere_datenpunkte()</span></code><a class="headerlink" href="#generiere-datenpunkte" title="Link to this heading">#</a></h3>
+<p>Wir benötigen automatische Eingabedaten und wir möchten unsere <code class="docutils literal notranslate"><span class="pre">kmeans()</span></code>-Methode mit beliebig großen Datensätzen testen können. Dafür werden wir Methode <code class="docutils literal notranslate"><span class="pre">generiere_datenpunkte()</span></code> verwenden. Dieser können wir die Anzahl der gewünschten Datenpunkte und den gewünschten Zahlenraum angeben. Wir erhalten eine Liste von <code class="docutils literal notranslate"><span class="pre">Datenpunkten</span></code> zurück.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">generiere_datenpunkte</span><span class="p">(</span><span class="n">anzahl_datenpunkte</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">zahlenraum</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">randomseed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generiert eine Liste von zufälligen Datenpunkten im angegebenen Zahlenraum.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        anzahl_datenpunkte (int): Anzahl der zu generierenden Datenpunkte</span>
+<span class="sd">        zahlenraum (int): Größe des Zahlenraums, in dem die Datenpunkte generiert werden</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list[Datenpunkt]: Liste von zufälligen Datenpunkten</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte = generiere_datenpunkte(3, 10)</span>
+<span class="sd">        &gt;&gt;&gt; len(datenpunkte)</span>
+<span class="sd">        3</span>
+<span class="sd">        &gt;&gt;&gt; all(0 &lt;= datenpunkt.x &lt;= 10 and 0 &lt;= datenpunkt.y &lt;= 10 for datenpunkt in datenpunkte)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Damit wir einerseits zufällige Zahlen generieren können, aber andererseits auch reproduzierbare</span>
+    <span class="c1"># Ergebnisse erhalten, setze wir den Zufallsgenerator auf einen fixen Wert.</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">randomseed</span><span class="p">)</span>
+    <span class="c1"># Set, um Duplikate zu vermeiden</span>
+    <span class="n">datenpunkte</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="c1"># Solange die Anzahl der generierten Datenpunkte kleiner als die gewünschte Anzahl ist,</span>
+    <span class="c1"># neue Datenpunkte generieren und hinzufügen</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">anzahl_datenpunkte</span><span class="p">:</span>
+        <span class="c1"># Zufällige Koordinaten im Zahlenraum generieren</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zahlenraum</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zahlenraum</span><span class="p">)</span>
+        <span class="n">datenpunkt</span> <span class="o">=</span> <span class="n">Datenpunkt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">datenpunkte</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">datenpunkt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">)</span>
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">generiere_datenpunkte</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="initialisiere-zentroiden">
+<h3><span class="section-number">23.8.2.4. </span><code class="docutils literal notranslate"><span class="pre">initialisiere_zentroiden()</span></code><a class="headerlink" href="#initialisiere-zentroiden" title="Link to this heading">#</a></h3>
+<p>Im ersten Schritt des k-means Algorithmus werden die Startzentroiden bestimmt. Die Methode <code class="docutils literal notranslate"><span class="pre">initialisiere_zentroiden()</span></code> wählt aus der übergebenen Liste von <code class="docutils literal notranslate"><span class="pre">Datenpunkten</span></code> die gewünschte Anzahl der Zentroiden zufällig aus. Die Auswahl ist zwar <strong>zufällig</strong>, bleibt <strong>aber reproduzierbar</strong>, weil wir in der Methode <code class="docutils literal notranslate"><span class="pre">generiere_datenpunkte</span></code> den Zufallsgenerator auf einen fixen Wert gesetzt haben. Die Methode gibt eine Liste von <code class="docutils literal notranslate"><span class="pre">Datenpunkten</span></code> zurück.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">initialisiere_zentroiden</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">],</span> <span class="n">anzahl_zentroiden</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wählt zufällig die angegebene Anzahl von Zentroiden aus den Datenpunkten aus.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        datenpunkte: Liste von Datenpunkten, aus denen die Zentroiden ausgewählt werden.</span>
+<span class="sd">        anzahl_zentroiden: Anzahl der Zentroiden, die initialisiert werden sollen.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list[Datenpunkt]: Liste der initialisierten Zentroiden.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte = [Datenpunkt(1.4, 4.5), Datenpunkt(5.2, 8.3), Datenpunkt(3.1, 9.2), Datenpunkt(3.1, 6.2)]</span>
+<span class="sd">        &gt;&gt;&gt; anzahl_zentroiden = 2</span>
+<span class="sd">        &gt;&gt;&gt; result = initialisiere_zentroiden(datenpunkte, anzahl_zentroiden)</span>
+<span class="sd">        &gt;&gt;&gt; len(result)</span>
+<span class="sd">        2</span>
+<span class="sd">        &gt;&gt;&gt; all(zentroid in datenpunkte for zentroid in result)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">zentroiden</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">,</span> <span class="n">anzahl_zentroiden</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">zentroiden</span>
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">initialisiere_zentroiden</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tip admonition">
+<p class="admonition-title">Your turn</p>
+<p><strong>Ab hier beginnt dein Teil der Arbeit, viel Spaß und Erfolg 💪</strong></p>
+</div>
+</section>
+</section>
+<section id="a1-berechne-euklidische-distanz">
+<span id="aufgabe1"></span><h2><span class="section-number">23.8.3. </span>A1: <code class="docutils literal notranslate"><span class="pre">berechne_euklidische_distanz()</span></code><a class="headerlink" href="#a1-berechne-euklidische-distanz" title="Link to this heading">#</a></h2>
+<p>Zum Warmwerden: du brauchst eine Methode, welche dir die Distanz zwischen zwei Datenpunkten berechnet. Wir werden hierfür als <a class="reference internal" href="ki_allgemein.html#term-Distanzmasze"><span class="xref std std-term">Distanzmaße</span></a> die <a class="reference internal" href="ki_allgemein.html#term-Euklidische-Distanz"><span class="xref std std-term">Euklidische Distanz</span></a> verwenden. Die Methode erhält zwei Datenpunkte und gibt die Distanz auf zwei Nachkommastellen gerundet zurück. Zum runden benötigst du die Methode <a class="reference external" href="https://www.w3schools.com/python/ref_func_round.asp">round()</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">berechne_euklidische_distanz</span><span class="p">(</span><span class="n">datenpunkt1</span><span class="p">:</span> <span class="n">Datenpunkt</span><span class="p">,</span> <span class="n">datenpunkt2</span><span class="p">:</span> <span class="n">Datenpunkt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Berechnet die euklidische Distanz zu einem anderen Datenpunkt auf zwei Dezimalstellen gerundet.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        datenpunkt1: Erster Datenpunkt.</span>
+<span class="sd">        datenpunkt2: Zweiter Datenpunkt.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Euklidische Distanz zwischen den beiden Datenpunkten auf zwei Dezimalstellen gerundet.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkt1 = Datenpunkt(1.0, 2.0)</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkt2 = Datenpunkt(3.0, 4.0)</span>
+<span class="sd">        &gt;&gt;&gt; berechne_euklidische_distanz(datenpunkt1, datenpunkt2)</span>
+<span class="sd">        2.83</span>
+<span class="sd">        &gt;&gt;&gt; berechne_euklidische_distanz(datenpunkt1, datenpunkt1)</span>
+<span class="sd">        0.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Du benötigst den Satz des Pythagoras: c = Wurzel von (a^2 + b^2)</span>
+    <span class="c1"># Beispiele für Potenzen, Wurzeln und Runden:</span>
+    <span class="n">potenz_von_3</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">wurzel_aus_9</span> <span class="o">=</span> <span class="mi">9</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="n">pi_mit_5_nachkommastellen</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="o">...</span>  <span class="c1"># Hier Lösung ergänzen</span>
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">berechne_euklidische_distanz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a2-finde-naechsten-zentroiden">
+<span id="aufgabe2"></span><h2><span class="section-number">23.8.4. </span>A2: <code class="docutils literal notranslate"><span class="pre">finde_naechsten_zentroiden()</span></code><a class="headerlink" href="#a2-finde-naechsten-zentroiden" title="Link to this heading">#</a></h2>
+<p>Nun wollen wir für einen <code class="docutils literal notranslate"><span class="pre">Datenpunkt</span></code> den nächstgelegenen Zentroiden ermitteln. Wir bekommen dafür die Liste von Zentroiden übergeben und müssen hieraus nun den Zentroiden ermitteln, zu dem die Distanz des <code class="docutils literal notranslate"><span class="pre">Datenpunkts</span></code> am geringsten ist. Überlege dir vorher, wie du vorgehen möchtest. Zurückgegeben wird der Index des ermittelten Zentroiden. Wenn also der 3. Zentroid der nächstgelegene ist, dann muss der Index 2 zurückgegeben wird (da Index bei 0 beginnt).</p>
+<div class="admonition-wichtiger-tipp admonition">
+<p class="admonition-title">Wichtiger Tipp</p>
+<p>Du benötigst die Methode <code class="docutils literal notranslate"><span class="pre">berechne_euklidische_distanz()</span></code> aus der vorigen Aufgabe!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">finde_naechsten_zentroiden</span><span class="p">(</span><span class="n">zentroiden</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">],</span> <span class="n">datenpunkt</span><span class="p">:</span> <span class="n">Datenpunkt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finde den nächsten Zentroiden für einen gegebenen Datenpunkt. Wenn es mehrere Zentroiden mit</span>
+<span class="sd">    der gleichen minimalen Distanz gibt, wird der erste gefundene Zentroid zurückgegeben. Die Zahl,</span>
+<span class="sd">    die zurückgegeben wird, ist der Index des Zentroiden in der Liste der Zentroiden.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        zentroiden (list[Datenpunkt]): Liste der Zentroiden, zwischen denen der nächste gesucht wird.</span>
+<span class="sd">        datenpunkt (Datenpunkt): Der Datenpunkt, für den der nächste Zentroid gesucht wird.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        int: Index des nächsten Zentroiden. </span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; zentroiden = [Datenpunkt(1, 2), Datenpunkt(4, 6), Datenpunkt(3, 5)]</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkt = Datenpunkt(1, 1)</span>
+<span class="sd">        &gt;&gt;&gt; finde_naechsten_zentroiden(zentroiden, datenpunkt)</span>
+<span class="sd">        0</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkt = Datenpunkt(4, 6)</span>
+<span class="sd">        &gt;&gt;&gt; finde_naechsten_zentroiden(zentroiden, datenpunkt)</span>
+<span class="sd">        1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">geringste_distanz</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="c1"># Erstmal die maximale Distanz wählen</span>
+    <span class="n">index_naechster_zentroid</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">zentroid</span> <span class="ow">in</span> <span class="n">zentroiden</span><span class="p">:</span>
+        <span class="o">...</span>  <span class="c1"># Hier Lösung ergänzen</span>
+        <span class="c1"># Tipp: Wie kannst du die Distanz zwischen zwei Punkten berechnen?</span>
+        <span class="c1"># Tipp: Wie kannst du prüfen, ob eine Distanz kleiner ist als die bisher geringste?</span>
+        <span class="c1"># Tipp: Index des Zentroiden speichern, wenn die Distanz geringer als die vorige ist?</span>
+        
+    <span class="k">return</span> <span class="n">index_naechster_zentroid</span>
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">finde_naechsten_zentroiden</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a3-datenpunkte-zuweisen">
+<span id="aufgabe3"></span><h2><span class="section-number">23.8.5. </span>A3: <code class="docutils literal notranslate"><span class="pre">datenpunkte_zuweisen()</span></code><a class="headerlink" href="#a3-datenpunkte-zuweisen" title="Link to this heading">#</a></h2>
+<p>Nachdem wir den nächsten Zentroiden zu einem Datenpunkt berechnen können, sind wir nun in der Lage, alle Datenpunkte zu clustern. Mit der Methode <code class="docutils literal notranslate"><span class="pre">datenpunkte_zuweisen()</span></code> können wir nun für jeden Datenpunkt den nächsten Zentroiden ermitteln und daraus die Cluster bilden.</p>
+<p>In der Methode unten ist bereits das Erzeugen der leeren Cluster erfolgt, darum musst du dich nicht kümmern. Was du noch ergänzen musst, ist das Ermitteln des nächsten Zentroiden zu jedem Datenpunkt. Mit dem erhaltenen Index kannst du dann in der Liste von Clustern jeden den Datenpunkt dem zugehörigen Cluster anhängen.</p>
+<div class="admonition-wichtiger-tipp admonition">
+<p class="admonition-title">Wichtiger Tipp</p>
+<p>Die Cluster sind in einer Liste enthalten. Die Cluster selber sind auch Listen. Hier unten siehst du ein Beispiel von einer Liste mit 3 Clustern.</p>
+<p><code class="docutils literal notranslate"><span class="pre">clusters</span> <span class="pre">=</span> <span class="pre">[[Datenpunkt(1.0,</span> <span class="pre">1.0),</span> <span class="pre">Datenpunkt(3.0,</span> <span class="pre">3.0)],</span> <span class="pre">[Datenpunkt(5.0,</span> <span class="pre">5.0)],</span> <span class="pre">[Datenpunkt(7.0,</span> <span class="pre">7.0)]]</span></code></p>
+<ul class="simple">
+<li><p>Cluster an Index 0 hat die Elemente <code class="docutils literal notranslate"><span class="pre">Datenpunkt(1.0,</span> <span class="pre">1.0)</span></code> und <code class="docutils literal notranslate"><span class="pre">Datenpunkt(3.0,</span> <span class="pre">3.0)</span></code></p></li>
+<li><p>Cluster an Index 1 hat das Element <code class="docutils literal notranslate"><span class="pre">Datenpunkt(5.0,</span> <span class="pre">5.0)</span></code></p></li>
+<li><p>Cluster an Index 2 hat das Element <code class="docutils literal notranslate"><span class="pre">Datenpunkt(7.0,</span> <span class="pre">7.0)</span></code></p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">datenpunkte_zuweisen</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">],</span> <span class="n">zentroiden</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Weist jeden Datenpunkt den entsprechenden Cluster zu.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        datenpunkte: Liste der Datenpunkte, die den Clustern zugeordnet werden sollen.</span>
+<span class="sd">        zentroiden: Liste der Zentroiden, die die Cluster repräsentieren.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list[list[Datenpunkt]]: Liste von Clustern, wobei jeder Cluster als eine Liste von Datenpunkten dargestellt wird.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte = [Datenpunkt(1.0, 1.0), Datenpunkt(3.0, 3.0), Datenpunkt(5.0, 5.0), Datenpunkt(7.0, 7.0)]</span>
+<span class="sd">        &gt;&gt;&gt; zentroiden = [Datenpunkt(2.0, 2.0), Datenpunkt(4.0, 4.0), Datenpunkt(6.0, 6.0)]</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte_zuweisen(datenpunkte, zentroiden)</span>
+<span class="sd">        [[Datenpunkt(1.0, 1.0), Datenpunkt(3.0, 3.0)], [Datenpunkt(5.0, 5.0)], [Datenpunkt(7.0, 7.0)]]</span>
+
+<span class="sd">        &gt;&gt;&gt; datenpunkte = [Datenpunkt(1.4, 1.2), Datenpunkt(1.6, 4.7), Datenpunkt(5.2, 8.3), Datenpunkt(5.1, 8.2), Datenpunkt(3.1, 9.2)]</span>
+<span class="sd">        &gt;&gt;&gt; zentroiden = [Datenpunkt(1.0, 3.0), Datenpunkt(4.0, 5.0)]</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte_zuweisen(datenpunkte, zentroiden)</span>
+<span class="sd">        [[Datenpunkt(1.4, 1.2), Datenpunkt(1.6, 4.7)], [Datenpunkt(5.2, 8.3), Datenpunkt(5.1, 8.2), Datenpunkt(3.1, 9.2)]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Es wurde schon ein leere Liste für die Cluster angelegt für dich ;)</span>
+    <span class="n">clusters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">anzahl_cluster</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">zentroiden</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">anzahl_cluster</span><span class="p">):</span>
+        <span class="n">clusters</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+
+    <span class="c1"># Du kannst nun jeden Datenpunkt dem richtigen Cluster zuweisen, indem du den Index des</span>
+    <span class="c1"># nächsten Zentroiden findest und den Datenpunkt dem entsprechenden Cluster hinzufügst.</span>
+    <span class="c1"># Tipp 1: Du benötigst die Methode finde_naechsten_zentroiden() aus der vorigen Aufgabe</span>
+    <span class="c1"># Tipp 2: um einer Liste ein weiteres Item hinzuzuügen, kannst du die Methode list.append() verwenden.</span>
+    <span class="o">...</span>  <span class="c1"># Hier die weitere Lösung ergänzen</span>
+
+    <span class="k">return</span> <span class="n">clusters</span>
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">datenpunkte_zuweisen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a4-berechne-zentroid-koordinaten">
+<span id="aufgabe4"></span><h2><span class="section-number">23.8.6. </span>A4: <code class="docutils literal notranslate"><span class="pre">berechne_zentroid_koordinaten()</span></code><a class="headerlink" href="#a4-berechne-zentroid-koordinaten" title="Link to this heading">#</a></h2>
+<p>Wir benötigen nun zum einen noch eine Funktion <code class="docutils literal notranslate"><span class="pre">berechne_zentroid_koordinaten()</span></code>, welche uns aus den Datenpunkten eines Clusters die neuen Koordinaten des Zentroiden berechnet. Diese Funktion wird dann von <code class="docutils literal notranslate"><span class="pre">aktualisiere_zentroiden()</span></code> in der nächsten Aufgabe verwendet, um die Zentroiden in jeder Iteration alle neu zu berechnen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">berechne_zentroid_koordinaten</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Datenpunkt</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Berechnet die Koordinaten des Zentroiden basierend auf den zugehörigen Datenpunkten.</span>
+<span class="sd">    Dabei wird der Mittelwert der X- und Y-Koordinaten der Datenpunkte berechnet.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        datenpunkte: Liste der Datenpunkte, für die der Zentroid berechnet werden soll.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Datenpunkt: Zentroid mit den berechneten Koordinaten.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte = [Datenpunkt(1.0, 1.0), Datenpunkt(3.0, 3.0), Datenpunkt(5.0, 5.0)]</span>
+<span class="sd">        &gt;&gt;&gt; berechne_zentroid_koordinaten(datenpunkte)</span>
+<span class="sd">        Datenpunkt(3.0, 3.0)</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte = [Datenpunkt(1.4, 4.5), Datenpunkt(1.6, 4.7), Datenpunkt(5.2, 8.3)]</span>
+<span class="sd">        &gt;&gt;&gt; berechne_zentroid_koordinaten(datenpunkte)</span>
+<span class="sd">        Datenpunkt(2.73, 5.83)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Der Zentroid wird mit den Mittelwerten der X- und Y-Koordinaten der Datenpunkte berechnet.</span>
+    <span class="c1"># Du benötigst also die Summe der X- und Y-Koordinaten und die Anzahl der Datenpunkte.</span>
+    <span class="c1"># Als Rüchgabe erzeugst du einen neuen Datenpunkt mit den berechneten Koordinaten.</span>
+    <span class="o">...</span>  <span class="c1"># Hier Lösung ergänzen</span>
+    
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">berechne_zentroid_koordinaten</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a5-aktualisiere-zentroiden">
+<span id="aufgabe5"></span><h2><span class="section-number">23.8.7. </span>A5: <code class="docutils literal notranslate"><span class="pre">aktualisiere_zentroiden()</span></code><a class="headerlink" href="#a5-aktualisiere-zentroiden" title="Link to this heading">#</a></h2>
+<p>Der letzte Schritt: mit Hilfe der vorigen Methode <code class="docutils literal notranslate"><span class="pre">berechne_zentroid_koordinaten()</span></code> kannst du nun für alle Cluster die Zentroiden neu berechnen lassen. <code class="docutils literal notranslate"><span class="pre">aktualisiere_zentroiden()</span></code> erhält dabei eine Liste der Clusters. Ein Eintrag in der Liste ist dabei wiederum eine Liste von Datenpunkte. Unten siehst du ein Beispiel, wie man die einzelnen Cluster abarbeiten kann.</p>
+<p>Ein Beispiel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cluster</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="n">Datenpunkt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Datenpunkt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="n">Datenpunkt</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Datenpunkt</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="n">Datenpunkt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span>
+<span class="p">]</span>
+
+<span class="c1"># Jeder Cluster ist eine Liste von Datenpunkten</span>
+<span class="k">for</span> <span class="n">cluster_datenpunkte</span> <span class="ow">in</span> <span class="n">cluster</span>
+    <span class="c1"># Stelle Berechnungen an für die Datenpunkte eines Clusters</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<div class="admonition-wichtiger-tipp admonition">
+<p class="admonition-title">Wichtiger Tipp</p>
+<p>Du benötigst die Methode <code class="docutils literal notranslate"><span class="pre">berechne_zentroid_koordinaten()</span></code> aus der vorigen Aufgabe!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">aktualisiere_zentroiden</span><span class="p">(</span><span class="n">cluster</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aktualisiert die Zentroiden basierend auf den zugewiesenen Datenpunkten.</span>
+<span class="sd">    Dabei wird für jeden Cluster der Zentroid neu berechnet.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        cluster: Liste mit den Clustern und den zugehörigen Datenpunkten.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list[Datenpunkt]: Liste der neuen Zentroiden.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; cluster = [[Datenpunkt(1.0, 1.0), Datenpunkt(3.0, 3.0)], [Datenpunkt(5.0, 5.0), Datenpunkt(7.0, 7.0)]]</span>
+<span class="sd">        &gt;&gt;&gt; aktualisiere_zentroiden(cluster)</span>
+<span class="sd">        [Datenpunkt(2.0, 2.0), Datenpunkt(6.0, 6.0)]</span>
+
+<span class="sd">        &gt;&gt;&gt; cluster = [[Datenpunkt(1.4, 4.5), Datenpunkt(5.2, 8.3), Datenpunkt(3.1, 9.2)], [Datenpunkt(1.6, 4.7), Datenpunkt(5.1, 8.2), Datenpunkt(3.1, 9.2)]]</span>
+<span class="sd">        &gt;&gt;&gt; aktualisiere_zentroiden(cluster)</span>
+<span class="sd">        [Datenpunkt(3.23, 7.33), Datenpunkt(3.27, 7.37)]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">neue_zentroiden</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Du musst nun für jeden Cluster die Zentroiden neu berechnen.</span>
+    <span class="c1"># Tipp 1: Du kannst die Methode dict.values() verwenden, um die Werte des Dictionaries zu erhalten.</span>
+    <span class="c1"># Tipp 2: Du benötigst die Methode berechne_zentroid_koordinaten() aus der vorigen Aufgabe</span>
+    <span class="c1"># Tipp 3: Du kannst die Methode list.append() verwenden, um die neuen Zentroiden hinzuzufügen.</span>
+    <span class="o">...</span>  <span class="c1"># Hier Lösung ergänzen</span>
+    
+    <span class="k">return</span> <span class="n">neue_zentroiden</span>
+
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">aktualisiere_zentroiden</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="finale-k-means">
+<span id="k-means-final"></span><h2><span class="section-number">23.8.8. </span>Finale: <code class="docutils literal notranslate"><span class="pre">k_means()</span></code><a class="headerlink" href="#finale-k-means" title="Link to this heading">#</a></h2>
+<p>Wir haben nun alle nötigen Untermethoden für den Algorithmus erzeugt und können ihn nun starten. Wir definieren noch eine Methode, um die einzelnen Schritte in Schaubildern (Plots) erzeugen zu können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_cluster</span><span class="p">(</span><span class="n">clusters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]],</span> <span class="n">zentroiden</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">],</span> <span class="n">iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">farben</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;magenta&#39;</span><span class="p">]</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">cluster_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">cluster_datenpunkte</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+        <span class="n">x_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">datenpunkt</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">datenpunkt</span> <span class="ow">in</span> <span class="n">cluster_datenpunkte</span><span class="p">]</span>
+        <span class="n">y_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">datenpunkt</span><span class="o">.</span><span class="n">y</span> <span class="k">for</span> <span class="n">datenpunkt</span> <span class="ow">in</span> <span class="n">cluster_datenpunkte</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">farben</span><span class="p">[</span><span class="n">cluster_index</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Cluster </span><span class="si">{</span><span class="n">cluster_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">zentroiden</span><span class="p">[</span><span class="n">cluster_index</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">zentroiden</span><span class="p">[</span><span class="n">cluster_index</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="n">cluster_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="n">zentroid_x_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">zentroid</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">zentroid</span> <span class="ow">in</span> <span class="n">zentroiden</span><span class="p">]</span>
+    <span class="n">zentroid_y_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">zentroid</span><span class="o">.</span><span class="n">y</span> <span class="k">for</span> <span class="n">zentroid</span> <span class="ow">in</span> <span class="n">zentroiden</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">zentroid_x_coords</span><span class="p">,</span> <span class="n">zentroid_y_coords</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Zentroiden ohne Legende</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;k-means Clustering - Iteration </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X-Koordinate&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y-Koordinate&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Finale:</strong>  Wir haben alle nötigen Methoden und Untermethoden erzeugt, nun können wir die Methoden in unserer <code class="docutils literal notranslate"><span class="pre">k-means()</span></code>-Methode verwenden. In den docstrings findest du auch noch mal den Ablauf der Schritte. Wenn du die Zelle ausführst, werden die Berechnungen angestellt und die Plots gedruckt. Am Ende werden dir noch die Cluster und die Zentroiden in Textform ausgegeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">k_means</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">],</span> <span class="n">anzahl_cluster</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_iterationen</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">print_plots</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]],</span> <span class="nb">list</span><span class="p">[</span><span class="n">Datenpunkt</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hauptfunktion für den k-means Algorithmus zur Clusterbildung. Der Algorithmus besteht aus folgenden Schritten:</span>
+<span class="sd">    2. Initialisierung der Zentroiden</span>
+<span class="sd">    3. Zuweisung der Datenpunkte und Bildung der Cluster</span>
+<span class="sd">    4. Aktualisierung der Zentroiden</span>
+<span class="sd">    5. Überprüfung, ob sich die Zentroiden verändert haben</span>
+<span class="sd">    Args:</span>
+<span class="sd">        datenpunkte: Liste der Datenpunkte, die geclustert werden sollen.</span>
+<span class="sd">        anzahl_cluster: Anzahl der Cluster, die gebildet werden sollen.</span>
+<span class="sd">        max_iterationen: Maximale Anzahl der Iterationen, die der Algorithmus durchführt.</span>
+<span class="sd">        print_plots: Gibt an, ob die Cluster in jedem Schritt visualisiert werden</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[list[list[Datenpunkt]], list[Datenpunkt]]: Die Cluster und die finalen Zentroiden.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; datenpunkte = [Datenpunkt(1.0, 1.0), Datenpunkt(1.0, 3.0), Datenpunkt(3.0, 3.0), Datenpunkt(4.0, 2.0), Datenpunkt(5.0, 5.0)]</span>
+<span class="sd">        &gt;&gt;&gt; clusters, zentroiden = k_means(datenpunkte, 2, 100)</span>
+<span class="sd">        &gt;&gt;&gt; len(clusters)</span>
+<span class="sd">        2</span>
+<span class="sd">        &gt;&gt;&gt; len(zentroiden)</span>
+<span class="sd">        2</span>
+<span class="sd">        &gt;&gt;&gt; sum(len(cluster) for cluster in clusters) == len(datenpunkte)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1. Initialisierung der Zentroiden</span>
+    <span class="n">zentroiden</span> <span class="o">=</span> <span class="n">initialisiere_zentroiden</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">,</span> <span class="n">anzahl_cluster</span><span class="p">)</span>
+    <span class="n">cluster</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterationen</span><span class="p">):</span>
+        <span class="c1"># 2. Cluster berechnen</span>
+        <span class="n">cluster</span> <span class="o">=</span> <span class="n">datenpunkte_zuweisen</span><span class="p">(</span><span class="n">datenpunkte</span><span class="p">,</span> <span class="n">zentroiden</span><span class="p">)</span>
+        
+        <span class="c1"># Plot der Cluster ausgeben, wenn gewünscht</span>
+        <span class="k">if</span> <span class="n">print_plots</span><span class="p">:</span>
+            <span class="n">plot_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">zentroiden</span><span class="p">,</span> <span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># 3. Zentroiden aktualisieren</span>
+        <span class="n">neue_zentroiden</span> <span class="o">=</span> <span class="n">aktualisiere_zentroiden</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
+        
+        <span class="c1"># 4. Abbruch wenn die Zentroiden sich nicht verändert haben</span>
+        <span class="k">if</span> <span class="n">neue_zentroiden</span> <span class="o">==</span> <span class="n">zentroiden</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Zentroiden haben sich nicht mehr verändert. Algorithmus stoppt.&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="n">zentroiden</span> <span class="o">=</span> <span class="n">neue_zentroiden</span>
+    <span class="k">return</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">zentroiden</span>
+
+<span class="c1"># Unit Test für die Hauptfunktion</span>
+<span class="n">run_doctests_mit_lesbarer_ausgabe</span><span class="p">(</span><span class="n">k_means</span><span class="p">)</span>
+
+<span class="c1"># Manueller Start des k-means Algorithmus</span>
+<span class="n">datenpunkte</span> <span class="o">=</span> <span class="n">generiere_datenpunkte</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">zahlenraum</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cluster</span><span class="p">,</span> <span class="n">zentroiden</span> <span class="o">=</span> <span class="n">k_means</span><span class="p">(</span><span class="n">datenpunkte</span><span class="o">=</span><span class="n">datenpunkte</span><span class="p">,</span> <span class="n">anzahl_cluster</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_iterationen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">print_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cluster: </span><span class="si">{</span><span class="n">cluster</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zentroiden: </span><span class="si">{</span><span class="n">zentroiden</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="kmeansclustering.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>k-Means-Clustering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="kmeansclustering2_loesung.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">23.9. </span>Programmierung des Algorithmus (Lösung)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudocode">23.8.1. Pseudocode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vorentlastungen">23.8.2. Vorentlastungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-tests">23.8.2.1. Unit Tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datenpunkt-klasse">23.8.2.2. <code class="docutils literal notranslate"><span class="pre">Datenpunkt</span></code>-Klasse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generiere-datenpunkte">23.8.2.3. <code class="docutils literal notranslate"><span class="pre">generiere_datenpunkte()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialisiere-zentroiden">23.8.2.4. <code class="docutils literal notranslate"><span class="pre">initialisiere_zentroiden()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a1-berechne-euklidische-distanz">23.8.3. A1: <code class="docutils literal notranslate"><span class="pre">berechne_euklidische_distanz()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a2-finde-naechsten-zentroiden">23.8.4. A2: <code class="docutils literal notranslate"><span class="pre">finde_naechsten_zentroiden()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a3-datenpunkte-zuweisen">23.8.5. A3: <code class="docutils literal notranslate"><span class="pre">datenpunkte_zuweisen()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a4-berechne-zentroid-koordinaten">23.8.6. A4: <code class="docutils literal notranslate"><span class="pre">berechne_zentroid_koordinaten()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a5-aktualisiere-zentroiden">23.8.7. A5: <code class="docutils literal notranslate"><span class="pre">aktualisiere_zentroiden()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finale-k-means">23.8.8. Finale: <code class="docutils literal notranslate"><span class="pre">k_means()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

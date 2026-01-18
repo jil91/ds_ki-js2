@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>22.1. Einführung: Tiere klassifizieren &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Klicken zum Anzeigen';</script>
+    <script>let toggleHintHide = 'Klicken zum Ausblenden';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/ki/knearestneighbor221.45a335c4-88b9-4dca-bbeb-b5c40189c07f.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ki/knearestneighbor221';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;https://jil91.github.io/&#34;/ki/knearestneighbor221.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus" href="knearestneighbor2.html" />
+    <link rel="prev" title="22. Der k-Nächste-Nachbarn-Algorithmus" href="knearestneighbor.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OOP, Datenbanken, Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einführung in OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t02_kapselung.html">3. Datenkapselung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t03_vererbung.html">4. Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t04_abstrakteKlassen.html">5. Abstrakte Klassen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t05_interfaces.html">6. Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t06_klassenvariablen.html">7. Klassenvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t07_assoziationen.html">8. Assoziationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t08_3SA.html">9. 3SA - Drei-Schichten-Architektur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t09_sequenzdiagramme.html">10. Sequenzdiagramme</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenbanken</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../db/t10_einstieg_db.html">11. Einstieg Datenbanken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t11_erm.html">12. Entity-Relationship-Modell (ERM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t12_erm_rm.html">13. Vom ERM ins Relationale Modell (RM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t13_normalisierung.html">14. Normalisierung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/datenstrukturen_allgemein.html">15. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/listen_einfuehrung.html">16. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_listen.html">16.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen1.html">16.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen2.html">16.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen_loesungen.html">16.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/stapel_und_warteschlangen_intro.html">17. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack.html">17.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack-aufgaben.html">17.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/warteschlangen.html">17.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/assoziative_arrays.html">18. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/baeume.html">19. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/binaerbaeume.html">19.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/suchbaeume.html">19.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/klausurvorbereitung_mit_loesungen.html">20. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">22.1. Einführung: Tiere klassifizieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor2.html">22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor222.html">22.3. Programmierung des Algorihmus (1)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="kmeansclustering.html">23. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_aufgabe.html">23.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_loesung.html">23.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ki/knearestneighbor221.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Einführung: Tiere klassifizieren</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="einfuhrung-tiere-klassifizieren">
+<span id="sec-knn-p5js"></span><h1><span class="section-number">22.1. </span>Einführung: Tiere klassifizieren<a class="headerlink" href="#einfuhrung-tiere-klassifizieren" title="Link to this heading">#</a></h1>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Dieses Beispiel stammt aus dem tollen Buch <a class="reference external" href="https://www.maschinennah.de/ki-buch/"><em>Künstliche Intelligenz verstehen. Eine spielerische Einführung</em></a>. Das Buch nutzt als Programmiersprache nicht wie wir Python, sondern <strong>JavaScript</strong> und insb. die Bibliothek <a class="reference external" href="https://p5js.org/">p5js</a>. Die Animation hier basiert auf Code aus diesem Buch, wurde aber noch angepasst und erweitert.</p>
+</aside>
+<p><strong>Interaktives Ausprobieren des k-NN-Verfahrens:</strong> Bewege deinen Mauszeiger über die Darstellung unten. Jede Position entspricht einem Tier mit einer gewissen Niedlichkeit und Flauschigkeit. Klicke an eine Position um zu sehen, in welche Kategorie der kNN-Algorithmus dieses Tier einordnen würde. Klicke erneut, um eine neue Position zu suchen.</p>
+<iframe src="sketches/tierErkennen/index.html"
+        style="width: 500px; height: 600px;"  frameborder="0" ></iframe>
+<!-- <iframe src="sketches/tierErkennen/index.html"
+        style="width: 600px; height: 500px; overflow: hidden;"  scrolling="no" frameborder="0" ></iframe> -->
+<p><strong>Aufgabe 1:</strong></p>
+<ol class="arabic simple">
+<li><p>Finde durch Ausprobieren heraus, wie die folgenden Tiere klassifiziert werden:</p>
+<ol class="arabic simple">
+<li><p>ein Tier mit Niedlichkeit 0,57 und Flauschigkeit 0,71</p></li>
+<li><p>ein Tier mit Niedlichkeit 0,33 und Flauschigkeit 0,93</p></li>
+<li><p>ein Tier mit Niedlichkeit 0,22 und Flauschigkeit 0,17</p></li>
+</ol>
+</li>
+<li><p>Als welche Spezies wird vermutlich ein Tier mit Niedlichkeit 0,62 und Flauschigkeit 0,48 klassifiziert?  Überlege zuerst und überprüfe dann deine Vermutung durch einen Klick an die entsprechende Position.</p></li>
+<li><p>Wenn einer Position (d.h. einem neuen, unbekannten Tier) eine Kategorie zugeordnet wird, erscheinen <em>Linien</em> zu anderen Tieren. Diskutiere mit deiner Sitznachbarin, was diese Linien bedeuten?</p></li>
+<li><p>Warum wird der Datenpunkt <code class="docutils literal notranslate"><span class="pre">(0,51/0,38)</span></code> mit einem <em>Fragezeichen</em> angezeigt, d.h. warum kann er nicht kategorisiert werden?</p></li>
+<li><p>Wie wird ein Tier mit Niedlichkeit 0,50 und Flauschigkeit 0,50 kategorisiert? Was ändert sich, wenn du den Wert von <span class="math notranslate nohighlight">\(k\)</span> auf 4 änderst, aber die Position beibehältst. Erkläre!</p></li>
+<li><p>Probiere auch alle anderen möglichen Werte für <span class="math notranslate nohighlight">\(k\)</span> aus. Erkläre, was passiert.<br />
+Welchen der möglichen Werte für <span class="math notranslate nohighlight">\(k\)</span> würdest du wählen, um eine möglichst gute Klassifikation zu erhalten?</p></li>
+<li><p>Schreibe in 1-2 Sätzen auf, wie der k-Nächste-Nachbarn-Algorithmus deiner Meinung nach arbeitet. Vergleiche deine Definition mit der deiner Sitznachbarin.</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Lösungen</p>
+<ol class="arabic simple">
+<li><p>Durch Klicken an die entsprechenden Positionen findet man:</p>
+<ol class="arabic simple">
+<li><p>Kaninchen</p></li>
+<li><p>Vogelspinne</p></li>
+<li><p>Hai</p></li>
+</ol>
+</li>
+<li><p>Man vermutet evtl <em>Kaninchen</em>, weil das nächstegelegene Tier ein Kaninchen ist, aber der Punkt wird als Igel klassifiziert. (Weil von den 5 nächstgelegenen Tieren 3, also die Mehrheit, Igel sind.)</p></li>
+<li><p>Die Linien zeigen die <span class="math notranslate nohighlight">\(k\)</span> am nächsten gelegenen Tiere (die <em>“Nachbarn”</em> des angeklickten Punkts), wobei <span class="math notranslate nohighlight">\(k\)</span> die Zahl ist, die im Auswahlfeld unten gewählt wurde.</p></li>
+<li><p>Unter den 5 nächsten Nachbarn kommt keine Spezies eindeutig <em>am häufigsten</em> vor, d.h. keine Spezies hat eine eindeutige Mehrheit. (Unentschieden zwischen 2 Haien und 2 Igeln).</p></li>
+<li><p>Für <em>k=5</em>: Vogelspinne, aber für <em>k=4</em>: Fragezeichen. Erklärung: Es gibt bei <em>k=4</em> keine eindeutige Mehrheit untern den Nachbarn, d.h. keine Tierart, die am häufigsten unter den Nachbarn vorkommt.</p></li>
+<li><p>Es werden jeweils die <span class="math notranslate nohighlight">\(k\)</span> nächsten Nachbarn angezeigt. Für <em>k=1</em> wird nur der nächste Nachbar angezeigt, für <em>k=2</em> die zwei nächsten Nachbarn, usw.  Für <em>k=5</em> wird die Mehrheit der 5 nächsten Nachbarn angezeigt.<br />
+Sinnvolles <span class="math notranslate nohighlight">\(k\)</span> auswählen: <em>k=1</em> ist zu wenig, weil ein einzelner Nachbar nicht unbedingt repräsentativ ist (<em>Ausreißer</em>). Ein großes <span class="math notranslate nohighlight">\(k\)</span> robuster, aber dadurch geht unter Umständen die Genauigkeit verloren, weil “örtliche Besonderheiten” nicht mehr berücksichtigt werden. In unserem Beispiel würde z.B.
+<em>k=20</em> bedeuten, dass es vollkommen egal wird, wohin man klickt.</p></li>
+<li><p>Eine mögliche Beschreibung des Verfahrens in zwei Sätzen findest du am Anfang des nächsten Abschnitts.</p></li>
+</ol>
+</div>
+<p><strong>Intuitive Beschreibung des Algorithmus</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Wichtig</p>
+<p>Umgangssprachlich kann der <strong>k-Nächste-Nachbarn-Algorithmus</strong> so beschrieben werden:
+Um einen ungelabelten Datensatz zu klassifizieren</p>
+<ol class="arabic simple">
+<li><p>finde die <span class="math notranslate nohighlight">\(k\)</span> Datensätze, die dem ungelabelte Datensatz am ähnlichsten sind.</p></li>
+<li><p>gib das Label zurück, das in diesen <span class="math notranslate nohighlight">\(k\)</span> Datensätzen am häufigsten vorkommt.</p></li>
+</ol>
+</div>
+</section>
+
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="knearestneighbor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>Der k-Nächste-Nachbarn-Algorithmus</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="knearestneighbor2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">22.2. </span>Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
+    <title>22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
   
   
   
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -51,10 +51,10 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleHintShow = 'Klicken zum Anzeigen';</script>
+    <script>let toggleHintHide = 'Klicken zum Ausblenden';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script src="../_static/translations.js?v=79cc9f76"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/ki/knearestneighbor2.fc0f84e5-bb95-4be3-b671-5bceb0a07a89.js"></script>
+    <script defer="defer" src="../_static/tippy/ki/knearestneighbor2.dc0b0e9f-0552-40eb-8d8b-086d800981db.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ki/knearestneighbor2';</script>
@@ -81,8 +81,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
-    <link rel="next" title="23. k-Means-Clustering" href="kmeansclustering.html" />
-    <link rel="prev" title="22. Der k-Nächste-Nachbarn-Algorithmus" href="knearestneighbor.html" />
+    <link rel="next" title="22.3. Programmierung des Algorihmus (1)" href="knearestneighbor222.html" />
+    <link rel="prev" title="22.1. Einführung: Tiere klassifizieren" href="knearestneighbor221.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="de"/>
   </head>
@@ -242,11 +242,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor221.html">22.1. Einführung: Tiere klassifizieren</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor222.html">22.3. Programmierung des Algorihmus (1)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="kmeansclustering.html">23. k-Means-Clustering</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="kmeansclustering.html">23. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_aufgabe.html">23.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_loesung.html">23.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -441,18 +446,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-immobilien-klassifizieren">22.6.1. Aufgabe: Immobilien klassifizieren</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-und-visualisierung">22.6.1.1. Daten und Visualisierung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabenstellung">22.6.1.2. Aufgabenstellung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-immobilien-klassifizieren">22.2.1. Aufgabe: Immobilien klassifizieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-und-visualisierung">22.2.1.1. Daten und Visualisierung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabenstellung">22.2.1.2. Aufgabenstellung</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-python">22.6.2. Umsetzung in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-python">22.2.2. Umsetzung in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisierung-von-daten">22.2.3. Normalisierung von Daten</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisierung-von-daten">22.7. Normalisierung von Daten</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -463,12 +464,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="eigenschaften-und-varianten-des-k-nachste-nachbarn-algorithmus">
-<h1><span class="section-number">22.6. </span>Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus<a class="headerlink" href="#eigenschaften-und-varianten-des-k-nachste-nachbarn-algorithmus" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="eigenschaften-und-varianten-des-k-nachste-nachbarn-algorithmus">
+<h1><span class="section-number">22.2. </span>Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus<a class="headerlink" href="#eigenschaften-und-varianten-des-k-nachste-nachbarn-algorithmus" title="Link to this heading">#</a></h1>
 <section id="aufgabe-immobilien-klassifizieren">
-<h2><span class="section-number">22.6.1. </span>Aufgabe: Immobilien klassifizieren<a class="headerlink" href="#aufgabe-immobilien-klassifizieren" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.2.1. </span>Aufgabe: Immobilien klassifizieren<a class="headerlink" href="#aufgabe-immobilien-klassifizieren" title="Link to this heading">#</a></h2>
 <section id="daten-und-visualisierung">
-<h3><span class="section-number">22.6.1.1. </span>Daten und Visualisierung<a class="headerlink" href="#daten-und-visualisierung" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.2.1.1. </span>Daten und Visualisierung<a class="headerlink" href="#daten-und-visualisierung" title="Link to this heading">#</a></h3>
 <p>In den Trainingsdaten einer Immobiliengesellschaft sind pro Immobilie die folgenden <a class="reference internal" href="#merkmal"><span class="xref myst">Merkmale</span></a> gespeichert:</p>
 <ul class="simple">
 <li><p>die Größe der nutzbaren Fläche der Immobilie in Quadratmeter (Merkmal <strong>Fläche</strong>)</p></li>
@@ -555,7 +556,7 @@ Webseite entnommen.</p>
 </figure>
 </section>
 <section id="aufgabenstellung">
-<h3><span class="section-number">22.6.1.2. </span>Aufgabenstellung<a class="headerlink" href="#aufgabenstellung" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.2.1.2. </span>Aufgabenstellung<a class="headerlink" href="#aufgabenstellung" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Analysiere die Trainingsdaten der Immobiliengesellschaft.
 Wie würdest du vorgehen, wenn du für einen unbekannten Datensatz die Immobilienart vorhersagen müsstest?
@@ -620,7 +621,7 @@ Distanz einen großen Einfluss hat.</p></li>
 </section>
 </section>
 <section id="umsetzung-in-python">
-<h2><span class="section-number">22.6.2. </span>Umsetzung in Python<a class="headerlink" href="#umsetzung-in-python" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.2.2. </span>Umsetzung in Python<a class="headerlink" href="#umsetzung-in-python" title="Link to this heading">#</a></h2>
 <p>In der folgenden Zelle wird eine neue Version des k-nächsten-Nachbarn-Algorithmus implementiert.
 Sie folgt unserer bisherigen Implementierung, ist aber etwas allgemeiner gehalten, insb.
 kann sie jetzt mit beliebig vielen Merkmalen umgehen.</p>
@@ -748,9 +749,8 @@ Der unbekannte Punkt wird klassifiziert als &#39;Wohnung&#39;
 </div>
 </div>
 </section>
-</section>
 <section id="normalisierung-von-daten">
-<h1><span class="section-number">22.7. </span>Normalisierung von Daten<a class="headerlink" href="#normalisierung-von-daten" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">22.2.3. </span>Normalisierung von Daten<a class="headerlink" href="#normalisierung-von-daten" title="Link to this heading">#</a></h2>
 <p>Bei der Anwendung des k-nächsten-Nachbarn-Algorithmus kann es vorkommen, dass einige Merkmale (Features) einen größeren Einfluss auf die Berechnung der Distanzen haben als andere. Dies liegt daran, dass die Wertebereiche der Merkmale unterschiedlich sein können. Um dies zu verhindern, sollten die Daten normalisiert werden.</p>
 <p>Die Normalisierung ist ein Verfahren, bei dem die Werte der Merkmale in einen gemeinsamen Bereich transformiert werden. Eine gängige Methode ist die Min-Max-Normalisierung, bei der die Werte eines Merkmals so skaliert werden, dass sie in einem Bereich von 0 bis 1 liegen.</p>
 <p>Die Formel für die Min-Max-Normalisierung lautet:</p>
@@ -764,6 +764,7 @@ Der unbekannte Punkt wird klassifiziert als &#39;Wohnung&#39;
 <li><p><span class="math notranslate nohighlight">\(x_{norm}\)</span> der normalisierte Wert des Merkmals.</p></li>
 </ul>
 <p>Im nächsten Schritt werden wir die Normalisierung der Daten implementieren und den k-nächsten-Nachbarn-Algorithmus auf die normalisierten Daten anwenden.</p>
+</section>
 </section>
 
         <script type="text/x-thebe-config">
@@ -796,20 +797,20 @@ Der unbekannte Punkt wird klassifiziert als &#39;Wohnung&#39;
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="knearestneighbor.html"
+       href="knearestneighbor221.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">zurück</p>
-        <p class="prev-next-title"><span class="section-number">22. </span>Der k-Nächste-Nachbarn-Algorithmus</p>
+        <p class="prev-next-title"><span class="section-number">22.1. </span>Einführung: Tiere klassifizieren</p>
       </div>
     </a>
     <a class="right-next"
-       href="kmeansclustering.html"
+       href="knearestneighbor222.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">weiter</p>
-        <p class="prev-next-title"><span class="section-number">23. </span>k-Means-Clustering</p>
+        <p class="prev-next-title"><span class="section-number">22.3. </span>Programmierung des Algorihmus (1)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -829,18 +830,14 @@ Der unbekannte Punkt wird klassifiziert als &#39;Wohnung&#39;
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-immobilien-klassifizieren">22.6.1. Aufgabe: Immobilien klassifizieren</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-und-visualisierung">22.6.1.1. Daten und Visualisierung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabenstellung">22.6.1.2. Aufgabenstellung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-immobilien-klassifizieren">22.2.1. Aufgabe: Immobilien klassifizieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-und-visualisierung">22.2.1.1. Daten und Visualisierung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabenstellung">22.2.1.2. Aufgabenstellung</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-python">22.6.2. Umsetzung in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umsetzung-in-python">22.2.2. Umsetzung in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisierung-von-daten">22.2.3. Normalisierung von Daten</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisierung-von-daten">22.7. Normalisierung von Daten</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

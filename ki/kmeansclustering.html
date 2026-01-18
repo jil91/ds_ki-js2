@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -51,10 +51,10 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleHintShow = 'Klicken zum Anzeigen';</script>
+    <script>let toggleHintHide = 'Klicken zum Ausblenden';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script src="../_static/translations.js?v=79cc9f76"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/ki/kmeansclustering.07e0e9e6-6823-411f-8fcf-0bb0957ea91a.js"></script>
+    <script defer="defer" src="../_static/tippy/ki/kmeansclustering.a3a330db-847a-495c-bb34-f192b89e12fa.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ki/kmeansclustering';</script>
@@ -81,7 +81,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
-    <link rel="prev" title="22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus" href="knearestneighbor2.html" />
+    <link rel="next" title="23.8. Programmierung des Algorithmus" href="kmeansclustering2_aufgabe.html" />
+    <link rel="prev" title="22.3. Programmierung des Algorihmus (1)" href="knearestneighbor222.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="de"/>
   </head>
@@ -241,11 +242,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="knearestneighbor2.html">22.6. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor221.html">22.1. Einführung: Tiere klassifizieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor2.html">22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor222.html">22.3. Programmierung des Algorihmus (1)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. k-Means-Clustering</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">23. k-Means-Clustering</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_aufgabe.html">23.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_loesung.html">23.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -792,6 +798,8 @@ Der Algorithmus findet also nicht immer die ‘beste’ Lösung, sondern eine, d
 </div>
 <p>Mit der Elbow-Methode können wir also datengetrieben und anschaulich entscheiden, wie viele Cluster sinnvoll sind, anstatt dies nur durch Intuition oder Versuch und Irrtum zu bestimmen.</p>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
         <script type="text/x-thebe-config">
@@ -824,13 +832,22 @@ Der Algorithmus findet also nicht immer die ‘beste’ Lösung, sondern eine, d
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="knearestneighbor2.html"
+       href="knearestneighbor222.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">zurück</p>
-        <p class="prev-next-title"><span class="section-number">22.6. </span>Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</p>
+        <p class="prev-next-title"><span class="section-number">22.3. </span>Programmierung des Algorihmus (1)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="kmeansclustering2_aufgabe.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">23.8. </span>Programmierung des Algorithmus</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

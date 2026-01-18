@@ -1,0 +1,1055 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>22.3. Programmierung des Algorihmus (1) &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Klicken zum Anzeigen';</script>
+    <script>let toggleHintHide = 'Klicken zum Ausblenden';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/ki/knearestneighbor222.ab5a4ac0-2e5e-4f7a-927d-1bb908be91eb.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ki/knearestneighbor222';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;https://jil91.github.io/&#34;/ki/knearestneighbor222.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="23. k-Means-Clustering" href="kmeansclustering.html" />
+    <link rel="prev" title="22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus" href="knearestneighbor2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OOP, Datenbanken, Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einführung in OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t02_kapselung.html">3. Datenkapselung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t03_vererbung.html">4. Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t04_abstrakteKlassen.html">5. Abstrakte Klassen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t05_interfaces.html">6. Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t06_klassenvariablen.html">7. Klassenvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t07_assoziationen.html">8. Assoziationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t08_3SA.html">9. 3SA - Drei-Schichten-Architektur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t09_sequenzdiagramme.html">10. Sequenzdiagramme</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenbanken</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../db/t10_einstieg_db.html">11. Einstieg Datenbanken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t11_erm.html">12. Entity-Relationship-Modell (ERM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t12_erm_rm.html">13. Vom ERM ins Relationale Modell (RM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t13_normalisierung.html">14. Normalisierung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/datenstrukturen_allgemein.html">15. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/listen_einfuehrung.html">16. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_listen.html">16.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen1.html">16.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen2.html">16.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen_loesungen.html">16.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/stapel_und_warteschlangen_intro.html">17. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack.html">17.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack-aufgaben.html">17.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/warteschlangen.html">17.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/assoziative_arrays.html">18. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/baeume.html">19. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/binaerbaeume.html">19.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/suchbaeume.html">19.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/klausurvorbereitung_mit_loesungen.html">20. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor221.html">22.1. Einführung: Tiere klassifizieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor2.html">22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">22.3. Programmierung des Algorihmus (1)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="kmeansclustering.html">23. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_aufgabe.html">23.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_loesung.html">23.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ki/knearestneighbor222.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Programmierung des Algorihmus (1)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispieldaten-vorbereiten">22.3.1. Beispieldaten vorbereiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-in-objekte-der-klasse-tier-einlesen">22.3.2. Daten in Objekte der Klasse <em>Tier</em> einlesen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-visualisieren">22.3.3. Daten visualisieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einen-noch-ungelabelten-datensatz-vorbereiten-und-anzeigen">22.3.4. Einen (noch) ungelabelten Datensatz vorbereiten und anzeigen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ahnlichkeit-als-distanz">22.3.5. Ähnlichkeit als Distanz</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euklidische-distanz">22.3.5.1. Euklidische Distanz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manhattan-distanz">22.3.5.2. Manhattan-Distanz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmierung-des-algorithmus-2">22.3.6. Programmierung des Algorithmus (2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-k-nachsten-nachbarn-bestimmen">22.3.6.1. Die <span class="math notranslate nohighlight">\(k\)</span> nächsten Nachbarn bestimmen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eine-abstimmung-unter-den-nachsten-nachbarn-durchfuhren">22.3.6.2. Eine “Abstimmung” unter den nächsten Nachbarn durchführen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-algorithmus-als-ganzes">22.3.6.3. Der Algorithmus als Ganzes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einige-beispiele">22.3.6.4. Einige Beispiele</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="programmierung-des-algorihmus-1">
+<h1><span class="section-number">22.3. </span>Programmierung des Algorihmus (1)<a class="headerlink" href="#programmierung-des-algorihmus-1" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="beispieldaten-vorbereiten">
+<h2><span class="section-number">22.3.1. </span>Beispieldaten vorbereiten<a class="headerlink" href="#beispieldaten-vorbereiten" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainingsdaten</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot; </span>
+<span class="s2">    niedlichkeit, flauschigkeit, spezies</span>
+<span class="s2">    0.21, 0.91, vogelspinne</span>
+<span class="s2">    0.27, 0.8, vogelspinne</span>
+<span class="s2">    0.15, 0.75, vogelspinne</span>
+<span class="s2">    0.37, 0.87, vogelspinne</span>
+<span class="s2">    0.29, 0.7, vogelspinne</span>
+<span class="s2">    0.9, 0.9, kaninchen</span>
+<span class="s2">    0.86, 0.8, kaninchen</span>
+<span class="s2">    0.75, 0.84, kaninchen</span>
+<span class="s2">    0.95, 0.75, kaninchen</span>
+<span class="s2">    0.7, 0.65, kaninchen</span>
+<span class="s2">    0.31, 0.22, hai</span>
+<span class="s2">    0.14, 0.13, hai</span>
+<span class="s2">    0.21, 0.06, hai</span>
+<span class="s2">    0.11, 0.25, hai</span>
+<span class="s2">    0.33, 0.11, hai</span>
+<span class="s2">    0.9, 0.1, igel</span>
+<span class="s2">    0.8, 0.17, igel</span>
+<span class="s2">    0.7, 0.11, igel</span>
+<span class="s2">    0.75, 0.26, igel</span>
+<span class="s2">    0.92, 0.22, igel</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="daten-in-objekte-der-klasse-tier-einlesen">
+<h2><span class="section-number">22.3.2. </span>Daten in Objekte der Klasse <em>Tier</em> einlesen<a class="headerlink" href="#daten-in-objekte-der-klasse-tier-einlesen" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Tier</span><span class="p">:</span>   
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">niedlichkeit</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">flauschigkeit</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">spezies</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">niedlichkeit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">niedlichkeit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flauschigkeit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">flauschigkeit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spezies</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">spezies</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Tier(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">niedlichkeit</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">flauschigkeit</span><span class="si">}</span><span class="s2">, &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">spezies</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">kopie_mit_spezies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neue_spezies</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tier</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Tier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">niedlichkeit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flauschigkeit</span><span class="p">,</span> <span class="n">neue_spezies</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Tiere sind eigentlich nicht vergleichbar; wir müssen aber irgendeine Implementierung angeben für die Sortierung später</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">tier_einlesen</span><span class="p">(</span><span class="n">zeile</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tier</span><span class="p">:</span>
+    <span class="n">niedlichkeit</span><span class="p">,</span> <span class="n">flauschigkeit</span><span class="p">,</span> <span class="n">spezies</span> <span class="o">=</span> <span class="n">zeile</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Tier</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">niedlichkeit</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">flauschigkeit</span><span class="p">),</span> <span class="n">spezies</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tiere_aus_tabelle_einlesen</span><span class="p">(</span><span class="n">daten</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">]:</span>
+    <span class="n">tiere</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">zeilen</span> <span class="o">=</span> <span class="n">daten</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">zeilen</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>   <span class="c1"># 1. Zeile ist Überschrift, also überspringen</span>
+        <span class="n">tiere</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tier_einlesen</span><span class="p">(</span><span class="n">zeile</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tiere</span>
+
+<span class="n">tiere</span> <span class="o">=</span> <span class="n">tiere_aus_tabelle_einlesen</span><span class="p">(</span><span class="n">trainingsdaten</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tiere</span><span class="p">)</span>  <span class="c1"># Ausgabe: [Tier(0.21, 0.91, &#39;vogelspinne&#39;), Tier(0.27, 0.8, &#39;vogelspinne&#39;), ...]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Tier(0.21, 0.91, &#39;vogelspinne&#39;), Tier(0.27, 0.8, &#39;vogelspinne&#39;), Tier(0.15, 0.75, &#39;vogelspinne&#39;), Tier(0.37, 0.87, &#39;vogelspinne&#39;), Tier(0.29, 0.7, &#39;vogelspinne&#39;), Tier(0.9, 0.9, &#39;kaninchen&#39;), Tier(0.86, 0.8, &#39;kaninchen&#39;), Tier(0.75, 0.84, &#39;kaninchen&#39;), Tier(0.95, 0.75, &#39;kaninchen&#39;), Tier(0.7, 0.65, &#39;kaninchen&#39;), Tier(0.31, 0.22, &#39;hai&#39;), Tier(0.14, 0.13, &#39;hai&#39;), Tier(0.21, 0.06, &#39;hai&#39;), Tier(0.11, 0.25, &#39;hai&#39;), Tier(0.33, 0.11, &#39;hai&#39;), Tier(0.9, 0.1, &#39;igel&#39;), Tier(0.8, 0.17, &#39;igel&#39;), Tier(0.7, 0.11, &#39;igel&#39;), Tier(0.75, 0.26, &#39;igel&#39;), Tier(0.92, 0.22, &#39;igel&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="daten-visualisieren">
+<h2><span class="section-number">22.3.3. </span>Daten visualisieren<a class="headerlink" href="#daten-visualisieren" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualisierung</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">spezies_zu_farbe</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;vogelspinne&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kaninchen&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hai&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;igel&quot;</span><span class="p">:</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;?&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plotte_daten</span><span class="p">(</span><span class="n">alle</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">],</span> <span class="n">unbekanntes_tier</span><span class="p">:</span> <span class="n">Tier</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">auswahl</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">]</span><span class="o">=</span><span class="p">[])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Visualisiert die Tiere in einem Diagramm. </span>
+<span class="sd">    Falls der zweite und dritte Parameter gegeben sind, werden das unbekannte Tier und die ausgewählten Tiere</span>
+<span class="sd">    durch Linien verbunden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Niedlichkeit&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flauschigkeit&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+    <span class="c1"># Ausgewählte Tier mit Linien zum unbekannten Tier verbinden</span>
+    <span class="k">for</span> <span class="n">tier</span> <span class="ow">in</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">unbekanntes_tier</span><span class="o">.</span><span class="n">niedlichkeit</span><span class="p">,</span> <span class="n">tier</span><span class="o">.</span><span class="n">niedlichkeit</span><span class="p">],</span> <span class="p">[</span><span class="n">unbekanntes_tier</span><span class="o">.</span><span class="n">flauschigkeit</span><span class="p">,</span> <span class="n">tier</span><span class="o">.</span><span class="n">flauschigkeit</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1"># Alle Tiere plotten</span>
+    <span class="k">if</span> <span class="n">unbekanntes_tier</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">unbekanntes_tier</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">alle</span><span class="p">:</span>
+        <span class="n">alle</span> <span class="o">=</span> <span class="n">alle</span> <span class="o">+</span> <span class="p">[</span><span class="n">unbekanntes_tier</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">tier</span> <span class="ow">in</span> <span class="n">alle</span><span class="p">:</span>
+        <span class="n">buchstabe</span> <span class="o">=</span> <span class="n">tier</span><span class="o">.</span><span class="n">spezies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        <span class="n">farbe</span> <span class="o">=</span> <span class="n">spezies_zu_farbe</span><span class="p">[</span><span class="n">tier</span><span class="o">.</span><span class="n">spezies</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">tier</span><span class="o">.</span><span class="n">niedlichkeit</span><span class="p">,</span> <span class="n">tier</span><span class="o">.</span><span class="n">flauschigkeit</span><span class="p">,</span> <span class="n">buchstabe</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">farbe</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">plotte_daten</span><span class="p">(</span><span class="n">tiere</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d11d9686caa60153de128df0966e58e2d50531e83d3e7d3ab05b60ad96595293.png" src="../_images/d11d9686caa60153de128df0966e58e2d50531e83d3e7d3ab05b60ad96595293.png" />
+</div>
+</div>
+</section>
+<section id="einen-noch-ungelabelten-datensatz-vorbereiten-und-anzeigen">
+<h2><span class="section-number">22.3.4. </span>Einen (noch) ungelabelten Datensatz vorbereiten und anzeigen<a class="headerlink" href="#einen-noch-ungelabelten-datensatz-vorbereiten-und-anzeigen" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbekanntes_tier</span> <span class="o">=</span> <span class="n">Tier</span><span class="p">(</span><span class="n">niedlichkeit</span><span class="o">=</span><span class="mf">0.56</span><span class="p">,</span> <span class="n">flauschigkeit</span><span class="o">=</span><span class="mf">0.48</span><span class="p">,</span> <span class="n">spezies</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span>  <span class="c1"># Fragezeichen für unbekannte Spezies</span>
+
+<span class="c1"># plotte Daten und das unbekannte Tier</span>
+<span class="n">plotte_daten</span><span class="p">(</span><span class="n">tiere</span> <span class="o">+</span> <span class="p">[</span><span class="n">unbekanntes_tier</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a70a9a950720b20b84b72b38b7f1c48a195fa5bf0155c66e5a991bf0ef0e444b.png" src="../_images/a70a9a950720b20b84b72b38b7f1c48a195fa5bf0155c66e5a991bf0ef0e444b.png" />
+</div>
+</div>
+</section>
+<section id="ahnlichkeit-als-distanz">
+<h2><span class="section-number">22.3.5. </span>Ähnlichkeit als Distanz<a class="headerlink" href="#ahnlichkeit-als-distanz" title="Link to this heading">#</a></h2>
+<p>Um herauszufinden, zu welcher Spezies das neue Tier gehört, müssen wir “ähnliche” Tiere
+finden.  Die entscheidende Idee hierbei ist, dass wir Ähnlichkeit als <em>Distanz zwischen den
+Datenpunkten</em> definieren: Jedes Tier ist charakterisiert durch zwei Merkmale (Niedlichkeit und
+Flauschigkeit). Diese beiden Werte definieren einen <em>Punkt</em> im zweidimensionalen Raum. Je
+kleiner der Abstand zwischen zwei Punkten, desto ähnlicher sind die beiden Tiere. Wenn wir
+noch mehr Merkmale hätten, könnten wir den Raum entsprechend erweitern, also z.B. bei drei
+Merkmalen den Abstand zwischen zwei Punkten im dreidimensionalen Raum berechnen.</p>
+<section id="euklidische-distanz">
+<h3><span class="section-number">22.3.5.1. </span>Euklidische Distanz<a class="headerlink" href="#euklidische-distanz" title="Link to this heading">#</a></h3>
+<p>Es gibt verschiedene Definitionen für den Abstand zwischen zwei Punkten. Du kennst schon lange
+den sogenannten <strong>euklidischen Abstand</strong>, der zwischen zwei
+Punkten <span class="math notranslate nohighlight">\(P(x_P, y_P)\)</span> und <span class="math notranslate nohighlight">\(Q(x_Q, y_Q)\)</span> in der Ebene wie folgt definiert ist:</p>
+<div class="math notranslate nohighlight">
+\[
+    d(P, Q) = \sqrt{(x_P - x_Q)^2 + (y_P - y_Q)^2}
+\]</div>
+<p>also über den <strong>Satz des Pythagoras</strong>. Für mehrdimensionale Räume gibt es eine Verallgemeinerung,
+die du auch in der Formelsammlung findest:</p>
+<div class="math notranslate nohighlight">
+\[
+    d(P, Q) = \sqrt{\sum_{i=1}^n (x_{P_i} - x_{Q_i})^2}
+\]</div>
+<p>Wir setzen diese Definition als Python-Funktion um und lassen uns ein paar Distanzen anzeigen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir setzten diese Definition als Python-Funktion um und lassen uns ein paar Distanzen anzeigen:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">euklidische_distanz</span><span class="p">(</span><span class="n">tier1</span><span class="p">:</span> <span class="n">Tier</span><span class="p">,</span> <span class="n">tier2</span><span class="p">:</span> <span class="n">Tier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">d_niedlichkeit</span> <span class="o">=</span> <span class="n">tier1</span><span class="o">.</span><span class="n">niedlichkeit</span> <span class="o">-</span> <span class="n">tier2</span><span class="o">.</span><span class="n">niedlichkeit</span>
+    <span class="n">d_flauschigkeit</span> <span class="o">=</span> <span class="n">tier1</span><span class="o">.</span><span class="n">flauschigkeit</span> <span class="o">-</span> <span class="n">tier2</span><span class="o">.</span><span class="n">flauschigkeit</span>
+    <span class="n">distanz</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_niedlichkeit</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">d_flauschigkeit</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>  <span class="c1"># Pythagoras!  (Erinnere dich: &quot;hoch 1/2&quot; = &quot;Wurzel&quot;)</span>
+    <span class="k">return</span> <span class="n">distanz</span>
+
+<span class="c1"># Test: Wir vergleichen das unbekannte Tier mit einigen anderen aus der Liste</span>
+
+<span class="c1"># Wir wählen vier beliebige Tiere aus, die wir vergleichen wollen </span>
+<span class="n">auswahl</span> <span class="o">=</span> <span class="p">[</span><span class="n">tiere</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">tiere</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">tiere</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">tiere</span><span class="p">[</span><span class="mi">15</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Von unserem unbekannten </span><span class="si">{</span><span class="n">unbekanntes_tier</span><span class="si">}</span><span class="s2"> zum...&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tier</span> <span class="ow">in</span> <span class="n">auswahl</span><span class="p">:</span>
+    <span class="n">distanz</span> <span class="o">=</span> <span class="n">euklidische_distanz</span><span class="p">(</span><span class="n">unbekanntes_tier</span><span class="p">,</span> <span class="n">tier</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">tier</span><span class="si">}</span><span class="s2"> beträgt die euklidische Distanz </span><span class="si">{</span><span class="n">distanz</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Von unserem unbekannten Tier(0.56, 0.48, &#39;?&#39;) zum...
+    Tier(0.37, 0.87, &#39;vogelspinne&#39;) beträgt die euklidische Distanz 0.43
+    Tier(0.7, 0.65, &#39;kaninchen&#39;) beträgt die euklidische Distanz 0.22
+    Tier(0.31, 0.22, &#39;hai&#39;) beträgt die euklidische Distanz 0.36
+    Tier(0.9, 0.1, &#39;igel&#39;) beträgt die euklidische Distanz 0.51
+</pre></div>
+</div>
+</div>
+</div>
+<p>Praktischerweise kann die Funktion <code class="docutils literal notranslate"><span class="pre">plotte_daten()</span></code> auch Distanzen als Linien darstellen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotte_daten</span><span class="p">(</span><span class="n">tiere</span><span class="p">,</span> <span class="n">unbekanntes_tier</span><span class="p">,</span> <span class="n">auswahl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/95fea85fc3b80ee818dcfdb3caafcfbfd595f463b9e61c599df24d7df4d0d169.png" src="../_images/95fea85fc3b80ee818dcfdb3caafcfbfd595f463b9e61c599df24d7df4d0d169.png" />
+</div>
+</div>
+</section>
+<section id="manhattan-distanz">
+<h3><span class="section-number">22.3.5.2. </span>Manhattan-Distanz<a class="headerlink" href="#manhattan-distanz" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Der Name <em>Manhattan-Distanz</em>
+kommt daher, dass die Straßen in Manhattan rechtwinklig zueinander verlaufen, und
+die Distanz zwischen zwei Punkten daher durch die Summe der horizontalen und vertikalen Distanzen
+definiert ist. (Es ist egal, auf welchem genauen Weg man von einem Punkt zum anderen fährt, die
+Distanz ist immer gleich.)</p>
+</aside>
+<p>Es gibt aber auch andere Möglichkeiten, den Abstand zwischen zwei Punkten zu definieren. Eine
+bekannte Alternative ist die sogenannte <strong>Manhattan-Distanz</strong>, bei der man einfach die Abstände
+in den einzelnen Dimensionen aufaddiert:</p>
+<div class="math notranslate nohighlight">
+\[
+    d(P, Q) = |x_P - x_Q| + |y_P - y_Q|
+\]</div>
+<p>Hinweis: Der Betrag ist wichtig, weil wir nur positive Distanzen haben wollen, die sich zu einer Gesamtsumme aufaddieren
+und nicht etwa gegenseitig aufheben.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Die Formelsammlung beschreibt auch noch ein drittes Distanzmaß, den
+<em>Maximum-Abstand</em>:</p>
+<div class="math notranslate nohighlight">
+\[
+     d(P, Q) = \max(|p_1 - q_1|, |p_2 - q_2|)
+\]</div>
+<p>Für den k-nächste-Nachbarn-Algorithmus wird den Maximum-Abstand aber selten verwendet.</p>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">manhattan_distanz</span><span class="p">(</span><span class="n">tier1</span><span class="p">:</span> <span class="n">Tier</span><span class="p">,</span> <span class="n">tier2</span><span class="p">:</span> <span class="n">Tier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">d_niedlichkeit</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">tier1</span><span class="o">.</span><span class="n">niedlichkeit</span> <span class="o">-</span> <span class="n">tier2</span><span class="o">.</span><span class="n">niedlichkeit</span><span class="p">)</span>
+    <span class="n">d_flauschigkeit</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">tier1</span><span class="o">.</span><span class="n">flauschigkeit</span> <span class="o">-</span> <span class="n">tier2</span><span class="o">.</span><span class="n">flauschigkeit</span><span class="p">)</span>
+    <span class="n">distanz</span> <span class="o">=</span> <span class="n">d_niedlichkeit</span> <span class="o">+</span> <span class="n">d_flauschigkeit</span>
+    <span class="k">return</span> <span class="n">distanz</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="programmierung-des-algorithmus-2">
+<h2><span class="section-number">22.3.6. </span>Programmierung des Algorithmus (2)<a class="headerlink" href="#programmierung-des-algorithmus-2" title="Link to this heading">#</a></h2>
+<section id="die-k-nachsten-nachbarn-bestimmen">
+<h3><span class="section-number">22.3.6.1. </span>Die <span class="math notranslate nohighlight">\(k\)</span> nächsten Nachbarn bestimmen<a class="headerlink" href="#die-k-nachsten-nachbarn-bestimmen" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir sammeln die Distanzen aller bekannten Tiere (gelabelten Daten) zum unbekannten Tier (ungelabelter Datensatz).</span>
+<span class="c1"># In dieser Fassung machen wir das möglichst einfach und nachvollziehbar, ohne fortgeschrittene Python-Features.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne_manhattan_distanzen</span><span class="p">(</span><span class="n">ungelabelt</span><span class="p">:</span> <span class="n">Tier</span><span class="p">,</span> <span class="n">gelabelte_daten</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tier</span><span class="p">]]:</span>
+    <span class="n">distanzen</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tier</span> <span class="ow">in</span> <span class="n">gelabelte_daten</span><span class="p">:</span>
+        <span class="n">distanz</span> <span class="o">=</span> <span class="n">manhattan_distanz</span><span class="p">(</span><span class="n">ungelabelt</span><span class="p">,</span> <span class="n">tier</span><span class="p">)</span>
+        <span class="n">tupel</span> <span class="o">=</span> <span class="p">(</span><span class="n">distanz</span><span class="p">,</span> <span class="n">tier</span><span class="p">)</span>  <span class="c1"># Wir müssen uns die Distanz, aber auch das Tier merken (wichtig für die spätere Zuordnung nach dem Sortieren)</span>
+        <span class="n">distanzen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tupel</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">distanzen</span>
+
+<span class="c1"># Anwendung auf unsere Beispiel-Daten</span>
+<span class="n">manhattan_distanzen</span> <span class="o">=</span> <span class="n">berechne_manhattan_distanzen</span><span class="p">(</span><span class="n">unbekanntes_tier</span><span class="p">,</span> <span class="n">tiere</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unsortierte Distanzen:&quot;</span><span class="p">,</span> <span class="n">manhattan_distanzen</span><span class="p">)</span>
+
+<span class="c1"># Wir wollen die unserem unbekannten Tier am nächsten liegenden Tiere finden, also sortieren wir die Liste</span>
+<span class="n">manhattan_distanzen</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># Sortiert wird nach dem ersten Element des Tupels, also der Distanz</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sortierte Distanzen:&quot;</span><span class="p">,</span> <span class="n">manhattan_distanzen</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">k_naechste_nachbarn</span><span class="p">(</span><span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">distanzen</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tier</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">]:</span>
+    <span class="n">k_nachbarn</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">distanz</span><span class="p">,</span> <span class="n">tier</span> <span class="o">=</span> <span class="n">distanzen</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">k_nachbarn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tier</span><span class="p">)</span>  <span class="c1"># Jetzt interessiert uns nur noch das Tier, nicht mehr die Distanz</span>
+    <span class="k">return</span> <span class="n">k_nachbarn</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">k_nachbarn</span> <span class="o">=</span> <span class="n">k_naechste_nachbarn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">manhattan_distanzen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> nächsten Nachbarn sind: </span><span class="si">{</span><span class="n">k_nachbarn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plotte_daten</span><span class="p">(</span><span class="n">tiere</span><span class="p">,</span> <span class="n">unbekanntes_tier</span><span class="p">,</span> <span class="n">k_nachbarn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unsortierte Distanzen: [(0.7800000000000001, Tier(0.21, 0.91, &#39;vogelspinne&#39;)), (0.6100000000000001, Tier(0.27, 0.8, &#39;vogelspinne&#39;)), (0.68, Tier(0.15, 0.75, &#39;vogelspinne&#39;)), (0.5800000000000001, Tier(0.37, 0.87, &#39;vogelspinne&#39;)), (0.49000000000000005, Tier(0.29, 0.7, &#39;vogelspinne&#39;)), (0.76, Tier(0.9, 0.9, &#39;kaninchen&#39;)), (0.62, Tier(0.86, 0.8, &#39;kaninchen&#39;)), (0.5499999999999999, Tier(0.75, 0.84, &#39;kaninchen&#39;)), (0.6599999999999999, Tier(0.95, 0.75, &#39;kaninchen&#39;)), (0.30999999999999994, Tier(0.7, 0.65, &#39;kaninchen&#39;)), (0.51, Tier(0.31, 0.22, &#39;hai&#39;)), (0.77, Tier(0.14, 0.13, &#39;hai&#39;)), (0.77, Tier(0.21, 0.06, &#39;hai&#39;)), (0.68, Tier(0.11, 0.25, &#39;hai&#39;)), (0.6000000000000001, Tier(0.33, 0.11, &#39;hai&#39;)), (0.72, Tier(0.9, 0.1, &#39;igel&#39;)), (0.5499999999999999, Tier(0.8, 0.17, &#39;igel&#39;)), (0.5099999999999999, Tier(0.7, 0.11, &#39;igel&#39;)), (0.4099999999999999, Tier(0.75, 0.26, &#39;igel&#39;)), (0.62, Tier(0.92, 0.22, &#39;igel&#39;))]
+Sortierte Distanzen: [(0.30999999999999994, Tier(0.7, 0.65, &#39;kaninchen&#39;)), (0.4099999999999999, Tier(0.75, 0.26, &#39;igel&#39;)), (0.49000000000000005, Tier(0.29, 0.7, &#39;vogelspinne&#39;)), (0.5099999999999999, Tier(0.7, 0.11, &#39;igel&#39;)), (0.51, Tier(0.31, 0.22, &#39;hai&#39;)), (0.5499999999999999, Tier(0.8, 0.17, &#39;igel&#39;)), (0.5499999999999999, Tier(0.75, 0.84, &#39;kaninchen&#39;)), (0.5800000000000001, Tier(0.37, 0.87, &#39;vogelspinne&#39;)), (0.6000000000000001, Tier(0.33, 0.11, &#39;hai&#39;)), (0.6100000000000001, Tier(0.27, 0.8, &#39;vogelspinne&#39;)), (0.62, Tier(0.92, 0.22, &#39;igel&#39;)), (0.62, Tier(0.86, 0.8, &#39;kaninchen&#39;)), (0.6599999999999999, Tier(0.95, 0.75, &#39;kaninchen&#39;)), (0.68, Tier(0.11, 0.25, &#39;hai&#39;)), (0.68, Tier(0.15, 0.75, &#39;vogelspinne&#39;)), (0.72, Tier(0.9, 0.1, &#39;igel&#39;)), (0.76, Tier(0.9, 0.9, &#39;kaninchen&#39;)), (0.77, Tier(0.21, 0.06, &#39;hai&#39;)), (0.77, Tier(0.14, 0.13, &#39;hai&#39;)), (0.7800000000000001, Tier(0.21, 0.91, &#39;vogelspinne&#39;))]
+Die 5 nächsten Nachbarn sind: [Tier(0.7, 0.65, &#39;kaninchen&#39;), Tier(0.75, 0.26, &#39;igel&#39;), Tier(0.29, 0.7, &#39;vogelspinne&#39;), Tier(0.7, 0.11, &#39;igel&#39;), Tier(0.31, 0.22, &#39;hai&#39;)]
+</pre></div>
+</div>
+<img alt="../_images/7a8473c5482f46bbde39c87cb1000d04b5faf901ac79492bc153b4dd0f9fb281.png" src="../_images/7a8473c5482f46bbde39c87cb1000d04b5faf901ac79492bc153b4dd0f9fb281.png" />
+</div>
+</div>
+</section>
+<section id="eine-abstimmung-unter-den-nachsten-nachbarn-durchfuhren">
+<h3><span class="section-number">22.3.6.2. </span>Eine “Abstimmung” unter den nächsten Nachbarn durchführen<a class="headerlink" href="#eine-abstimmung-unter-den-nachsten-nachbarn-durchfuhren" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">haeufigkeiten_ermitteln</span><span class="p">(</span><span class="n">nachbarn</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">haeufigkeiten</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># In diesem assoziativen Array (Dictionary) zählen wir, wie oft jede Spezies in den k nächsten Nachbarn vorkommt</span>
+    <span class="k">for</span> <span class="n">tier</span> <span class="ow">in</span> <span class="n">nachbarn</span><span class="p">:</span>
+        <span class="n">spezies</span> <span class="o">=</span> <span class="n">tier</span><span class="o">.</span><span class="n">spezies</span>
+        <span class="k">if</span> <span class="n">spezies</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">haeufigkeiten</span><span class="p">:</span>
+            <span class="n">haeufigkeiten</span><span class="p">[</span><span class="n">spezies</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Erster Eintrag für diese Spezies</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">haeufigkeiten</span><span class="p">[</span><span class="n">spezies</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># Schon bekannt, also Zähler erhöhen</span>
+    <span class="k">return</span> <span class="n">haeufigkeiten</span>
+
+<span class="c1"># Anwendung auf unsere Beispieldaten</span>
+<span class="n">haeufigkeiten</span> <span class="o">=</span> <span class="n">haeufigkeiten_ermitteln</span><span class="p">(</span><span class="n">k_nachbarn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Häufigkeiten der Spezies:&quot;</span><span class="p">,</span> <span class="n">haeufigkeiten</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Häufigkeiten der Spezies: {&#39;kaninchen&#39;: 1, &#39;igel&#39;: 2, &#39;vogelspinne&#39;: 1, &#39;hai&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir wählen die Spezies mit der höchsten Häufigkeit</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">haeufigsten_wert_ermitteln</span><span class="p">(</span><span class="n">haeufigkeiten</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">haeufigste_spezies</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">max_h</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">spezies</span> <span class="ow">in</span> <span class="n">haeufigkeiten</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">haeufigkeiten</span><span class="p">[</span><span class="n">spezies</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">h</span> <span class="o">&gt;</span> <span class="n">max_h</span><span class="p">:</span>
+            <span class="n">haeufigste_spezies</span> <span class="o">=</span> <span class="n">spezies</span>
+            <span class="n">max_h</span> <span class="o">=</span> <span class="n">h</span>
+    <span class="k">return</span> <span class="n">haeufigste_spezies</span>
+
+<span class="c1"># Anwendung auf unsere Beispieldaten</span>
+<span class="n">haeufigste_spezies</span> <span class="o">=</span> <span class="n">haeufigsten_wert_ermitteln</span><span class="p">(</span><span class="n">haeufigkeiten</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Als Ergebnis des k-NN-Algorithmus ergibt sich für das unbekannte Tier </span><span class="si">{</span><span class="n">unbekanntes_tier</span><span class="si">}</span><span class="s2"> die Spezies:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">haeufigste_spezies</span><span class="p">)</span>
+
+<span class="c1"># Passt das Ergebnis zu den k nächsten Nachbarn?</span>
+<span class="n">klassifiziertes_tier</span> <span class="o">=</span> <span class="n">unbekanntes_tier</span><span class="o">.</span><span class="n">kopie_mit_spezies</span><span class="p">(</span><span class="n">haeufigste_spezies</span><span class="p">)</span>
+<span class="n">plotte_daten</span><span class="p">(</span><span class="n">tiere</span><span class="p">,</span> <span class="n">klassifiziertes_tier</span><span class="p">,</span> <span class="n">k_nachbarn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Als Ergebnis des k-NN-Algorithmus ergibt sich für das unbekannte Tier Tier(0.56, 0.48, &#39;?&#39;) die Spezies:
+igel
+</pre></div>
+</div>
+<img alt="../_images/b821537fb22ca3d1c5262b70b4b31fb6222be5d58266f9f21475804f28531353.png" src="../_images/b821537fb22ca3d1c5262b70b4b31fb6222be5d58266f9f21475804f28531353.png" />
+</div>
+</div>
+</section>
+<section id="der-algorithmus-als-ganzes">
+<h3><span class="section-number">22.3.6.3. </span>Der Algorithmus als Ganzes<a class="headerlink" href="#der-algorithmus-als-ganzes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir fassen die bisherigen Schritte in einer Funktion zusammen</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">k_naechste_nachbarn_bestimmen</span><span class="p">(</span><span class="n">unbekanntes_tier</span><span class="p">:</span> <span class="n">Tier</span><span class="p">,</span> <span class="n">gelabelte_daten</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Bestimmt die k nächsten Nachbarn eines unbekannten Tiers und deren häufigste Spezies.</span>
+<span class="sd">    Parameter:</span>
+<span class="sd">        unbekanntes_tier (Tier): Das Tier, dessen Spezies bestimmt werden soll.</span>
+<span class="sd">        gelabelte_daten (list[Tier]): Liste von Tieren mit bekannten Spezies.</span>
+<span class="sd">        k (int): Anzahl der nächsten Nachbarn.</span>
+<span class="sd">    Rückgabe:</span>
+<span class="sd">        tuple[str, list[Tier]]: Die häufigste Spezies und die k nächsten Nachbarn. &quot;&quot;&quot;</span>
+    
+    <span class="n">distanzen</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tier</span><span class="p">]]</span> <span class="o">=</span> <span class="n">berechne_manhattan_distanzen</span><span class="p">(</span><span class="n">unbekanntes_tier</span><span class="p">,</span> <span class="n">gelabelte_daten</span><span class="p">)</span>
+    <span class="n">distanzen</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">k_nachbarn</span> <span class="o">=</span> <span class="n">k_naechste_nachbarn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">distanzen</span><span class="p">)</span>
+    <span class="n">haeufigkeiten</span> <span class="o">=</span> <span class="n">haeufigkeiten_ermitteln</span><span class="p">(</span><span class="n">k_nachbarn</span><span class="p">)</span>
+    <span class="n">spezies</span> <span class="o">=</span> <span class="n">haeufigsten_wert_ermitteln</span><span class="p">(</span><span class="n">haeufigkeiten</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spezies</span><span class="p">,</span> <span class="n">k_nachbarn</span>   <span class="c1"># Wir geben auch die k nächsten Nachbarn zurück, damit wir sie später visualisieren können</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="einige-beispiele">
+<h3><span class="section-number">22.3.6.4. </span>Einige Beispiele<a class="headerlink" href="#einige-beispiele" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">klassifiziere_und_plotte</span><span class="p">(</span><span class="n">test_tier</span><span class="p">:</span> <span class="n">Tier</span><span class="p">,</span> <span class="n">tiere</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tier</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">spezies</span><span class="p">,</span> <span class="n">k_nachbarn</span> <span class="o">=</span> <span class="n">k_naechste_nachbarn_bestimmen</span><span class="p">(</span><span class="n">test_tier</span><span class="p">,</span> <span class="n">tiere</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Das unbekannte Tier </span><span class="si">{</span><span class="n">test_tier</span><span class="si">}</span><span class="s2"> wird klassifiziert als: </span><span class="si">{</span><span class="n">spezies</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">klassifiziertes_tier</span> <span class="o">=</span> <span class="n">test_tier</span><span class="o">.</span><span class="n">kopie_mit_spezies</span><span class="p">(</span><span class="n">spezies</span><span class="p">)</span>
+    <span class="n">plotte_daten</span><span class="p">(</span><span class="n">tiere</span><span class="p">,</span> <span class="n">klassifiziertes_tier</span><span class="p">,</span> <span class="n">k_nachbarn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_tier</span> <span class="o">=</span> <span class="n">Tier</span><span class="p">(</span><span class="n">niedlichkeit</span><span class="o">=</span><span class="mf">0.56</span><span class="p">,</span> <span class="n">flauschigkeit</span><span class="o">=</span><span class="mf">0.68</span><span class="p">,</span> <span class="n">spezies</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Probiere auch andere kleine oder große Werte</span>
+
+<span class="n">klassifiziere_und_plotte</span><span class="p">(</span><span class="n">test_tier</span><span class="p">,</span> <span class="n">tiere</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Das unbekannte Tier Tier(0.56, 0.68, &#39;?&#39;) wird klassifiziert als: vogelspinne
+</pre></div>
+</div>
+<img alt="../_images/2b2a95396d5559b9d377c7a688d9848b97d904f39ee24a21bdfe8040a1690285.png" src="../_images/2b2a95396d5559b9d377c7a688d9848b97d904f39ee24a21bdfe8040a1690285.png" />
+</div>
+</div>
+<p>Das nächste Beispiel führt zu einem etwas unbefriedigenden Ergebnis… Findest du nicht auch?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_tier</span> <span class="o">=</span> <span class="n">Tier</span><span class="p">(</span><span class="n">niedlichkeit</span><span class="o">=</span><span class="mf">0.56</span><span class="p">,</span> <span class="n">flauschigkeit</span><span class="o">=</span><span class="mf">0.48</span><span class="p">,</span> <span class="n">spezies</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">3</span>  
+
+<span class="n">klassifiziere_und_plotte</span><span class="p">(</span><span class="n">test_tier</span><span class="p">,</span> <span class="n">tiere</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Das unbekannte Tier Tier(0.56, 0.48, &#39;?&#39;) wird klassifiziert als: kaninchen
+</pre></div>
+</div>
+<img alt="../_images/865411a70f504c3a57cc11188ed5313b0dc747eb5b653434d7cde23a27fbd4b4.png" src="../_images/865411a70f504c3a57cc11188ed5313b0dc747eb5b653434d7cde23a27fbd4b4.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="knearestneighbor2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">22.2. </span>Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="kmeansclustering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>k-Means-Clustering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispieldaten-vorbereiten">22.3.1. Beispieldaten vorbereiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-in-objekte-der-klasse-tier-einlesen">22.3.2. Daten in Objekte der Klasse <em>Tier</em> einlesen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-visualisieren">22.3.3. Daten visualisieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einen-noch-ungelabelten-datensatz-vorbereiten-und-anzeigen">22.3.4. Einen (noch) ungelabelten Datensatz vorbereiten und anzeigen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ahnlichkeit-als-distanz">22.3.5. Ähnlichkeit als Distanz</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euklidische-distanz">22.3.5.1. Euklidische Distanz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manhattan-distanz">22.3.5.2. Manhattan-Distanz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmierung-des-algorithmus-2">22.3.6. Programmierung des Algorithmus (2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-k-nachsten-nachbarn-bestimmen">22.3.6.1. Die <span class="math notranslate nohighlight">\(k\)</span> nächsten Nachbarn bestimmen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eine-abstimmung-unter-den-nachsten-nachbarn-durchfuhren">22.3.6.2. Eine “Abstimmung” unter den nächsten Nachbarn durchführen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-algorithmus-als-ganzes">22.3.6.3. Der Algorithmus als Ganzes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einige-beispiele">22.3.6.4. Einige Beispiele</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

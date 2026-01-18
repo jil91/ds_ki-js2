@@ -4,7 +4,7 @@ root: intro.md
 
 parts:
   - caption: Nutzung   # Das wird Part 1 (Teile werden nicht nummeriert)
-    numbered: 2
+    numbered: true
     chapters:
     - file: nutzung.md
       sections:
@@ -12,7 +12,7 @@ parts:
       - file: parsons_problems_einfuehrung.ipynb
   
   - caption: Objektorienterte Programmierung (OOP)
-    numbered: 3
+    numbered: true
     chapters:
     - file: oop/t01_einstieg.md #Test mmit PDF
       title: Einführung in OOP
@@ -34,7 +34,7 @@ parts:
       title: Sequenzdiagramme
   
   - caption: Datenbanken
-    numbered: 4
+    numbered: true
     chapters:
     - file: db/t10_einstieg_db.md
       title: Einstieg Datenbanken
@@ -46,7 +46,7 @@ parts:
       title: Normalisierung
 
   - caption: Datenstrukturen  # Das wird Part 2
-    numbered: 5
+    numbered: true
     chapters:
     - file: datenstrukturen/datenstrukturen_allgemein.ipynb
     - file: datenstrukturen/listen_einfuehrung.ipynb
@@ -71,16 +71,18 @@ parts:
     - file: datenstrukturen/klausurvorbereitung_mit_loesungen.ipynb
 
   - caption: Künstliche Intelligenz
-    numbered: 6
+    numbered: true
     chapters:
     - file: ki/ki_allgemein.ipynb
     - file: ki/knearestneighbor.ipynb
       sections:
+      - file: ki/knearestneighbor221.ipynb
       - file: ki/knearestneighbor2.ipynb
+      - file: ki/knearestneighbor222.ipynb
     - file: ki/kmeansclustering.ipynb
-  #     sections:
-  #     - file: ki/kmeansclustering2_aufgabe.ipynb
-  #     - file: ki/kmeansclustering2_loesung.ipynb
-  #   - file: ki/entscheidungsbaumlernen.ipynb
-  #   - file: ki/minimax.ipynb
-  #   - file: ki/neuronalenetze.ipynb
+      sections:
+      - file: ki/kmeansclustering2_aufgabe.ipynb
+      - file: ki/kmeansclustering2_loesung.ipynb
+    #- file: ki/entscheidungsbaumlernen.ipynb
+    #- file: ki/minimax.ipynb
+    #- file: ki/neuronalenetze.ipynb

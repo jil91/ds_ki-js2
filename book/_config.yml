@@ -68,7 +68,7 @@ sphinx:
   extra_extensions:
     - sphinx.ext.imgconverter
     #- jupyterbook_patches
-    #- teachbooks_sphinx_tippy # https://github.com/TeachBooks/teachbooks-sphinx-tippy
+    - teachbooks_sphinx_tippy # https://github.com/TeachBooks/teachbooks-sphinx-tippy
     #- sphinx_mermaid 
 
 

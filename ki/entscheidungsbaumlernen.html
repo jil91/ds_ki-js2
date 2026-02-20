@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>24. Entscheidungsbäume lernen &#8212; OOP, Datenbanken, Datenstrukturen und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy_custom.css?v=eb815f20" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=91fba89f"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Klicken zum Anzeigen';</script>
+    <script>let toggleHintHide = 'Klicken zum Ausblenden';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/translations.js?v=79cc9f76"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/ki/entscheidungsbaumlernen.b4b89dcf-dfdf-4c75-a6ae-b3dd046d542d.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ki/entscheidungsbaumlernen';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/dropdown-opener.js?v=628c8bad"></script>
+    <link rel="canonical" href=" &#34;https://jil91.github.io/&#34;/ki/entscheidungsbaumlernen.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="25. Der Minimax-Algorithmus" href="minimax.html" />
+    <link rel="prev" title="23.9. Programmierung des Algorithmus (Lösung)" href="kmeansclustering2_loesung.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OOP, Datenbanken, Datenstrukturen und KI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Nutzung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nutzung.html">1. Wie nutzt du dieses Buch am besten?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../live_code.html">1.3. Programmieren direkt in diesem Buch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parsons_problems_einfuehrung.html">1.4. Parsons-Probleme</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Objektorienterte Programmierung (OOP)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop/t01_einstieg.html">2. Einführung in OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t02_kapselung.html">3. Datenkapselung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t03_vererbung.html">4. Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t04_abstrakteKlassen.html">5. Abstrakte Klassen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t05_interfaces.html">6. Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t06_klassenvariablen.html">7. Klassenvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t07_assoziationen.html">8. Assoziationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t08_3SA.html">9. 3SA - Drei-Schichten-Architektur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop/t09_sequenzdiagramme.html">10. Sequenzdiagramme</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenbanken</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../db/t10_einstieg_db.html">11. Einstieg Datenbanken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t11_erm.html">12. Entity-Relationship-Modell (ERM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t12_erm_rm.html">13. Vom ERM ins Relationale Modell (RM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/t13_normalisierung.html">14. Normalisierung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenstrukturen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/datenstrukturen_allgemein.html">15. Abstrakte Datentypen (ADT) vs Datenstrukturen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/listen_einfuehrung.html">16. Listen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_listen.html">16.2. Verkettete Listen</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen1.html">16.4. Operationen für verkettete Listen implementieren (Teil 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen2.html">16.5. Operationen für verkettete Listen implementieren (Teil 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/verkettete_liste_operationen_loesungen.html">16.6. Lösungen: Operationen für verkettete Listen implementieren</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/stapel_und_warteschlangen_intro.html">17. Stapel und Warteschlangen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack.html">17.1. Stapel (Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/stack-aufgaben.html">17.2. Übungen zu Stapeln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/warteschlangen.html">17.3. Warteschlangen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/assoziative_arrays.html">18. Assoziative Arrays</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datenstrukturen/baeume.html">19. Bäume</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/binaerbaeume.html">19.4. Binärbäume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datenstrukturen/suchbaeume.html">19.5. Binäre Suchbäume</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../datenstrukturen/klausurvorbereitung_mit_loesungen.html">20. Aufgaben zur Vorbereitung auf Klausur und Abitur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Künstliche Intelligenz</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ki_allgemein.html">21. Künstliche Intelligenz: Einführung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="knearestneighbor.html">22. Der k-Nächste-Nachbarn-Algorithmus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor221.html">22.1. Einführung: Tiere klassifizieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor2.html">22.2. Eigenschaften und Varianten des k-Nächste-Nachbarn-Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knearestneighbor222.html">22.3. Programmierung des Algorihmus</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="kmeansclustering.html">23. k-Means-Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_aufgabe.html">23.8. Programmierung des Algorithmus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeansclustering2_loesung.html">23.9. Programmierung des Algorithmus (Lösung)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">24. Entscheidungsbäume lernen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimax.html">25. Der Minimax-Algorithmus</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jil91/ds_ki-js2" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Quell-Repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ki/entscheidungsbaumlernen.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Entscheidungsbäume lernen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung">24.1. Einführung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-unreinheit-und-gewichtete-gini-unreinheit">24.2. Gini-Unreinheit und gewichtete Gini-Unreinheit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-unreinheit">24.2.1. Gini-Unreinheit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gewichtete-gini-unreinheit">24.2.2. Gewichtete Gini-Unreinheit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-beratung-beim-smartphone-kauf">24.3. Übung: Beratung beim Smartphone-Kauf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausfuhrliche-musterlosung">24.4. Ausführliche Musterlösung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-unreinheit-der-gesamten-tabelle">24.4.1. Gini-Unreinheit der gesamten Tabelle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gewichtete-gini-unreinheit-fur-das-feature-budget">24.4.2. Gewichtete Gini-Unreinheit für das Feature <em>Budget</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auswahl-des-besten-features">24.4.3. Auswahl des besten Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-entscheidungsbaum-nach-dem-ersten-schritt">24.4.4. Der Entscheidungsbaum nach dem ersten Schritt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-mit-denen-weitergearbeitet-wird">24.4.5. Daten, mit denen weitergearbeitet wird</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fertiger-entscheidungsbaum-tiefe-2">24.4.6. Fertiger Entscheidungsbaum (Tiefe 2)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="entscheidungsbaume-lernen">
+<h1><span class="section-number">24. </span>Entscheidungsbäume lernen<a class="headerlink" href="#entscheidungsbaume-lernen" title="Link to this heading">#</a></h1>
+<section id="einfuhrung">
+<h2><span class="section-number">24.1. </span>Einführung<a class="headerlink" href="#einfuhrung" title="Link to this heading">#</a></h2>
+<p>Zur Einführung in das Thema “Entscheidungsbäume lernen” kannst du dir die folgende Präsentation ansehen. Klicke dazu auf das Bild oder <a class="reference download internal" download="" href="../_downloads/fce4e34e39a8efc58949df032b922d8f/EntscheidungsbaumlernenEinfuehrung.pdf"><span class="xref download myst">diesen Link</span></a>.</p>
+<div style="text-align: center">
+<a href="EntscheidungsbaumlernenEinfuehrung.pdf">
+    <img src="bilder/Titelfolie_Praesentation_Entscheidungsbaueme.png" alt="Description of the figure" style="width:80%;">
+</a>
+</div>
+</section>
+<section id="gini-unreinheit-und-gewichtete-gini-unreinheit">
+<h2><span class="section-number">24.2. </span>Gini-Unreinheit und gewichtete Gini-Unreinheit<a class="headerlink" href="#gini-unreinheit-und-gewichtete-gini-unreinheit" title="Link to this heading">#</a></h2>
+<p>Die folgenden Formeln findest du auch in Abschnitt 6.2 der Formelsammlung.</p>
+<section id="gini-unreinheit">
+<h3><span class="section-number">24.2.1. </span>Gini-Unreinheit<a class="headerlink" href="#gini-unreinheit" title="Link to this heading">#</a></h3>
+<p>Für eine (ausgewählte) Menge von Datensätzen <span class="math notranslate nohighlight">\(D\)</span> und einem Ziel-Feature <span class="math notranslate nohighlight">\(Z\)</span> mit <span class="math notranslate nohighlight">\(k\)</span> möglichen Ausprägungen (Klassen) ist die Gini-Unreinheit (auch: Gini-Koeffizient, Gini-Index, Gini Impurity) wie folgt definiert:</p>
+<div class="math notranslate nohighlight">
+\[ Gini(D) = 1 - \sum_{i=1}^{k} (p_i)^2 \]</div>
+<p>wobei die <span class="math notranslate nohighlight">\(p_i\)</span> die relativen Häufigkeiten der Klassen sind.</p>
+<p><strong>Beispiel</strong>: Wir betrachten eine Menge <span class="math notranslate nohighlight">\(D\)</span> von <em>31</em> Datensätzen, die zu <em>drei</em> möglichen Klassen (<em>A</em>, <em>B</em> oder <em>C</em>) gehören.
+Dabei gilt:</p>
+<ul class="simple">
+<li><p>10 Datensätze gehören zur Klasse <em>A</em></p></li>
+<li><p>8 Datensätze gehören zur Klasse <em>B</em></p></li>
+<li><p>13 Datensätze gehören zur Klasse <em>C</em></p></li>
+</ul>
+<p>Weil wir insgesamt 31 Datensätze haben, gilt: Die relative Häufigkeit der Klasse <em>A</em> ist <span class="math notranslate nohighlight">\(\frac{10}{31}\)</span>, die relative Häufigkeit der Klasse <em>B</em> ist <span class="math notranslate nohighlight">\(\frac{8}{31}\)</span> und die relative Häufigkeit der Klasse <em>C</em> ist <span class="math notranslate nohighlight">\(\frac{13}{31}\)</span>.</p>
+<p>Für die Gini-Unreinheit ergibt sich in diesem konkreten Beispiel:</p>
+<div class="math notranslate nohighlight">
+\[ Gini(D) = 1 - \left[ \left(\frac{10}{31}\right)^2 + \left(\frac{8}{31}\right)^2 + \left(\frac{13}{31}\right)^2 \right] \]</div>
+</section>
+<section id="gewichtete-gini-unreinheit">
+<h3><span class="section-number">24.2.2. </span>Gewichtete Gini-Unreinheit<a class="headerlink" href="#gewichtete-gini-unreinheit" title="Link to this heading">#</a></h3>
+<p>Wir nutzen die Gini-Unreinheit, um zu bewerten, wie gut ein Feauture die Datenmenge <span class="math notranslate nohighlight">\(D\)</span> in Untergruppen aufteilt. Denn genau das macht ein Entscheidungsbaum: Durch “Abfragen” der Werte eines Features wird die Datenmenge in Untergruppen aufgeteilt - die dann hoffentlich homogener sind als die ursprüngliche Datenmenge und sich daher besser klassifizieren lassen.</p>
+<p>Dazu benötigen wir ein Maß, das die Gini-Unreinheit der <em>Untergruppen</em> berücksichtigt. Dies ist die gewichtete Gini-Unreinheit.</p>
+<p>Mit <span class="math notranslate nohighlight">\(Gini(F=v)\)</span> bezeichnen wir die (ungewichtete) Gini-Unreinheit der Auswahl von Datensätzen, bei denen das
+Merkmal/Feature <span class="math notranslate nohighlight">\(F\)</span> den Wert <span class="math notranslate nohighlight">\(v\)</span> hat. Für jeden möglichen Wert <span class="math notranslate nohighlight">\(v\)</span> des Features <span class="math notranslate nohighlight">\(F\)</span> berechnen wir die Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F=v)\)</span> wie oben beschrieben. Außerdem bestimmen wir die relative Häufigkeit <span class="math notranslate nohighlight">\(p_v\)</span> der Datensätze, bei denen das Merkmal/Feature <span class="math notranslate nohighlight">\(F\)</span> den Wert <span class="math notranslate nohighlight">\(v\)</span> hat.</p>
+<p>Diese Werte verknüpfen wir zur gewichteten Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F)\)</span>. Diese beschreibt, grob gesagt, die durchschnittliche Gini-Unreinheit der Untergruppen. Sie wird wie folgt berechnet:</p>
+<div class="math notranslate nohighlight">
+\[ Gini(F) = \sum_{v} p_v \cdot Gini(F=v) \]</div>
+<p>Das bedeutet: Jede Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F=v)\)</span> wird mit der relativen Häufigkeit <span class="math notranslate nohighlight">\(p_v\)</span> <em>gewichtet</em> und die gewichteten Gini-Unreinheiten werden summiert.  (Das ist ganz ähnlich wie bei der Berechnung eines Durchschnitts oder eines Erwartungswerts.)</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Achtung: Es geht uns immer noch darum, die Unreinheit bezüglich des Ziel-Features <span class="math notranslate nohighlight">\(Z\)</span> zu minimieren. D.h. <span class="math notranslate nohighlight">\(Gini(F)\)</span> beschreibt die “Trennschärfe” des Features <span class="math notranslate nohighlight">\(F\)</span> <em>in Bezug auf das Ziel-Feature <span class="math notranslate nohighlight">\(Z\)</span></em>.</p>
+</aside>
+<p><strong>Beispiel</strong>: Wir betrachten wieder die Menge <span class="math notranslate nohighlight">\(D\)</span> von 31 Datensätzen, die zu drei möglichen Klassen (<em>A</em>, <em>B</em> oder <em>C</em>) gehören. Nehmen wir an, es gibt ein Feature <span class="math notranslate nohighlight">\(F\)</span>, das zwei mögliche Werte hat: <em>ja</em> und <em>nein</em>. Wir berechnen die gewichtete Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F)\)</span> für dieses Feature.</p>
+<p>Angenommen, die Datensätze verteilen sich wie folgt auf die Werte des Features <span class="math notranslate nohighlight">\(F\)</span>:</p>
+<ul class="simple">
+<li><p>17 Datensätze haben beim Feature <span class="math notranslate nohighlight">\(F\)</span> den Wert <em>ja</em></p>
+<ul>
+<li><p>davon gehören 5 zur Klasse <em>A</em>, 6 zur Klasse <em>B</em> und 6 zur Klasse <em>C</em></p></li>
+</ul>
+</li>
+<li><p>14 Datensätze haben beim Feature <span class="math notranslate nohighlight">\(F\)</span> den Wert <em>nein</em></p>
+<ul>
+<li><p>davon gehören 2 zur Klasse <em>A</em>, 4 zur Klasse <em>B</em> und 8 zur Klasse <em>C</em></p></li>
+</ul>
+</li>
+</ul>
+<p>Aus diesen Werten ergibt sich mit der im vorigen Absatz beschriebenen Formel für die ungewichtete Gini-Unreinheit:</p>
+<div class="math notranslate nohighlight">
+\[ Gini(F=ja) = 1 - \left[ \left(\frac{5}{17}\right)^2 + \left(\frac{6}{17}\right)^2 + \left(\frac{6}{17}\right)^2 \right] \]</div>
+<p>und</p>
+<div class="math notranslate nohighlight">
+\[ Gini(F=nein) = 1 - \left[ \left(\frac{2}{14}\right)^2 + \left(\frac{4}{14}\right)^2 + \left(\frac{8}{14}\right)^2 \right] \]</div>
+<p>Um die <em>gewichtete</em> Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F)\)</span> zu berechnen, müssen wir nun noch die <em>Anteile</em> <span class="math notranslate nohighlight">\(Gini(F=ja)\)</span> und <span class="math notranslate nohighlight">\(Gini(F=nein)\)</span>
+berücksichtigen. D.h. je häufiger z.B. der Wert <em>ja</em> vorkommt, desto stärker fließt die Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F=ja)\)</span> in die gewichtete Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F)\)</span> ein.  Für unser Beispiel sieht die Formel für die gewichtete Gini-Unreinheit <span class="math notranslate nohighlight">\(Gini(F)\)</span> dann so aus:</p>
+<div class="math notranslate nohighlight">
+\[ Gini(F) = \frac{17}{31} \cdot Gini(F=ja) + \frac{14}{31} \cdot Gini(F=nein) \]</div>
+</section>
+</section>
+<section id="ubung-beratung-beim-smartphone-kauf">
+<h2><span class="section-number">24.3. </span>Übung: Beratung beim Smartphone-Kauf<a class="headerlink" href="#ubung-beratung-beim-smartphone-kauf" title="Link to this heading">#</a></h2>
+<p>Lade dir dieses <a class="reference download internal" download="" href="../_downloads/070a06f49c66da21d48fad71eb9cecfd/AB_Entscheidungsbaumlernen_Smartphone.pdf"><span class="xref download myst">Aufgabenblatt</span></a> herunter und bearbeite es. Die Anweisungen findest du auf dem Arbeitsblatt. Viel Erfolg 💪</p>
+<p>Hier noch einmal die Daten vom Aufgabenblatt:</p>
+<style>
+table {
+    line-height: 1.0; 
+    width: 70%;
+    table-layout: auto; /* Automatische Spaltenbreite */
+
+    margin: 0 auto; 
+    border-collapse: collapse;
+}
+table th, table td {
+    padding: 1px;
+    text-align: left;
+    word-wrap: break-word; /* Bricht lange Wörter */
+}
+</style>
+<small>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Budget</p></th>
+<th class="head"><p>Akkulaufzeit</p></th>
+<th class="head"><p>Kamera</p></th>
+<th class="head"><p>Speicher</p></th>
+<th class="head"><p>Empfehlung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>niedrig</p></td>
+<td><p>lang</p></td>
+<td><p>mittel</p></td>
+<td><p>groß</p></td>
+<td><p>Modell A</p></td>
+</tr>
+<tr class="row-odd"><td><p>hoch</p></td>
+<td><p>mittel</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-even"><td><p>mittel</p></td>
+<td><p>lang</p></td>
+<td><p>mittel</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-odd"><td><p>niedrig</p></td>
+<td><p>kurz</p></td>
+<td><p>egal</p></td>
+<td><p>klein</p></td>
+<td><p>Modell A</p></td>
+</tr>
+<tr class="row-even"><td><p>hoch</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-odd"><td><p>mittel</p></td>
+<td><p>mittel</p></td>
+<td><p>mittel</p></td>
+<td><p>klein</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-even"><td><p>niedrig</p></td>
+<td><p>lang</p></td>
+<td><p>egal</p></td>
+<td><p>klein</p></td>
+<td><p>Modell A</p></td>
+</tr>
+<tr class="row-odd"><td><p>hoch</p></td>
+<td><p>mittel</p></td>
+<td><p>mittel</p></td>
+<td><p>groß</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-even"><td><p>mittel</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-odd"><td><p>niedrig</p></td>
+<td><p>kurz</p></td>
+<td><p>egal</p></td>
+<td><p>klein</p></td>
+<td><p>Modell A</p></td>
+</tr>
+<tr class="row-even"><td><p>mittel</p></td>
+<td><p>mittel</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-odd"><td><p>niedrig</p></td>
+<td><p>lang</p></td>
+<td><p>mittel</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-even"><td><p>hoch</p></td>
+<td><p>mittel</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-odd"><td><p>niedrig</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>klein</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-even"><td><p>hoch</p></td>
+<td><p>lang</p></td>
+<td><p>mittel</p></td>
+<td><p>klein</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-odd"><td><p>mittel</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>klein</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-even"><td><p>niedrig</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-odd"><td><p>hoch</p></td>
+<td><p>kurz</p></td>
+<td><p>mittel</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-even"><td><p>mittel</p></td>
+<td><p>kurz</p></td>
+<td><p>egal</p></td>
+<td><p>groß</p></td>
+<td><p>Modell A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</small></section>
+<section id="ausfuhrliche-musterlosung">
+<h2><span class="section-number">24.4. </span>Ausführliche Musterlösung<a class="headerlink" href="#ausfuhrliche-musterlosung" title="Link to this heading">#</a></h2>
+<p>Diese Musterlösung entspricht inhaltlich dem, was du in der Klausur und im Abitur schreiben solltest. Manche Erklärungen sind etwas ausführlicher als unbedingt nötig, aber so verstehst du hoffentlich die Zusammenhänge besser.</p>
+<section id="gini-unreinheit-der-gesamten-tabelle">
+<h3><span class="section-number">24.4.1. </span>Gini-Unreinheit der gesamten Tabelle<a class="headerlink" href="#gini-unreinheit-der-gesamten-tabelle" title="Link to this heading">#</a></h3>
+<p>Die Tabelle enthält insg. <strong>19</strong> Datensätze. Wir wollen wissen, wie “unrein” die Tabelle bezüglich des
+Zielmerkmals <em>Empfehlung</em> ist. Dazu zählen wir die Häufigkeiten der drei möglichen Werte (Klassen) von <em>Empfehlung</em>:</p>
+<p>“Modell A” wird 5-mal empfohlen, “Modell B” und “Modell C” je 7-mal.
+Es ergibt sich also in diese Fall folgende Formel für die Gini-Unreinheit:</p>
+<div class="math notranslate nohighlight">
+\[ Gini(Empfehlung) = 1 - \left[ \left(\frac{5}{19} \right)^2 + \left(\frac{7}{19} \right)^2 + \left(\frac{7}{19} \right)^2\right] = 0.659 \]</div>
+</section>
+<section id="gewichtete-gini-unreinheit-fur-das-feature-budget">
+<h3><span class="section-number">24.4.2. </span>Gewichtete Gini-Unreinheit für das Feature <em>Budget</em><a class="headerlink" href="#gewichtete-gini-unreinheit-fur-das-feature-budget" title="Link to this heading">#</a></h3>
+<p>Weil es für das Feature <em>Budget</em> drei mögliche Werte gibt (<em>niedrig</em>, <em>mittel</em>, <em>hoch</em>), teilen wir die Datensätze entsprechend auf.
+Für jede Aufteilung berechnen wir</p>
+<ol class="arabic simple">
+<li><p>die relative Häufigkeit der Datensätze mit dem jeweiligen Wert von <em>Budget</em></p></li>
+<li><p>die (ungewichtete) Gini-Unreinheit für diese Aufteilung</p></li>
+</ol>
+<ul>
+<li><p>7 von 19 Datensätzen haben beim Merkmal <em>Budget</em> den Wert <em>niedrig</em> → Relative Häufigkeit <span class="math notranslate nohighlight">\(p_{niedrig} = \frac{7}{19}\)</span>:</p>
+<ul class="simple">
+<li><p>Aus diesen 7 wird 4-mal Modell A empfohlen, 1-mal Modell B und 2-mal Modell C.  Es ergibt sich also:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ Gini(Budget=niedrig) = 1 - \left[ \left(\frac{4}{7}\right)^2 + \left(\frac{1}{7}\right)^2 + \left(\frac{2}{7}\right)^2\right] = \frac{4}{7} = 0.571 \]</div>
+</li>
+<li><p>6 von 19 Datensätzen haben beim Merkmal <em>Budget</em> den Wert <em>mittel</em> → Relative Häufigkeit <span class="math notranslate nohighlight">\(p_{mittel} = \frac{6}{19}\)</span>:</p>
+<ul class="simple">
+<li><p>Aus diesen 6 wird 1-mal Modell A empfohlen, 1-mal Modell B und 4-mal Modell C.  Es ergibt sich also:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ Gini(Budget=mittel) = 1 - \left[ \left(\frac{1}{6}\right)^2 + \left(\frac{1}{6}\right)^2 + \left(\frac{2}{3}\right)^2\right] = \frac{1}{2} = 0.5 \]</div>
+</li>
+<li><p>6 von 19 Datensätzen haben beim Merkmal <em>Budget</em> den Wert <em>hoch</em> → Relative Häufigkeit <span class="math notranslate nohighlight">\(p_{hoch} = \frac{6}{19}\)</span>:</p>
+<ul class="simple">
+<li><p>Aus diesen 6 wird 0-mal Modell A empfohlen, 5-mal Modell B und 1-mal Modell C.  Es ergibt sich also:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ Gini(Budget=hoch) = 1 - \left[ \left(\frac{0}{6}\right)^2 + \left(\frac{5}{6}\right)^2 + \left(\frac{1}{6}\right)^2\right] = \frac{5}{18} = 0.278 \]</div>
+</li>
+</ul>
+<p>Die <strong>gewichtete Gini-Unreinheit</strong> für das Feature <em>Budget</em> ergibt sich dann aus der Summe der gewichteten Gini-Unreinheiten:</p>
+<div class="math notranslate nohighlight">
+\[ Gini(Budget) = \frac{7}{19} \cdot 0.571 + \frac{6}{19} \cdot 0.5 + \frac{6}{19} \cdot 0.278 = 0.456 \]</div>
+</section>
+<section id="auswahl-des-besten-features">
+<h3><span class="section-number">24.4.3. </span>Auswahl des besten Features<a class="headerlink" href="#auswahl-des-besten-features" title="Link to this heading">#</a></h3>
+<p>Die gewichteten Gini-Unreinheiten für die Features <em>Budget</em>, <em>Akkulaufzeit</em>, <em>Kamera</em> und <em>Speicher</em> sind:</p>
+<ul class="simple">
+<li><p>Budget: 0,456 (s.o.)</p></li>
+<li><p>Akkulaufzeit: 0,542</p></li>
+<li><p>Kamera: 0,408</p></li>
+<li><p>Speicher: 0,612</p></li>
+</ul>
+<p>Das Feature <em>Kamera</em> hat die <em>geringste</em> gewichtete Gini-Unreinheit und ist daher das beste Feature für die erste Entscheidung im Entscheidungsbaum.</p>
+</section>
+<section id="der-entscheidungsbaum-nach-dem-ersten-schritt">
+<h3><span class="section-number">24.4.4. </span>Der Entscheidungsbaum nach dem ersten Schritt<a class="headerlink" href="#der-entscheidungsbaum-nach-dem-ersten-schritt" title="Link to this heading">#</a></h3>
+<p>Der Entscheidungsbaum beginnt also mit der Frage nach dem Feature <em>Kamera</em>. Da dieses Merkmal drei mögliche Werte hat (<em>mittel</em>, <em>wichtig</em>, <em>egal</em>), teilen wir die Datensätze entsprechend auf.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg"><img alt="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg" src="../_images/entscheidungsbaum_tiefe_1_ohne_endknoten.svg" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<section id="daten-mit-denen-weitergearbeitet-wird">
+<h3><span class="section-number">24.4.5. </span>Daten, mit denen weitergearbeitet wird<a class="headerlink" href="#daten-mit-denen-weitergearbeitet-wird" title="Link to this heading">#</a></h3>
+<p>Die Datensätze, die beim Feature <em>Kamera</em> den Wert <em>wichtig</em> haben, sind:</p>
+<style>
+table {
+    line-height: 1.0; 
+    width: 70%;
+    table-layout: auto; /* Automatische Spaltenbreite */
+
+    margin: 0 auto; 
+    border-collapse: collapse;
+}
+table th, table td {
+    padding: 1px;
+    text-align: left;
+    word-wrap: break-word; /* Bricht lange Wörter */
+}
+</style>
+<small>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Budget</p></th>
+<th class="head"><p>Akkulaufzeit</p></th>
+<th class="head"><p>Kamera</p></th>
+<th class="head"><p>Speicher</p></th>
+<th class="head"><p>Empfehlung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hoch</p></td>
+<td><p>mittel</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-odd"><td><p>hoch</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-even"><td><p>mittel</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-odd"><td><p>mittel</p></td>
+<td><p>mittel</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+<tr class="row-even"><td><p>hoch</p></td>
+<td><p>mittel</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-odd"><td><p>niedrig</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>klein</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-even"><td><p>mittel</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>klein</p></td>
+<td><p>Modell B</p></td>
+</tr>
+<tr class="row-odd"><td><p>niedrig</p></td>
+<td><p>lang</p></td>
+<td><p>wichtig</p></td>
+<td><p>groß</p></td>
+<td><p>Modell C</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</small>
+<p>Der Teil des Baums unterhalb des Knotens <em>Kamera=wichtig</em> muss also nur noch mit diesen Datensätzen arbeiten.
+Das Feature <em>Kamera</em> wird dafür nicht mehr benötigt (weil alle Datensätze sowieso denselben Wert haben). Es
+bleiben also noch die Features <em>Budget</em>, <em>Akkulaufzeit</em> und <em>Speicher</em>.</p>
+<p>Wir versuchen ohne zu rechnen abzuschätzen, welche Features am besten dazu geeignet sind, das Zielmerkmal <em>Empfehlung</em> zu klassifizieren:</p>
+<ul class="simple">
+<li><p><em>Budget:</em> Bei hohem Budget wird immer Modell B empfohlen, bei mittlerem Budget in 2 von 3 Fällen Modell C und bei
+niedrigem Budget in einem der beiden Fälle Modell B, im anderen Modell C. Das Feature <em>Budget</em> scheint insgesamt ganz gut geeignet, um die Empfehlung zu bestimmen.</p></li>
+<li><p><em>Akkulaufzeit:</em> Wenn eine lange Akkulaufzeit wichtig ist, wird in 3 von 5 Fällen Modell B empfohlen, in den
+anderen beiden Fällen Modell C. Bei mittlerer Akkulaufzeit wird in 2 von 3 Fällen Modell C empfohlen, in einem Fall Modell B. (Kurze Akkulaufzeit kommt schon nicht mehr vor.)
+Das Feature <em>Akkulaufzeit</em> scheint nicht besonders aussagekräftig zu sein.</p></li>
+<li><p><em>Speicher</em>: Wenn der Wunsch nach großem Speicherplatz besteht, wird in 3 von 6 Fällen Modell C empfohlen, in den
+anderen 3 Fällen Modell B. Das ist nicht sehr hilfreich. Bei kleinem Speicherplatz wird zwar in beiden Fällen Modell B empfohlen,
+da aber die meisten Datensätze großen Speicherplatz haben, ist das
+Feature <em>Speicher</em> auch nicht besonders aussagekräftig.</p></li>
+</ul>
+<p>Intuitiv scheint also das Feature <em>Budget</em> am besten geeignet, um die Empfehlung zu bestimmen. Wir berechnen trotzdem noch die gewichteten Gini-Unreinheiten, um sicher zu gehen. Es ergibt sich:</p>
+<ul class="simple">
+<li><p>Gini(Budget) = <span class="math notranslate nohighlight">\(0,292\)</span></p></li>
+<li><p>Gini(Akkulaufzeit) = <span class="math notranslate nohighlight">\(0,467\)</span></p></li>
+<li><p>Gini(Speicher) = <span class="math notranslate nohighlight">\(0,375\)</span></p></li>
+</ul>
+<p>Das passt einigermaßen zu unserer Einschätzung. Das Feature <em>Budget</em> ist also das beste für den nächsten Schritt im Entscheidungsbaum.</p>
+</section>
+<section id="fertiger-entscheidungsbaum-tiefe-2">
+<h3><span class="section-number">24.4.6. </span>Fertiger Entscheidungsbaum (Tiefe 2)<a class="headerlink" href="#fertiger-entscheidungsbaum-tiefe-2" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/entscheidungsbaum_tiefe_2.svg"><img alt="../_images/entscheidungsbaum_tiefe_2.svg" src="../_images/entscheidungsbaum_tiefe_2.svg" style="width: 80%;" />
+</a>
+</figure>
+<p>Achtung: Die Werte in den Endknoten sind die <em>häufigsten</em> Empfehlungen in den jeweiligen Datensätzen. Das bedeutet nicht, dass die Empfehlung immer so ausfällt. Es ist nur die häufigste Empfehlung in den jeweiligen Datensätzen. Um zu überprüfen, wie gut der
+Entscheidungsbaum die Trainingsdaten klassifiziert, können wir die <em>Genauigkeit</em> berechnen. Dazu zählen wir die Anzahl der Datensätze, bei denen die Empfehlung des Entscheidungsbaums mit der tatsächlichen Empfehlung übereinstimmt und teilen durch die Gesamtanzahl der Datensätze.</p>
+<small>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nr</p></th>
+<th class="head"><p>Zielwert</p></th>
+<th class="head"><p>Vorhersage</p></th>
+<th class="head"><p>korrekt?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Modell A</p></td>
+<td><p>Modell A</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Modell B</p></td>
+<td><p>Modell B</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Modell C</p></td>
+<td><p>Modell C</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Modell A</p></td>
+<td><p>Modell A</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Modell B</p></td>
+<td><p>Modell B</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Modell C</p></td>
+<td><p>Modell C</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Modell A</p></td>
+<td><p>Modell A</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Modell B</p></td>
+<td><p>Modell B</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Modell C</p></td>
+<td><p>Modell C</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Modell A</p></td>
+<td><p>Modell A</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Modell C</p></td>
+<td><p>Modell C</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Modell C</p></td>
+<td><p>Modell A</p></td>
+<td><p>nein</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Modell B</p></td>
+<td><p>Modell B</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Modell B</p></td>
+<td><p>Modell B</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Modell B</p></td>
+<td><p>Modell B</p></td>
+<td><p>ja</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>Modell B</p></td>
+<td><p>Modell C</p></td>
+<td><p>nein</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>Modell C</p></td>
+<td><p>Modell B</p></td>
+<td><p>nein</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>Modell C</p></td>
+<td><p>Modell B</p></td>
+<td><p>nein</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>Modell A</p></td>
+<td><p>Modell A</p></td>
+<td><p>ja</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</small>
+<p>Es sind 15 von 19 Datensätzen korrekt klassifiziert. Das entspricht einer Genauigkeit von <span class="math notranslate nohighlight">\(\frac{15}{19} \approx 0,789\)</span> oder 78,9%.</p>
+</section>
+</section>
+</section>
+
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="kmeansclustering2_loesung.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title"><span class="section-number">23.9. </span>Programmierung des Algorithmus (Lösung)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="minimax.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>Der Minimax-Algorithmus</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung">24.1. Einführung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-unreinheit-und-gewichtete-gini-unreinheit">24.2. Gini-Unreinheit und gewichtete Gini-Unreinheit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-unreinheit">24.2.1. Gini-Unreinheit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gewichtete-gini-unreinheit">24.2.2. Gewichtete Gini-Unreinheit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-beratung-beim-smartphone-kauf">24.3. Übung: Beratung beim Smartphone-Kauf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausfuhrliche-musterlosung">24.4. Ausführliche Musterlösung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-unreinheit-der-gesamten-tabelle">24.4.1. Gini-Unreinheit der gesamten Tabelle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gewichtete-gini-unreinheit-fur-das-feature-budget">24.4.2. Gewichtete Gini-Unreinheit für das Feature <em>Budget</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auswahl-des-besten-features">24.4.3. Auswahl des besten Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-entscheidungsbaum-nach-dem-ersten-schritt">24.4.4. Der Entscheidungsbaum nach dem ersten Schritt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daten-mit-denen-weitergearbeitet-wird">24.4.5. Daten, mit denen weitergearbeitet wird</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fertiger-entscheidungsbaum-tiefe-2">24.4.6. Fertiger Entscheidungsbaum (Tiefe 2)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Michael Brenner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -83,6 +83,6 @@ parts:
       sections:
       - file: ki/kmeansclustering2_aufgabe.ipynb
       - file: ki/kmeansclustering2_loesung.ipynb
-    #- file: ki/entscheidungsbaumlernen.ipynb
-    #- file: ki/minimax.ipynb
-    #- file: ki/neuronalenetze.ipynb
+    - file: ki/entscheidungsbaumlernen.ipynb
+    - file: ki/minimax.ipynb
+    - file: ki/neuronalenetze.ipynb

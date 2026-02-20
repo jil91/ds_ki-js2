@@ -7,7 +7,7 @@
 <p style="text-align: center; margin: 0;">
     Hier klicken, um die die Datei als PDF anzusehen:
     <br>
-     <a href="../_static/pdfs/t07_assoziationen.pdf.pdf" 
+     <a href="../_static/pdfs/t07_assoziationen.pdf" 
            target="_blank" 
            rel="noopener noreferrer" 
            style="color: #007ACC; font-weight: bold; text-decoration: none;">
